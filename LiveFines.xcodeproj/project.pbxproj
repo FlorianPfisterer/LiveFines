@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5CB2984A1D64D7ED008DC93F /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB298491D64D7ED008DC93F /* Database.swift */; };
+		5CB2984D1D64DA90008DC93F /* LFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB2984C1D64DA90008DC93F /* LFError.swift */; };
+		5CB2984F1D64DAB3008DC93F /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB2984E1D64DAB3008DC93F /* Result.swift */; };
+		5CB298521D64DAE5008DC93F /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB298511D64DAE5008DC93F /* DataProvider.swift */; };
+		5CB298541D64DBD3008DC93F /* SignificanceComparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB298531D64DBD3008DC93F /* SignificanceComparable.swift */; };
 		5CB8966C1D64C26600E64B99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB8966B1D64C26600E64B99 /* AppDelegate.swift */; };
 		5CB8966E1D64C26600E64B99 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB8966D1D64C26600E64B99 /* ViewController.swift */; };
 		5CB896711D64C26600E64B99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8966F1D64C26600E64B99 /* Main.storyboard */; };
@@ -18,6 +22,8 @@
 		5CB896B11D64D24B00E64B99 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB896B01D64D24B00E64B99 /* Node.swift */; };
 		5CB896B41D64D38B00E64B99 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB896B21D64D38B00E64B99 /* Realm.framework */; };
 		5CB896B51D64D38B00E64B99 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB896B31D64D38B00E64B99 /* RealmSwift.framework */; };
+		5CCAC2771D64DD0400DB6CA9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCAC2751D64DD0400DB6CA9 /* Alamofire.framework */; };
+		5CCAC2781D64DD0400DB6CA9 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCAC2761D64DD0400DB6CA9 /* SwiftyJSON.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +45,10 @@
 
 /* Begin PBXFileReference section */
 		5CB298491D64D7ED008DC93F /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		5CB2984C1D64DA90008DC93F /* LFError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LFError.swift; sourceTree = "<group>"; };
+		5CB2984E1D64DAB3008DC93F /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		5CB298511D64DAE5008DC93F /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		5CB298531D64DBD3008DC93F /* SignificanceComparable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignificanceComparable.swift; sourceTree = "<group>"; };
 		5CB896681D64C26600E64B99 /* LiveFines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveFines.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CB8966B1D64C26600E64B99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CB8966D1D64C26600E64B99 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +71,8 @@
 		5CB896B01D64D24B00E64B99 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		5CB896B21D64D38B00E64B99 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = SOURCE_ROOT; };
 		5CB896B31D64D38B00E64B99 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = SOURCE_ROOT; };
+		5CCAC2751D64DD0400DB6CA9 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = SOURCE_ROOT; };
+		5CCAC2761D64DD0400DB6CA9 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +80,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CCAC2781D64DD0400DB6CA9 /* SwiftyJSON.framework in Frameworks */,
 				5CB896B51D64D38B00E64B99 /* RealmSwift.framework in Frameworks */,
+				5CCAC2771D64DD0400DB6CA9 /* Alamofire.framework in Frameworks */,
 				5CB896B41D64D38B00E64B99 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,6 +110,30 @@
 				5CB298491D64D7ED008DC93F /* Database.swift */,
 			);
 			name = Helper;
+			sourceTree = "<group>";
+		};
+		5CB2984B1D64DA2E008DC93F /* General */ = {
+			isa = PBXGroup;
+			children = (
+				5CB298501D64DAD7008DC93F /* Data Provider */,
+			);
+			name = General;
+			sourceTree = "<group>";
+		};
+		5CB298501D64DAD7008DC93F /* Data Provider */ = {
+			isa = PBXGroup;
+			children = (
+				5CB298511D64DAE5008DC93F /* DataProvider.swift */,
+			);
+			name = "Data Provider";
+			sourceTree = "<group>";
+		};
+		5CB298551D64DBD8008DC93F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				5CB298531D64DBD3008DC93F /* SignificanceComparable.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		5CB8965F1D64C26600E64B99 = {
@@ -195,6 +233,7 @@
 		5CB896A51D64C3E300E64B99 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				5CB298551D64DBD8008DC93F /* Protocols */,
 				5CB896A61D64C3EC00E64B99 /* Structs */,
 			);
 			name = Support;
@@ -203,6 +242,8 @@
 		5CB896A61D64C3EC00E64B99 /* Structs */ = {
 			isa = PBXGroup;
 			children = (
+				5CB2984C1D64DA90008DC93F /* LFError.swift */,
+				5CB2984E1D64DAB3008DC93F /* Result.swift */,
 			);
 			name = Structs;
 			sourceTree = "<group>";
@@ -210,6 +251,7 @@
 		5CB896A71D64D06800E64B99 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				5CB2984B1D64DA2E008DC93F /* General */,
 				5CB298481D64D7DA008DC93F /* Helper */,
 				5CB896A81D64D07100E64B99 /* Model */,
 			);
@@ -227,6 +269,7 @@
 		5CB896A91D64D1B500E64B99 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5CCAC2791D64DD0C00DB6CA9 /* Other */,
 				5CB896AA1D64D1BA00E64B99 /* Realm */,
 			);
 			name = Frameworks;
@@ -239,6 +282,15 @@
 				5CB896B31D64D38B00E64B99 /* RealmSwift.framework */,
 			);
 			name = Realm;
+			sourceTree = "<group>";
+		};
+		5CCAC2791D64DD0C00DB6CA9 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				5CCAC2751D64DD0400DB6CA9 /* Alamofire.framework */,
+				5CCAC2761D64DD0400DB6CA9 /* SwiftyJSON.framework */,
+			);
+			name = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -411,9 +463,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CB298541D64DBD3008DC93F /* SignificanceComparable.swift in Sources */,
+				5CB2984F1D64DAB3008DC93F /* Result.swift in Sources */,
 				5CB896B11D64D24B00E64B99 /* Node.swift in Sources */,
 				5CB8966E1D64C26600E64B99 /* ViewController.swift in Sources */,
+				5CB298521D64DAE5008DC93F /* DataProvider.swift in Sources */,
 				5CB2984A1D64D7ED008DC93F /* Database.swift in Sources */,
+				5CB2984D1D64DA90008DC93F /* LFError.swift in Sources */,
 				5CB8966C1D64C26600E64B99 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
