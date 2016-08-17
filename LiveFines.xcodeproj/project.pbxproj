@@ -47,6 +47,12 @@
 		5CB896871D64C26600E64B99 /* LiveFinesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiveFinesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CB8968B1D64C26600E64B99 /* LiveFinesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveFinesUITests.swift; sourceTree = "<group>"; };
 		5CB8968D1D64C26600E64B99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CB8969E1D64C3B400E64B99 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		5CB8969F1D64C3B400E64B99 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		5CB896A01D64C3B800E64B99 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		5CB896A11D64C3B800E64B99 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		5CB896A21D64C3C600E64B99 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		5CB896A31D64C3C600E64B99 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +103,10 @@
 		5CB8966A1D64C26600E64B99 /* LiveFines */ = {
 			isa = PBXGroup;
 			children = (
-				5CB8966B1D64C26600E64B99 /* AppDelegate.swift */,
-				5CB8966D1D64C26600E64B99 /* ViewController.swift */,
-				5CB8966F1D64C26600E64B99 /* Main.storyboard */,
-				5CB896721D64C26600E64B99 /* Assets.xcassets */,
-				5CB896741D64C26600E64B99 /* LaunchScreen.storyboard */,
-				5CB896771D64C26600E64B99 /* Info.plist */,
+				5CB8969B1D64C38E00E64B99 /* User Interface */,
+				5CB8969C1D64C39500E64B99 /* Code */,
+				5CB8969A1D64C38400E64B99 /* Resources */,
+				5CB8969D1D64C3A300E64B99 /* Supporting Files */,
 			);
 			path = LiveFines;
 			sourceTree = "<group>";
@@ -125,6 +129,64 @@
 			path = LiveFinesUITests;
 			sourceTree = "<group>";
 		};
+		5CB8969A1D64C38400E64B99 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5CB896721D64C26600E64B99 /* Assets.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		5CB8969B1D64C38E00E64B99 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				5CB8966F1D64C26600E64B99 /* Main.storyboard */,
+				5CB896741D64C26600E64B99 /* LaunchScreen.storyboard */,
+			);
+			name = "User Interface";
+			sourceTree = "<group>";
+		};
+		5CB8969C1D64C39500E64B99 /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				5CB8966B1D64C26600E64B99 /* AppDelegate.swift */,
+				5CB896A41D64C3DC00E64B99 /* View Controllers */,
+				5CB896A51D64C3E300E64B99 /* Support */,
+			);
+			name = Code;
+			sourceTree = "<group>";
+		};
+		5CB8969D1D64C3A300E64B99 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5CB896771D64C26600E64B99 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5CB896A41D64C3DC00E64B99 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5CB8966D1D64C26600E64B99 /* ViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		5CB896A51D64C3E300E64B99 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				5CB896A61D64C3EC00E64B99 /* Structs */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
+		5CB896A61D64C3EC00E64B99 /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Structs;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,6 +197,7 @@
 				5CB896641D64C26600E64B99 /* Sources */,
 				5CB896651D64C26600E64B99 /* Frameworks */,
 				5CB896661D64C26600E64B99 /* Resources */,
+				5CB896991D64C29400E64B99 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -257,6 +320,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5CB896991D64C29400E64B99 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "#!/bin/bash\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5CB896641D64C26600E64B99 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -303,6 +382,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				5CB896701D64C26600E64B99 /* Base */,
+				5CB8969E1D64C3B400E64B99 /* fr */,
+				5CB896A01D64C3B800E64B99 /* de */,
+				5CB896A21D64C3C600E64B99 /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -311,6 +393,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				5CB896751D64C26600E64B99 /* Base */,
+				5CB8969F1D64C3B400E64B99 /* fr */,
+				5CB896A11D64C3B800E64B99 /* de */,
+				5CB896A31D64C3C600E64B99 /* es */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -322,6 +407,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -358,7 +444,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -371,6 +457,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -401,7 +488,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -415,6 +502,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = LY9X4575EQ;
 				INFOPLIST_FILE = LiveFines/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.florianpfisterer.LiveFines;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -428,6 +516,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = LY9X4575EQ;
 				INFOPLIST_FILE = LiveFines/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.florianpfisterer.LiveFines;
 				PRODUCT_NAME = "$(TARGET_NAME)";
