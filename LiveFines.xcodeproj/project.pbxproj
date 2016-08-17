@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5CB2984A1D64D7ED008DC93F /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB298491D64D7ED008DC93F /* Database.swift */; };
 		5CB8966C1D64C26600E64B99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB8966B1D64C26600E64B99 /* AppDelegate.swift */; };
 		5CB8966E1D64C26600E64B99 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB8966D1D64C26600E64B99 /* ViewController.swift */; };
 		5CB896711D64C26600E64B99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8966F1D64C26600E64B99 /* Main.storyboard */; };
@@ -14,6 +15,9 @@
 		5CB896761D64C26600E64B99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CB896741D64C26600E64B99 /* LaunchScreen.storyboard */; };
 		5CB896811D64C26600E64B99 /* LiveFinesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB896801D64C26600E64B99 /* LiveFinesTests.swift */; };
 		5CB8968C1D64C26600E64B99 /* LiveFinesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB8968B1D64C26600E64B99 /* LiveFinesUITests.swift */; };
+		5CB896B11D64D24B00E64B99 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB896B01D64D24B00E64B99 /* Node.swift */; };
+		5CB896B41D64D38B00E64B99 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB896B21D64D38B00E64B99 /* Realm.framework */; };
+		5CB896B51D64D38B00E64B99 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB896B31D64D38B00E64B99 /* RealmSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5CB298491D64D7ED008DC93F /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		5CB896681D64C26600E64B99 /* LiveFines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveFines.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CB8966B1D64C26600E64B99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CB8966D1D64C26600E64B99 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +58,9 @@
 		5CB896A11D64C3B800E64B99 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5CB896A21D64C3C600E64B99 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		5CB896A31D64C3C600E64B99 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		5CB896B01D64D24B00E64B99 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		5CB896B21D64D38B00E64B99 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = SOURCE_ROOT; };
+		5CB896B31D64D38B00E64B99 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +68,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CB896B51D64D38B00E64B99 /* RealmSwift.framework in Frameworks */,
+				5CB896B41D64D38B00E64B99 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +90,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5CB298481D64D7DA008DC93F /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				5CB298491D64D7ED008DC93F /* Database.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
 		5CB8965F1D64C26600E64B99 = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +169,7 @@
 			children = (
 				5CB8966B1D64C26600E64B99 /* AppDelegate.swift */,
 				5CB896A41D64C3DC00E64B99 /* View Controllers */,
+				5CB896A71D64D06800E64B99 /* Core */,
 				5CB896A51D64C3E300E64B99 /* Support */,
 			);
 			name = Code;
@@ -159,6 +178,7 @@
 		5CB8969D1D64C3A300E64B99 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5CB896A91D64D1B500E64B99 /* Frameworks */,
 				5CB896771D64C26600E64B99 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -187,6 +207,40 @@
 			name = Structs;
 			sourceTree = "<group>";
 		};
+		5CB896A71D64D06800E64B99 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				5CB298481D64D7DA008DC93F /* Helper */,
+				5CB896A81D64D07100E64B99 /* Model */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		5CB896A81D64D07100E64B99 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5CB896B01D64D24B00E64B99 /* Node.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		5CB896A91D64D1B500E64B99 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5CB896AA1D64D1BA00E64B99 /* Realm */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5CB896AA1D64D1BA00E64B99 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				5CB896B21D64D38B00E64B99 /* Realm.framework */,
+				5CB896B31D64D38B00E64B99 /* RealmSwift.framework */,
+			);
+			name = Realm;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -197,6 +251,7 @@
 				5CB896641D64C26600E64B99 /* Sources */,
 				5CB896651D64C26600E64B99 /* Frameworks */,
 				5CB896661D64C26600E64B99 /* Resources */,
+				5CB896AF1D64D1DC00E64B99 /* ShellScript */,
 				5CB896991D64C29400E64B99 /* ShellScript */,
 			);
 			buildRules = (
@@ -334,6 +389,21 @@
 			shellPath = /bin/bash;
 			shellScript = "#!/bin/bash\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
 		};
+		5CB896AF1D64D1DC00E64B99 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -341,7 +411,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CB896B11D64D24B00E64B99 /* Node.swift in Sources */,
 				5CB8966E1D64C26600E64B99 /* ViewController.swift in Sources */,
+				5CB2984A1D64D7ED008DC93F /* Database.swift in Sources */,
 				5CB8966C1D64C26600E64B99 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,6 +573,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = LY9X4575EQ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LiveFines",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = LiveFines/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -515,6 +592,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = LY9X4575EQ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LiveFines",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = LiveFines/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -597,6 +679,7 @@
 				5CB896921D64C26600E64B99 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5CB896931D64C26600E64B99 /* Build configuration list for PBXNativeTarget "LiveFinesTests" */ = {
 			isa = XCConfigurationList;
@@ -605,6 +688,7 @@
 				5CB896951D64C26600E64B99 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5CB896961D64C26600E64B99 /* Build configuration list for PBXNativeTarget "LiveFinesUITests" */ = {
 			isa = XCConfigurationList;
@@ -613,6 +697,7 @@
 				5CB896981D64C26600E64B99 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
