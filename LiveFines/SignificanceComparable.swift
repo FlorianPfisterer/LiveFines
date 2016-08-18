@@ -14,6 +14,12 @@ protocol SignificanceComparable
     func significantChanges(to to: Self) -> Bool
 }
 
+infix operator >> { }
+func >> <T: SignificanceComparable>(lhs: T, rhs: T) -> Bool
+{
+    return lhs.significantChanges(to: rhs)
+}
+
 extension CLLocation: SignificanceComparable
 {
     func significantChanges(to to: CLLocation) -> Bool

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5CAC40A21D661ECB00076D3E /* JSONDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAC40A11D661ECB00076D3E /* JSONDataProvider.swift */; };
+		5CAC40A41D661EDE00076D3E /* APIAccessInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAC40A31D661EDE00076D3E /* APIAccessInformation.swift */; };
+		5CAC40A71D661F0300076D3E /* URLRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAC40A61D661F0300076D3E /* URLRequestHandler.swift */; };
 		5CB2984A1D64D7ED008DC93F /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB298491D64D7ED008DC93F /* Database.swift */; };
 		5CB2984D1D64DA90008DC93F /* LFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB2984C1D64DA90008DC93F /* LFError.swift */; };
 		5CB2984F1D64DAB3008DC93F /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB2984E1D64DAB3008DC93F /* Result.swift */; };
@@ -44,6 +47,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5CAC40A11D661ECB00076D3E /* JSONDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDataProvider.swift; sourceTree = "<group>"; };
+		5CAC40A31D661EDE00076D3E /* APIAccessInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIAccessInformation.swift; sourceTree = "<group>"; };
+		5CAC40A61D661F0300076D3E /* URLRequestHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestHandler.swift; sourceTree = "<group>"; };
 		5CB298491D64D7ED008DC93F /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		5CB2984C1D64DA90008DC93F /* LFError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LFError.swift; sourceTree = "<group>"; };
 		5CB2984E1D64DAB3008DC93F /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -104,6 +110,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5CAC40A51D661EF200076D3E /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				5CAC40A31D661EDE00076D3E /* APIAccessInformation.swift */,
+				5CAC40A61D661F0300076D3E /* URLRequestHandler.swift */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
 		5CB298481D64D7DA008DC93F /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +130,7 @@
 		5CB2984B1D64DA2E008DC93F /* General */ = {
 			isa = PBXGroup;
 			children = (
+				5CAC40A51D661EF200076D3E /* Networking */,
 				5CB298501D64DAD7008DC93F /* Data Provider */,
 			);
 			name = General;
@@ -124,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				5CB298511D64DAE5008DC93F /* DataProvider.swift */,
+				5CAC40A11D661ECB00076D3E /* JSONDataProvider.swift */,
 			);
 			name = "Data Provider";
 			sourceTree = "<group>";
@@ -470,7 +487,10 @@
 				5CB298521D64DAE5008DC93F /* DataProvider.swift in Sources */,
 				5CB2984A1D64D7ED008DC93F /* Database.swift in Sources */,
 				5CB2984D1D64DA90008DC93F /* LFError.swift in Sources */,
+				5CAC40A41D661EDE00076D3E /* APIAccessInformation.swift in Sources */,
+				5CAC40A71D661F0300076D3E /* URLRequestHandler.swift in Sources */,
 				5CB8966C1D64C26600E64B99 /* AppDelegate.swift in Sources */,
+				5CAC40A21D661ECB00076D3E /* JSONDataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

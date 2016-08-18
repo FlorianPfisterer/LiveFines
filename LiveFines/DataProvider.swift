@@ -40,7 +40,7 @@ extension DataProvider
                 self.notifyCallbacks(withOutput: outputCache)
             }
         }
-        else if let inputCache = self.inputCache where !inputCache.significantChanges(to: inputData)
+        else if let inputCache = self.inputCache where !(inputCache >> inputData)
         {
             // input has changed, but just marginally => doesn't require fetching data again, but DON'T update the cache!
             return
