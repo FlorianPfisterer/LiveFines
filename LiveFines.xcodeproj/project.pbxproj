@@ -10,6 +10,19 @@
 		5CAC40A21D661ECB00076D3E /* JSONDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAC40A11D661ECB00076D3E /* JSONDataProvider.swift */; };
 		5CAC40A41D661EDE00076D3E /* APIAccessInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAC40A31D661EDE00076D3E /* APIAccessInformation.swift */; };
 		5CAC40A71D661F0300076D3E /* URLRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAC40A61D661F0300076D3E /* URLRequestHandler.swift */; };
+		5CAC40A91D66208B00076D3E /* LiveFinesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAC40A81D66208B00076D3E /* LiveFinesProvider.swift */; };
+		5CAC40AC1D66212C00076D3E /* HereJSONDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAC40AB1D66212C00076D3E /* HereJSONDataProvider.swift */; };
+		5CAC40AF1D66216300076D3E /* HereSpeedLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAC40AE1D66216300076D3E /* HereSpeedLimit.swift */; };
+		5CAC40B11D66224200076D3E /* Foundation Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAC40B01D66224200076D3E /* Foundation Extensions.swift */; };
+		5CAC40B31D6622C900076D3E /* HereAPIAccessInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAC40B21D6622C900076D3E /* HereAPIAccessInformation.swift */; };
+		5CAC40B51D6622FB00076D3E /* Location Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAC40B41D6622FB00076D3E /* Location Extensions.swift */; };
+		5CAC40B91D6625AC00076D3E /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAC40B81D6625AC00076D3E /* Country.swift */; };
+		5CAC40BB1D6625C100076D3E /* Model Additional Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAC40BA1D6625C100076D3E /* Model Additional Types.swift */; };
+		5CAC40BD1D6625D600076D3E /* Offence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAC40BC1D6625D600076D3E /* Offence.swift */; };
+		5CAC40BF1D66262000076D3E /* Penalty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAC40BE1D66262000076D3E /* Penalty.swift */; };
+		5CAC40C11D66263300076D3E /* Punishment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAC40C01D66263300076D3E /* Punishment.swift */; };
+		5CAC40C41D6626C600076D3E /* Germany.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAC40C31D6626C600076D3E /* Germany.swift */; };
+		5CAC40C61D6626E100076D3E /* USA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAC40C51D6626E100076D3E /* USA.swift */; };
 		5CB2984A1D64D7ED008DC93F /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB298491D64D7ED008DC93F /* Database.swift */; };
 		5CB2984D1D64DA90008DC93F /* LFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB2984C1D64DA90008DC93F /* LFError.swift */; };
 		5CB2984F1D64DAB3008DC93F /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB2984E1D64DAB3008DC93F /* Result.swift */; };
@@ -50,6 +63,19 @@
 		5CAC40A11D661ECB00076D3E /* JSONDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDataProvider.swift; sourceTree = "<group>"; };
 		5CAC40A31D661EDE00076D3E /* APIAccessInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIAccessInformation.swift; sourceTree = "<group>"; };
 		5CAC40A61D661F0300076D3E /* URLRequestHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestHandler.swift; sourceTree = "<group>"; };
+		5CAC40A81D66208B00076D3E /* LiveFinesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveFinesProvider.swift; sourceTree = "<group>"; };
+		5CAC40AB1D66212C00076D3E /* HereJSONDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HereJSONDataProvider.swift; sourceTree = "<group>"; };
+		5CAC40AE1D66216300076D3E /* HereSpeedLimit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HereSpeedLimit.swift; sourceTree = "<group>"; };
+		5CAC40B01D66224200076D3E /* Foundation Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation Extensions.swift"; sourceTree = "<group>"; };
+		5CAC40B21D6622C900076D3E /* HereAPIAccessInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HereAPIAccessInformation.swift; sourceTree = "<group>"; };
+		5CAC40B41D6622FB00076D3E /* Location Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location Extensions.swift"; sourceTree = "<group>"; };
+		5CAC40B81D6625AC00076D3E /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		5CAC40BA1D6625C100076D3E /* Model Additional Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model Additional Types.swift"; sourceTree = "<group>"; };
+		5CAC40BC1D6625D600076D3E /* Offence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Offence.swift; sourceTree = "<group>"; };
+		5CAC40BE1D66262000076D3E /* Penalty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Penalty.swift; sourceTree = "<group>"; };
+		5CAC40C01D66263300076D3E /* Punishment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Punishment.swift; sourceTree = "<group>"; };
+		5CAC40C31D6626C600076D3E /* Germany.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Germany.swift; sourceTree = "<group>"; };
+		5CAC40C51D6626E100076D3E /* USA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = USA.swift; sourceTree = "<group>"; };
 		5CB298491D64D7ED008DC93F /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		5CB2984C1D64DA90008DC93F /* LFError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LFError.swift; sourceTree = "<group>"; };
 		5CB2984E1D64DAB3008DC93F /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -119,6 +145,41 @@
 			name = Networking;
 			sourceTree = "<group>";
 		};
+		5CAC40AA1D66211B00076D3E /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				5CAC40AD1D66215000076D3E /* Here API */,
+			);
+			name = APIs;
+			sourceTree = "<group>";
+		};
+		5CAC40AD1D66215000076D3E /* Here API */ = {
+			isa = PBXGroup;
+			children = (
+				5CAC40AB1D66212C00076D3E /* HereJSONDataProvider.swift */,
+				5CAC40B21D6622C900076D3E /* HereAPIAccessInformation.swift */,
+				5CAC40AE1D66216300076D3E /* HereSpeedLimit.swift */,
+			);
+			name = "Here API";
+			sourceTree = "<group>";
+		};
+		5CAC40B61D66255D00076D3E /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				5CB896B01D64D24B00E64B99 /* Node.swift */,
+			);
+			name = Realm;
+			sourceTree = "<group>";
+		};
+		5CAC40C21D6626B800076D3E /* Countries */ = {
+			isa = PBXGroup;
+			children = (
+				5CAC40C31D6626C600076D3E /* Germany.swift */,
+				5CAC40C51D6626E100076D3E /* USA.swift */,
+			);
+			name = Countries;
+			sourceTree = "<group>";
+		};
 		5CB298481D64D7DA008DC93F /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +191,7 @@
 		5CB2984B1D64DA2E008DC93F /* General */ = {
 			isa = PBXGroup;
 			children = (
+				5CAC40AA1D66211B00076D3E /* APIs */,
 				5CAC40A51D661EF200076D3E /* Networking */,
 				5CB298501D64DAD7008DC93F /* Data Provider */,
 			);
@@ -139,6 +201,7 @@
 		5CB298501D64DAD7008DC93F /* Data Provider */ = {
 			isa = PBXGroup;
 			children = (
+				5CAC40A81D66208B00076D3E /* LiveFinesProvider.swift */,
 				5CB298511D64DAE5008DC93F /* DataProvider.swift */,
 				5CAC40A11D661ECB00076D3E /* JSONDataProvider.swift */,
 			);
@@ -252,6 +315,8 @@
 			children = (
 				5CB298551D64DBD8008DC93F /* Protocols */,
 				5CB896A61D64C3EC00E64B99 /* Structs */,
+				5CAC40B01D66224200076D3E /* Foundation Extensions.swift */,
+				5CAC40B41D6622FB00076D3E /* Location Extensions.swift */,
 			);
 			name = Support;
 			sourceTree = "<group>";
@@ -278,7 +343,13 @@
 		5CB896A81D64D07100E64B99 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5CB896B01D64D24B00E64B99 /* Node.swift */,
+				5CAC40B61D66255D00076D3E /* Realm */,
+				5CAC40BA1D6625C100076D3E /* Model Additional Types.swift */,
+				5CAC40BC1D6625D600076D3E /* Offence.swift */,
+				5CAC40BE1D66262000076D3E /* Penalty.swift */,
+				5CAC40C01D66263300076D3E /* Punishment.swift */,
+				5CAC40B81D6625AC00076D3E /* Country.swift */,
+				5CAC40C21D6626B800076D3E /* Countries */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -483,14 +554,27 @@
 				5CB298541D64DBD3008DC93F /* SignificanceComparable.swift in Sources */,
 				5CB2984F1D64DAB3008DC93F /* Result.swift in Sources */,
 				5CB896B11D64D24B00E64B99 /* Node.swift in Sources */,
+				5CAC40AC1D66212C00076D3E /* HereJSONDataProvider.swift in Sources */,
+				5CAC40B11D66224200076D3E /* Foundation Extensions.swift in Sources */,
+				5CAC40C61D6626E100076D3E /* USA.swift in Sources */,
 				5CB8966E1D64C26600E64B99 /* ViewController.swift in Sources */,
+				5CAC40BD1D6625D600076D3E /* Offence.swift in Sources */,
+				5CAC40BF1D66262000076D3E /* Penalty.swift in Sources */,
 				5CB298521D64DAE5008DC93F /* DataProvider.swift in Sources */,
 				5CB2984A1D64D7ED008DC93F /* Database.swift in Sources */,
+				5CAC40B51D6622FB00076D3E /* Location Extensions.swift in Sources */,
 				5CB2984D1D64DA90008DC93F /* LFError.swift in Sources */,
+				5CAC40B91D6625AC00076D3E /* Country.swift in Sources */,
 				5CAC40A41D661EDE00076D3E /* APIAccessInformation.swift in Sources */,
+				5CAC40BB1D6625C100076D3E /* Model Additional Types.swift in Sources */,
 				5CAC40A71D661F0300076D3E /* URLRequestHandler.swift in Sources */,
 				5CB8966C1D64C26600E64B99 /* AppDelegate.swift in Sources */,
+				5CAC40A91D66208B00076D3E /* LiveFinesProvider.swift in Sources */,
+				5CAC40C11D66263300076D3E /* Punishment.swift in Sources */,
 				5CAC40A21D661ECB00076D3E /* JSONDataProvider.swift in Sources */,
+				5CAC40AF1D66216300076D3E /* HereSpeedLimit.swift in Sources */,
+				5CAC40C41D6626C600076D3E /* Germany.swift in Sources */,
+				5CAC40B31D6622C900076D3E /* HereAPIAccessInformation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
