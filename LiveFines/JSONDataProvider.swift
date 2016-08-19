@@ -25,10 +25,10 @@ class JSONDataProvider<Input, Output, APIInformation where APIInformation: APIAc
     
     // MARK: - Protocol Variables
     var callbackId = 0
-    var callbacks: [Int : ((Result<Output>) -> Void)]
+    var callbacks: [Int : ((Result<(Output, Input)>) -> Void)]
     
     var inputCache: Input?
-    var outputCache: Result<Output>?
+    var outputCache: Result<(Output, Input)>?
     
     // MARK: - Private Properties
     private var apiInformation: APIInformation.Type
@@ -62,7 +62,7 @@ extension JSONDataProvider
                 return
             }
             
-            self.notifyCallbacks(withOutput: .success(output))
+            self.notifyCallbacks(withOutput: .success((output, input)))
         }
     }
 }

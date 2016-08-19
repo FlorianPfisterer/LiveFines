@@ -16,14 +16,14 @@ protocol DataProvider
     static var updateCallbacksWithoutInputChange: Bool { get }
     
     var inputCache: InputDataType? { get set }
-    var outputCache: Result<OutputDataType>? { get set }
+    var outputCache: Result<(OutputDataType, InputDataType)>? { get set }
     
     var callbackId: Int { get set }
-    var callbacks: [Int : (Result<OutputDataType>) -> Void] { get set }
+    var callbacks: [Int : (Result<(OutputDataType, InputDataType)>) -> Void] { get set }
     
     func fetchData(fromInput input: InputDataType)
     
-    mutating func registerCallback(callback: (Result<OutputDataType>) -> Void) -> Int
+    mutating func registerCallback(callback: (Result<(OutputDataType, InputDataType)>) -> Void) -> Int
     mutating func unregisterCallback(withId id: Int)
 }
 
@@ -56,7 +56,7 @@ extension DataProvider
     }
     
     // MARK: - Callback Management
-    mutating func registerCallback(callback: (Result<OutputDataType>) -> Void) -> Int
+    mutating func registerCallback(callback: (Result<(OutputDataType, InputDataType)>) -> Void) -> Int
     {
         self.callbackId += 1
         self.callbacks[self.callbackId] = callback
@@ -68,7 +68,7 @@ extension DataProvider
         self.callbacks.removeValueForKey(id)
     }
     
-    func notifyCallbacks(withOutput output: Result<OutputDataType>)
+    func notifyCallbacks(withOutput output: Result<(OutputDataType, InputDataType)>)
     {
         self.callbacks.forEach { $1(output) }
     }

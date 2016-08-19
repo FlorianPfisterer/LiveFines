@@ -11,9 +11,25 @@ import RealmSwift
 
 final class Database
 {
-    func realm() -> Realm?
+    // MARK: - General
+    static func realm() -> Result<Realm>
     {
-        do { return try Realm() }
-        catch { return nil }
+        do { return .success(try Realm()) }
+        catch { return .error(.other("\(error)")) }
+    }
+}
+
+extension Database
+{
+    static func insert(node node: Node, intoRealm realm: Realm)
+    {
+        do
+        {
+            try realm.write(object: node)
+        }
+        catch
+        {
+            print("ERROR: \(error)")    // TODO
+        }
     }
 }

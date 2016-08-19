@@ -20,7 +20,7 @@ class Node: Object
     dynamic var course: Double = 0
     
     // 2. API Data
-    dynamic var speedLimit: Double = 0
+    dynamic var speedLimit: Int = 0
     dynamic var streetId: String? = nil
  
     // 3. Experience Data
@@ -28,6 +28,16 @@ class Node: Object
     dynamic var updatedAt: NSDate? = nil
     
     dynamic var speed: Double = 0
+    
+    // MARK: - Init
+    convenience init(coordinate: CLLocationCoordinate2D, speedLimit: Int)
+    {
+        self.init()
+        
+        self.latitude = coordinate.latitude
+        self.longitude = coordinate.longitude
+        self.speedLimit = speedLimit
+    }
 }
 
 extension Node

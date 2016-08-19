@@ -13,3 +13,14 @@ enum Result<T>
     case success(T)
     case error(LFError)
 }
+
+extension Result
+{
+    var optional: T? {
+        switch self
+        {
+        case .success(let t): return t
+        default: return nil
+        }
+    }
+}

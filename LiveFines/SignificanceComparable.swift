@@ -20,6 +20,12 @@ func >> <T: SignificanceComparable>(lhs: T, rhs: T) -> Bool
     return lhs.significantChanges(to: rhs)
 }
 
+infix operator ≈ { }
+func ≈ <T: SignificanceComparable>(lhs: T, rhs: T) -> Bool
+{
+    return !(lhs >> rhs)
+}
+
 extension CLLocation: SignificanceComparable
 {
     func significantChanges(to to: CLLocation) -> Bool
