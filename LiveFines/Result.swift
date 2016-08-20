@@ -19,8 +19,10 @@ extension Result
     var optional: T? {
         switch self
         {
-        case .success(let t): return t
-        default: return nil
+        case .success(let t):
+            return t
+        default:
+            return nil
         }
     }
 }

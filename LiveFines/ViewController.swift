@@ -10,5 +10,27 @@ import UIKit
 
 class ViewController: UIViewController
 {
-    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        
+        let result = Database.realm()
+        switch result
+        {
+        case .success(let realm):
+            let provider = LiveFinesProvider(requestHandler: AlamofireRequestHandler(), realm: realm)
+            provider.startReceivingUpdates(self)
+            
+        default:
+            return
+        }
+    }
+}
+
+extension ViewController: LiveFinesUpdateReceiver
+{
+    func update(node node: Node)
+    {
+        print("new node: \(node)")
+    }
 }

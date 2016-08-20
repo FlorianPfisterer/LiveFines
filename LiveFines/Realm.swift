@@ -21,16 +21,17 @@ extension Realm
 
 extension Realm
 {
-    func nodes(closeToLocation location: CLLocation) -> [Node]
+    func node(closeToLocation location: CLLocation) -> Node?
     {
         let coordinate = location.coordinate
         let (minLongitude, maxLongitude) = (coordinate.longitude - Constants.Config.coordinateSpan, coordinate.longitude + Constants.Config.coordinateSpan)
         let (minLatitude, maxLatitude) = (coordinate.latitude - Constants.Config.coordinateSpan, coordinate.latitude + Constants.Config.coordinateSpan)
         
-        let results = self.objects(Node.self).filter("longitude >= %d AND longitude < %d AND latitude >= %d AND latitude < %d", minLongitude, maxLongitude, minLatitude, maxLatitude)
+        let results = self.objects(Node.self)
+                    .filter("longitude >= %f AND longitude < %f AND latitude >= %f AND latitude < %f", minLongitude, maxLongitude, minLatitude, maxLatitude)
         
-        print(results)
-        
-        return []
+        // sort by the closes Node first
+        let nodes = Array(results).sort({ $0.distance(to: coordinate) < $1.distance(to: coordinate) })
+        return nodes.first
     }
 }

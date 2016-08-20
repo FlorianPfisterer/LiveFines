@@ -53,6 +53,8 @@ final class LiveFinesProvider: NSObject
     {
         self.locationManager.delegate = self
         self.locationManager.activityType = .AutomotiveNavigation
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.distanceFilter = 0
         
         self.locationManager.requestAlwaysAuthorization()
     }
@@ -78,6 +80,9 @@ extension LiveFinesProvider
         
         // unregister Callbacks
         if let id = self.speedlimitCallbackId { self.speedlimitProvider.unregisterCallback(withId: id) }
+        
+        self.locationManager.stopUpdatingLocation()
+        self.isFetchingLocation = false
     }
 }
 
@@ -99,15 +104,20 @@ extension LiveFinesProvider: CLLocationManagerDelegate
         self.locationUpdate(location)
     }
     
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError)
+    {
+        print(error)
+    }
+    
     // MARK: - Callbacks
     private func locationUpdate(location: CLLocation)
     {
-        let result = self.query(forNodesAtLocation: location)
+        // query the database for similar location nodes
+        let result = self.query(forNodeAtLocation: location)
         switch result
         {
-        case .success(let nodes):
-            guard !nodes.isEmpty else { fatalError() }
-            self.updateReceiver?.update(node: nodes.first!)
+        case .success(let node):
+            self.updateReceiver?.update(node: node)
             
         case .error(_):
             self.speedlimitProvider.updateInputData(location)   // request a new speedlimit
@@ -118,7 +128,9 @@ extension LiveFinesProvider: CLLocationManagerDelegate
     {
         switch speedlimitResult
         {
-        case .error(let error): print(error)
+        case .error(let error):
+            print(error)
+            
         case .success((let speedLimit, let location)):
             let node = Node(coordinate: location.coordinate, speedLimit: speedLimit.kmh)
             Database.insert(node: node, intoRealm: self.realm)
@@ -130,9 +142,9 @@ extension LiveFinesProvider: CLLocationManagerDelegate
 extension LiveFinesProvider
 {
     // MARK: - Realm Querying
-    private func query(forNodesAtLocation location: CLLocation) -> Result<[Node]>
+    private func query(forNodeAtLocation location: CLLocation) -> Result<Node>
     {
-        let nodes = self.realm.nodes(closeToLocation: location)
-        return nodes.isEmpty ? .error(.other("No Nodes Found")) : .success(nodes)
+        let node = self.realm.node(closeToLocation: location)
+        return node == nil ? .error(.other("No Nodes Found")) : .success(node!)
     }
 }

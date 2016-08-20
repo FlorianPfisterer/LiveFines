@@ -14,4 +14,13 @@ extension CLLocationCoordinate2D
     var waypointString: String {
         return "\(self.latitude),\(self.longitude)"
     }
+    
+    var length: Double {
+        return sqrt(self.latitude * self.latitude + self.longitude * self.longitude)
+    }
+}
+
+func - (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> CLLocationCoordinate2D
+{
+    return CLLocationCoordinate2D(latitude: lhs.latitude - rhs.latitude, longitude: lhs.longitude - rhs.longitude)
 }

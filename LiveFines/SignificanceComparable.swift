@@ -30,6 +30,9 @@ extension CLLocation: SignificanceComparable
 {
     func significantChanges(to to: CLLocation) -> Bool
     {
-        return false    // TODO
+        let coordinate = self.coordinate
+        let toCoordinate = to.coordinate
+        return abs(toCoordinate.latitude - coordinate.latitude) > Constants.Config.coordinateSpan ||
+               abs(toCoordinate.longitude - coordinate.longitude) > Constants.Config.coordinateSpan
     }
 }

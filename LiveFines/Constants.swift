@@ -12,6 +12,6 @@ struct Constants
 {
     struct Config
     {
-        static let coordinateSpan: Double = 0.1
+        static let coordinateSpan: Double = 0.002
     }
 }

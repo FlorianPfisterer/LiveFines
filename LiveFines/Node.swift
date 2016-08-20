@@ -12,7 +12,7 @@ import RealmSwift
 
 class Node: Object
 {
-    dynamic var id: Int = 0
+    dynamic var id: String? = nil
     
     // 1. CLLocation Data
     dynamic var latitude: Double = 0
@@ -25,7 +25,7 @@ class Node: Object
  
     // 3. Experience Data
     dynamic var createdAt: NSDate? = nil
-    dynamic var updatedAt: NSDate? = nil
+    dynamic var visitedAt: NSDate? = nil
     
     dynamic var speed: Double = 0
     
@@ -34,6 +34,7 @@ class Node: Object
     {
         self.init()
         
+        self.id = NSUUID().UUIDString
         self.latitude = coordinate.latitude
         self.longitude = coordinate.longitude
         self.speedLimit = speedLimit
@@ -44,6 +45,11 @@ extension Node
 {
     var coordinate: CLLocationCoordinate2D {
         return CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
+    }
+    
+    func distance(to coordinate: CLLocationCoordinate2D) -> Double
+    {
+        return (coordinate - self.coordinate).length
     }
 }
 
