@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 import RealmSwift
 
-protocol LiveFinesUpdateReceiver: class
+protocol LiveFinesUpdateReceiver: class, AlertPresenter
 {
     func update(node node: Node)
 }
@@ -93,8 +93,8 @@ extension LiveFinesProvider: CLLocationManagerDelegate
     {
         guard let location = locations.last where location.horizontalAccuracy > 0 else
         {
-            print("ERROR")
-            return // TODO
+            self.handle(error: .local(LocationError.noLocations))
+            return 
         }
         
         // no significant input changes
@@ -106,7 +106,7 @@ extension LiveFinesProvider: CLLocationManagerDelegate
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError)
     {
-        print(error)
+        self.handle(error: .local(LocationError.other(error.localizedDescription)))
     }
     
     // MARK: - Callbacks
@@ -129,7 +129,7 @@ extension LiveFinesProvider: CLLocationManagerDelegate
         switch speedlimitResult
         {
         case .error(let error):
-            print(error)
+            self.handle(error: error)
             
         case .success((let speedLimit, let location)):
             let node = Node(coordinate: location.coordinate, speedLimit: speedLimit.kmh, linkId: speedLimit.linkId)
@@ -146,6 +146,21 @@ extension LiveFinesProvider
     private func query(forNodeAtLocation location: CLLocation) -> Result<Node>
     {
         let node = self.realm.node(closeToLocation: location)
-        return node == nil ? .error(.other("No Nodes Found")) : .success(node!)
+        return node == nil ? .error(.local(LocationError.noMatchingNodes)) : .success(node!)
+    }
+}
+
+extension LiveFinesProvider
+{
+    private func handle(error error: LFError)
+    {
+        switch error
+        {
+        case .user(let alertifiable):
+            self.updateReceiver?.present(error: alertifiable, completion: nil)
+
+        default:
+            Log.error(error)
+        }
     }
 }

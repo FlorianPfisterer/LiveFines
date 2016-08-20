@@ -14,8 +14,18 @@ final class Database
     // MARK: - General
     static func realm() -> Result<Realm>
     {
-        do { return .success(try Realm()) }
-        catch { return .error(.other("\(error)")) }
+        do
+        {
+            return .success(try Realm())
+        }
+        catch let error as Error
+        {
+            return .error(.realm(error))
+        }
+        catch
+        {
+            return .error(.local(error))
+        }
     }
 }
 
@@ -29,7 +39,7 @@ extension Database
         }
         catch
         {
-            print("ERROR: \(error)")    // TODO
+            Log.error(specify: error)
         }
     }
 }

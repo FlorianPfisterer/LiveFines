@@ -21,7 +21,9 @@ extension Result
         {
         case .success(let t):
             return t
-        default:
+            
+        case .error(let error):
+            Log.error(specify: error)
             return nil
         }
     }

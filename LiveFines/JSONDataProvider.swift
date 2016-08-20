@@ -57,8 +57,18 @@ extension JSONDataProvider
                 let output = OutputDataType(json: JSON(value))
                 where result.error == nil else
             {
-                // TODO specify Error
-                self.notifyCallbacks(withOutput: .error(.other("\(result.error!.localizedDescription); Response: \(response.debugDescription)")))
+                var output: Result<(Output, Input)>
+                if let error = result.error as? ErrorType
+                {
+                    output = .error(.local(error))
+                    Log.info("\(error) with response: \(response.debugDescription)")
+                }
+                else
+                {
+                    output = .error(.other("Couldn't complete request \(response.request ?? nil) with response: \(response.debugDescription)"))
+                }
+                
+                self.notifyCallbacks(withOutput: output)
                 return
             }
             

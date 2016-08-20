@@ -70,6 +70,6 @@ extension DataProvider
     
     func notifyCallbacks(withOutput output: Result<(OutputDataType, InputDataType)>)
     {
-        self.callbacks.forEach { $1(output) }
+        self.callbacks.each { $1(output) }
     }
 }

@@ -17,6 +17,14 @@ extension CollectionType
     }
 }
 
+extension SequenceType
+{
+    func each(@noescape body: (Self.Generator.Element) throws -> Void) rethrows
+    {
+        try self.forEach(body)
+    }
+}
+
 // MARK: - Primitive Types
 extension Int
 {
@@ -26,4 +34,3 @@ extension Int
         return diff >= 5 ? self + (10-diff) : self - diff
     }
 }
-
