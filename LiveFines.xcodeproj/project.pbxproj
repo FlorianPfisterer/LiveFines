@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C53D5081D683ABA00CA22BF /* PunishmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53D5071D683ABA00CA22BF /* PunishmentTests.swift */; };
+		5C53D50A1D683AD000CA22BF /* PenaltyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53D5091D683AD000CA22BF /* PenaltyTests.swift */; };
+		5C53D50C1D683AFA00CA22BF /* OffenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53D50B1D683AFA00CA22BF /* OffenceTests.swift */; };
+		5C53D50F1D683B2C00CA22BF /* Test Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53D50E1D683B2C00CA22BF /* Test Mocks.swift */; };
+		5C53D5121D683B6700CA22BF /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53D5111D683B6700CA22BF /* Functions.swift */; };
+		5C53D5131D683CE900CA22BF /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCAC2761D64DD0400DB6CA9 /* SwiftyJSON.framework */; };
+		5C53D5141D683CE900CA22BF /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB896B31D64D38B00E64B99 /* RealmSwift.framework */; };
+		5C53D5151D683CE900CA22BF /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB896B21D64D38B00E64B99 /* Realm.framework */; };
+		5C53D5161D683CE900CA22BF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCAC2751D64DD0400DB6CA9 /* Alamofire.framework */; };
+		5C53D5191D683FAA00CA22BF /* JSONDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53D5181D683FAA00CA22BF /* JSONDataProviderTests.swift */; };
+		5C53D51B1D68405B00CA22BF /* HereMapsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53D51A1D68405B00CA22BF /* HereMapsTest.swift */; };
 		5C59DF201D675DD000CD32A9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C59DF1F1D675DD000CD32A9 /* Constants.swift */; };
 		5CAC40A21D661ECB00076D3E /* JSONDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAC40A11D661ECB00076D3E /* JSONDataProvider.swift */; };
 		5CAC40A41D661EDE00076D3E /* APIAccessInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAC40A31D661EDE00076D3E /* APIAccessInformation.swift */; };
@@ -62,6 +73,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5C53D5071D683ABA00CA22BF /* PunishmentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PunishmentTests.swift; sourceTree = "<group>"; };
+		5C53D5091D683AD000CA22BF /* PenaltyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PenaltyTests.swift; sourceTree = "<group>"; };
+		5C53D50B1D683AFA00CA22BF /* OffenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffenceTests.swift; sourceTree = "<group>"; };
+		5C53D50E1D683B2C00CA22BF /* Test Mocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Test Mocks.swift"; sourceTree = "<group>"; };
+		5C53D5111D683B6700CA22BF /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		5C53D5181D683FAA00CA22BF /* JSONDataProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDataProviderTests.swift; sourceTree = "<group>"; };
+		5C53D51A1D68405B00CA22BF /* HereMapsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HereMapsTest.swift; sourceTree = "<group>"; };
 		5C59DF1F1D675DD000CD32A9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5CAC40A11D661ECB00076D3E /* JSONDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDataProvider.swift; sourceTree = "<group>"; };
 		5CAC40A31D661EDE00076D3E /* APIAccessInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIAccessInformation.swift; sourceTree = "<group>"; };
@@ -127,6 +145,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C53D5131D683CE900CA22BF /* SwiftyJSON.framework in Frameworks */,
+				5C53D5141D683CE900CA22BF /* RealmSwift.framework in Frameworks */,
+				5C53D5151D683CE900CA22BF /* Realm.framework in Frameworks */,
+				5C53D5161D683CE900CA22BF /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +162,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C53D5061D683A9600CA22BF /* Model Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5C53D5071D683ABA00CA22BF /* PunishmentTests.swift */,
+				5C53D5091D683AD000CA22BF /* PenaltyTests.swift */,
+				5C53D50B1D683AFA00CA22BF /* OffenceTests.swift */,
+			);
+			name = "Model Tests";
+			sourceTree = "<group>";
+		};
+		5C53D50D1D683B0E00CA22BF /* Data Provider Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5C53D50E1D683B2C00CA22BF /* Test Mocks.swift */,
+				5C53D5181D683FAA00CA22BF /* JSONDataProviderTests.swift */,
+				5C53D51A1D68405B00CA22BF /* HereMapsTest.swift */,
+			);
+			name = "Data Provider Tests";
+			sourceTree = "<group>";
+		};
+		5C53D5101D683B5600CA22BF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5CAC40B01D66224200076D3E /* Foundation Extensions.swift */,
+				5CAC40B41D6622FB00076D3E /* Location Extensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		5CAC40A51D661EF200076D3E /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +306,8 @@
 		5CB8967F1D64C26600E64B99 /* LiveFinesTests */ = {
 			isa = PBXGroup;
 			children = (
+				5C53D50D1D683B0E00CA22BF /* Data Provider Tests */,
+				5C53D5061D683A9600CA22BF /* Model Tests */,
 				5CB896801D64C26600E64B99 /* LiveFinesTests.swift */,
 				5CB896821D64C26600E64B99 /* Info.plist */,
 			);
@@ -320,9 +373,9 @@
 			children = (
 				5CB298551D64DBD8008DC93F /* Protocols */,
 				5CB896A61D64C3EC00E64B99 /* Structs */,
-				5CAC40B01D66224200076D3E /* Foundation Extensions.swift */,
-				5CAC40B41D6622FB00076D3E /* Location Extensions.swift */,
+				5C53D5101D683B5600CA22BF /* Extensions */,
 				5C59DF1F1D675DD000CD32A9 /* Constants.swift */,
+				5C53D5111D683B6700CA22BF /* Functions.swift */,
 			);
 			name = Support;
 			sourceTree = "<group>";
@@ -416,6 +469,7 @@
 				5CB896781D64C26600E64B99 /* Sources */,
 				5CB896791D64C26600E64B99 /* Frameworks */,
 				5CB8967A1D64C26600E64B99 /* Resources */,
+				5C53D5171D683D0500CA22BF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -522,6 +576,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5C53D5171D683D0500CA22BF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 		5CB896991D64C29400E64B99 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -570,6 +641,7 @@
 				5CAC40BD1D6625D600076D3E /* Offence.swift in Sources */,
 				5CAC40BF1D66262000076D3E /* Penalty.swift in Sources */,
 				5CB298521D64DAE5008DC93F /* DataProvider.swift in Sources */,
+				5C53D5121D683B6700CA22BF /* Functions.swift in Sources */,
 				5CB2984A1D64D7ED008DC93F /* Database.swift in Sources */,
 				5CAC40B51D6622FB00076D3E /* Location Extensions.swift in Sources */,
 				5CB2984D1D64DA90008DC93F /* LFError.swift in Sources */,
@@ -592,6 +664,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C53D5191D683FAA00CA22BF /* JSONDataProviderTests.swift in Sources */,
+				5C53D50F1D683B2C00CA22BF /* Test Mocks.swift in Sources */,
+				5C53D50A1D683AD000CA22BF /* PenaltyTests.swift in Sources */,
+				5C53D51B1D68405B00CA22BF /* HereMapsTest.swift in Sources */,
+				5C53D5081D683ABA00CA22BF /* PunishmentTests.swift in Sources */,
+				5C53D50C1D683AFA00CA22BF /* OffenceTests.swift in Sources */,
 				5CB896811D64C26600E64B99 /* LiveFinesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -781,6 +859,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = LY9X4575EQ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = LiveFinesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.florianpfisterer.LiveFinesTests;
@@ -795,6 +877,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = LY9X4575EQ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = LiveFinesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.florianpfisterer.LiveFinesTests;
