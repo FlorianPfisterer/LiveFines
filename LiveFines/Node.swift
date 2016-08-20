@@ -19,6 +19,8 @@ class Node: Object
     dynamic var longitude: Double = 0
     dynamic var course: Double = 0
     
+    dynamic var speed: Int = 0
+    
     // 2. API Data
     dynamic var linkId: String = ""
     dynamic var speedLimit: Int = 0
@@ -27,36 +29,29 @@ class Node: Object
     dynamic var createdAt: NSDate? = nil
     dynamic var visitedAt: NSDate? = nil
     
-    dynamic var speed: Double = 0
-    
     // MARK: - Init
-    convenience init(coordinate: CLLocationCoordinate2D, speedLimit: Int, linkId: String)
+    convenience init(location: CLLocation, speedLimit: Int, linkId: String)
     {
         self.init()
         
         self.id = NSUUID().UUIDString
-        self.latitude = coordinate.latitude
-        self.longitude = coordinate.longitude
+        self.latitude = location.coordinate.latitude
+        self.longitude = location.coordinate.longitude
         
         self.linkId = linkId
         self.speedLimit = speedLimit
+        self.speed = location.kmh
+        self.course = location.course
+        
+        let now = NSDate()
+        self.createdAt = now
+        self.visitedAt = now
     }
 }
 
 extension Node
 {
-    var coordinate: CLLocationCoordinate2D {
-        return CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
-    }
-    
-    func distance(to coordinate: CLLocationCoordinate2D) -> Double
-    {
-        return (coordinate - self.coordinate).length
-    }
-}
-
-extension Node
-{
+    // MARK: - Realm Configuration
     override static func primaryKey() -> String?
     {
         return "id"
@@ -65,5 +60,24 @@ extension Node
     override static func indexedProperties() -> [String]
     {
         return ["latitude", "longitude", "linkId"]
+    }
+}
+
+extension Node
+{
+    // MARK: - Public Access
+    var coordinate: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
+    }
+    
+    func distance(to coordinate: CLLocationCoordinate2D) -> Double
+    {
+        return (coordinate - self.coordinate).length
+    }
+    
+    func visit() -> Node
+    {
+        self.visitedAt = NSDate()
+        return self
     }
 }

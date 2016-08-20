@@ -27,15 +27,24 @@ final class Database
             return .error(.local(error))
         }
     }
-}
 
-extension Database
-{
-    static func insert(node node: Node, intoRealm realm: Realm)
+    static func insert(object object: Object, intoRealm realm: Realm)
     {
         do
         {
-            try realm.write(object: node)
+            try realm.write(object: object)
+        }
+        catch
+        {
+            Log.error(specify: error)
+        }
+    }
+    
+    static func update(@autoclosure object object: () -> Object, inRealm realm: Realm)
+    {
+        do
+        {
+            try realm.update(object: object)
         }
         catch
         {

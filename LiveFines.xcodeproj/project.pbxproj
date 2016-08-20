@@ -22,6 +22,7 @@
 		5C53D5201D684ECB00CA22BF /* UIKit Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53D51F1D684ECB00CA22BF /* UIKit Extensions.swift */; };
 		5C53D5221D684F2D00CA22BF /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53D5211D684F2D00CA22BF /* Localization.swift */; };
 		5C53D5241D6855AE00CA22BF /* Other Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53D5231D6855AE00CA22BF /* Other Errors.swift */; };
+		5C53D5261D68862600CA22BF /* Node Queries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53D5251D68862600CA22BF /* Node Queries.swift */; };
 		5C59DF201D675DD000CD32A9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C59DF1F1D675DD000CD32A9 /* Constants.swift */; };
 		5CAC40A21D661ECB00076D3E /* JSONDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAC40A11D661ECB00076D3E /* JSONDataProvider.swift */; };
 		5CAC40A41D661EDE00076D3E /* APIAccessInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAC40A31D661EDE00076D3E /* APIAccessInformation.swift */; };
@@ -88,6 +89,7 @@
 		5C53D51F1D684ECB00CA22BF /* UIKit Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit Extensions.swift"; sourceTree = "<group>"; };
 		5C53D5211D684F2D00CA22BF /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		5C53D5231D6855AE00CA22BF /* Other Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Other Errors.swift"; sourceTree = "<group>"; };
+		5C53D5251D68862600CA22BF /* Node Queries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Node Queries.swift"; sourceTree = "<group>"; };
 		5C59DF1F1D675DD000CD32A9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5CAC40A11D661ECB00076D3E /* JSONDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDataProvider.swift; sourceTree = "<group>"; };
 		5CAC40A31D661EDE00076D3E /* APIAccessInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIAccessInformation.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				5CB896B01D64D24B00E64B99 /* Node.swift */,
+				5C53D5251D68862600CA22BF /* Node Queries.swift */,
 			);
 			name = Realm;
 			sourceTree = "<group>";
@@ -667,6 +670,7 @@
 				5CAC40B51D6622FB00076D3E /* Location Extensions.swift in Sources */,
 				5CB2984D1D64DA90008DC93F /* LFError.swift in Sources */,
 				5C53D5241D6855AE00CA22BF /* Other Errors.swift in Sources */,
+				5C53D5261D68862600CA22BF /* Node Queries.swift in Sources */,
 				5CAC40B91D6625AC00076D3E /* Country.swift in Sources */,
 				5CAC40A41D661EDE00076D3E /* APIAccessInformation.swift in Sources */,
 				5CAC40BB1D6625C100076D3E /* Model Additional Types.swift in Sources */,

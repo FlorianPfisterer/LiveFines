@@ -33,6 +33,8 @@ extension CLLocation: SignificanceComparable
         let coordinate = self.coordinate
         let toCoordinate = to.coordinate
         return abs(toCoordinate.latitude - coordinate.latitude) > Constants.Config.coordinateSpan ||
-               abs(toCoordinate.longitude - coordinate.longitude) > Constants.Config.coordinateSpan
+               abs(toCoordinate.longitude - coordinate.longitude) > Constants.Config.coordinateSpan ||
+               abs(to.kmh - self.kmh) > Constants.Config.speedSpan ||
+               abs(to.course - self.course) > Constants.Config.courseSpan
     }
 }

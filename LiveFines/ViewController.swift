@@ -21,6 +21,8 @@ class ViewController: UIViewController
             let provider = LiveFinesProvider(requestHandler: AlamofireRequestHandler(), realm: realm)
             provider.startReceivingUpdates(self)
             
+            print(Array(realm.objects(Node.self)))
+            
         default:
             return
         }

@@ -9,6 +9,13 @@
 import Foundation
 import CoreLocation
 
+extension CLLocation
+{
+    var kmh: Int {
+        return Int(self.speed + 3.6)
+    }
+}
+
 extension CLLocationCoordinate2D
 {
     var waypointString: String {

@@ -117,6 +117,8 @@ extension LiveFinesProvider: CLLocationManagerDelegate
         switch result
         {
         case .success(let node):
+            Database.update(object: node.visit(), inRealm: self.realm)
+            print("visit")
             self.updateReceiver?.update(node: node)
             
         case .error(_):
@@ -132,8 +134,8 @@ extension LiveFinesProvider: CLLocationManagerDelegate
             self.handle(error: error)
             
         case .success((let speedLimit, let location)):
-            let node = Node(coordinate: location.coordinate, speedLimit: speedLimit.kmh, linkId: speedLimit.linkId)
-            Database.insert(node: node, intoRealm: self.realm)
+            let node = Node(location: location, speedLimit: speedLimit.kmh, linkId: speedLimit.linkId)
+            Database.insert(object: node, intoRealm: self.realm)
             
             self.updateReceiver?.update(node: node)
         }
@@ -145,7 +147,7 @@ extension LiveFinesProvider
     // MARK: - Realm Querying
     private func query(forNodeAtLocation location: CLLocation) -> Result<Node>
     {
-        let node = self.realm.node(closeToLocation: location)
+        let node = Node.node(closeToLocation: location, inRealm: self.realm)
         return node == nil ? .error(.local(LocationError.noMatchingNodes)) : .success(node!)
     }
 }
