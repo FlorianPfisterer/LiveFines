@@ -118,7 +118,6 @@ extension LiveFinesProvider: CLLocationManagerDelegate
         {
         case .success(let node):
             Database.update(object: node.visit(), inRealm: self.realm)
-            print("visit")
             self.updateReceiver?.update(node: node)
             
         case .error(_):

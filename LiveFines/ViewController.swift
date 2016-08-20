@@ -33,6 +33,6 @@ extension ViewController: LiveFinesUpdateReceiver
 {
     func update(node node: Node)
     {
-        print("new node: \(node)")
+        Log.info("Receiving \(node)")
     }
 }
