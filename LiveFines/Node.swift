@@ -20,8 +20,8 @@ class Node: Object
     dynamic var course: Double = 0
     
     // 2. API Data
+    dynamic var linkId: String = ""
     dynamic var speedLimit: Int = 0
-    dynamic var streetId: String? = nil
  
     // 3. Experience Data
     dynamic var createdAt: NSDate? = nil
@@ -30,13 +30,15 @@ class Node: Object
     dynamic var speed: Double = 0
     
     // MARK: - Init
-    convenience init(coordinate: CLLocationCoordinate2D, speedLimit: Int)
+    convenience init(coordinate: CLLocationCoordinate2D, speedLimit: Int, linkId: String)
     {
         self.init()
         
         self.id = NSUUID().UUIDString
         self.latitude = coordinate.latitude
         self.longitude = coordinate.longitude
+        
+        self.linkId = linkId
         self.speedLimit = speedLimit
     }
 }
@@ -62,6 +64,6 @@ extension Node
     
     override static func indexedProperties() -> [String]
     {
-        return ["latitude", "longitude", "streedId"]
+        return ["latitude", "longitude", "linkId"]
     }
 }

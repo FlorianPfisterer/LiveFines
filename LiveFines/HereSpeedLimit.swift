@@ -12,6 +12,7 @@ import SwiftyJSON
 struct HereSpeedLimit: JSONDataType
 {
     private let metersPerSecond: Speed
+    let linkId: String
     
     var kmh: Int {
         return Int(self.metersPerSecond * 3.6).roundToTen()
@@ -20,6 +21,8 @@ struct HereSpeedLimit: JSONDataType
     init?(json: JSON)
     {
         guard let speedLimit = json["response"]["link"][0]["speedLimit"].double else { return nil }
+        guard let linkId = json["response"]["link"][0]["linkId"].string else { return nil }
         self.metersPerSecond = speedLimit
+        self.linkId = linkId
     }
 }

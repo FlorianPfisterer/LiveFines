@@ -132,8 +132,9 @@ extension LiveFinesProvider: CLLocationManagerDelegate
             print(error)
             
         case .success((let speedLimit, let location)):
-            let node = Node(coordinate: location.coordinate, speedLimit: speedLimit.kmh)
+            let node = Node(coordinate: location.coordinate, speedLimit: speedLimit.kmh, linkId: speedLimit.linkId)
             Database.insert(node: node, intoRealm: self.realm)
+            
             self.updateReceiver?.update(node: node)
         }
     }
