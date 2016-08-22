@@ -10,6 +10,12 @@ import UIKit
 
 struct Constants
 {
+    struct Color
+    {
+        static let red = UIColor.redColor()
+        
+    }
+    
     struct Config
     {
         static let coordinateSpan: Double = 0.003

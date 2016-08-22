@@ -47,7 +47,6 @@
 		5CB298521D64DAE5008DC93F /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB298511D64DAE5008DC93F /* DataProvider.swift */; };
 		5CB298541D64DBD3008DC93F /* SignificanceComparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB298531D64DBD3008DC93F /* SignificanceComparable.swift */; };
 		5CB8966C1D64C26600E64B99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB8966B1D64C26600E64B99 /* AppDelegate.swift */; };
-		5CB8966E1D64C26600E64B99 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB8966D1D64C26600E64B99 /* ViewController.swift */; };
 		5CB896711D64C26600E64B99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8966F1D64C26600E64B99 /* Main.storyboard */; };
 		5CB896731D64C26600E64B99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CB896721D64C26600E64B99 /* Assets.xcassets */; };
 		5CB896761D64C26600E64B99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CB896741D64C26600E64B99 /* LaunchScreen.storyboard */; };
@@ -58,6 +57,8 @@
 		5CB896B51D64D38B00E64B99 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB896B31D64D38B00E64B99 /* RealmSwift.framework */; };
 		5CCAC2771D64DD0400DB6CA9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCAC2751D64DD0400DB6CA9 /* Alamofire.framework */; };
 		5CCAC2781D64DD0400DB6CA9 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCAC2761D64DD0400DB6CA9 /* SwiftyJSON.framework */; };
+		5CD548371D6B6E7300721016 /* DrivingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD548361D6B6E7300721016 /* DrivingViewController.swift */; };
+		5CD548391D6B6ED200721016 /* SpeedLimitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD548381D6B6ED200721016 /* SpeedLimitView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,7 +116,6 @@
 		5CB298531D64DBD3008DC93F /* SignificanceComparable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignificanceComparable.swift; sourceTree = "<group>"; };
 		5CB896681D64C26600E64B99 /* LiveFines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveFines.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CB8966B1D64C26600E64B99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5CB8966D1D64C26600E64B99 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5CB896701D64C26600E64B99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5CB896721D64C26600E64B99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CB896751D64C26600E64B99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -137,6 +137,8 @@
 		5CB896B31D64D38B00E64B99 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = SOURCE_ROOT; };
 		5CCAC2751D64DD0400DB6CA9 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = SOURCE_ROOT; };
 		5CCAC2761D64DD0400DB6CA9 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = SOURCE_ROOT; };
+		5CD548361D6B6E7300721016 /* DrivingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrivingViewController.swift; sourceTree = "<group>"; };
+		5CD548381D6B6ED200721016 /* SpeedLimitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedLimitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -385,7 +387,8 @@
 		5CB896A41D64C3DC00E64B99 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5CB8966D1D64C26600E64B99 /* ViewController.swift */,
+				5CD548361D6B6E7300721016 /* DrivingViewController.swift */,
+				5CD548381D6B6ED200721016 /* SpeedLimitView.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -661,7 +664,7 @@
 				5CAC40B11D66224200076D3E /* Foundation Extensions.swift in Sources */,
 				5CAC40C81D662B3F00076D3E /* Realm.swift in Sources */,
 				5CAC40C61D6626E100076D3E /* USA.swift in Sources */,
-				5CB8966E1D64C26600E64B99 /* ViewController.swift in Sources */,
+				5CD548371D6B6E7300721016 /* DrivingViewController.swift in Sources */,
 				5CAC40BD1D6625D600076D3E /* Offence.swift in Sources */,
 				5CAC40BF1D66262000076D3E /* Penalty.swift in Sources */,
 				5CB298521D64DAE5008DC93F /* DataProvider.swift in Sources */,
@@ -675,6 +678,7 @@
 				5CAC40A41D661EDE00076D3E /* APIAccessInformation.swift in Sources */,
 				5CAC40BB1D6625C100076D3E /* Model Additional Types.swift in Sources */,
 				5CAC40A71D661F0300076D3E /* URLRequestHandler.swift in Sources */,
+				5CD548391D6B6ED200721016 /* SpeedLimitView.swift in Sources */,
 				5CB8966C1D64C26600E64B99 /* AppDelegate.swift in Sources */,
 				5CAC40A91D66208B00076D3E /* LiveFinesProvider.swift in Sources */,
 				5C59DF201D675DD000CD32A9 /* Constants.swift in Sources */,

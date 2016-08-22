@@ -22,3 +22,22 @@ extension UIViewController: AlertPresenter
         self.presentViewController(error.alert, animated: true, completion: { _ in completion?() })
     }
 }
+
+extension UIView
+{
+    var width: CGFloat {
+        return self.bounds.size.width
+    }
+    
+    var height: CGFloat {
+        return self.bounds.size.height
+    }
+    
+    var innerCenter: CGPoint {
+        return CGPoint(x: self.width/2, y: self.height/2)
+    }
+    
+    var radius: CGFloat {
+        return min(self.height, self.width) / 2
+    }
+}
