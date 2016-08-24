@@ -12,7 +12,8 @@ struct Constants
 {
     struct Color
     {
-        static let red = UIColor.redColor()
+        static let red = UIColor(red: 0.92, green: 0.19, blue: 0.39, alpha: 1.00)
+        
         
     }
     

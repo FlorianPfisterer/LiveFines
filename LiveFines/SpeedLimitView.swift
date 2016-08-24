@@ -14,20 +14,46 @@ class SpeedLimitView: UIView
 {
     // MARK: - Design Customization
     @IBInspectable var marginWidth: CGFloat = 4 { didSet { self.setNeedsDisplay() } }
+    @IBInspectable var fontSize: CGFloat = 100 {
+        didSet
+        {
+            self.contentLabel.font = UIFont.systemFontOfSize(self.fontSize, weight: self.fontWeigth)
+        }
+    }
+    @IBInspectable var fontWeigth: CGFloat = 0.6 {
+        didSet
+        {
+            self.contentLabel.font = UIFont.systemFontOfSize(self.fontSize, weight: self.fontWeigth)
+        }
+    }
     @IBInspectable var borderWidth: CGFloat = 30 {
         didSet
         {
             self.borderLayer.lineWidth = self.borderWidth
         }
     }
+    @IBInspectable var limit: Int = 0 {
+        didSet
+        {
+            self.contentLabel.text = "\(self.limit)"
+        }
+    }
     
     // MARK: - Private Subviews etc.
-    var borderLayer: CAShapeLayer
+    private let borderLayer: CAShapeLayer = {
+        let layer = CAShapeLayer()
+        return layer
+    }()
+    private let contentLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .Center
+        return label
+    }()
     
     // MARK: - Init
     override init(frame: CGRect)
     {
-        self.borderLayer = CAShapeLayer()
         super.init(frame: frame)
         
         self.sharedInitialization()
@@ -35,7 +61,6 @@ class SpeedLimitView: UIView
     
     required init?(coder aDecoder: NSCoder)
     {
-        self.borderLayer = CAShapeLayer()
         super.init(coder: aDecoder)
         
         self.sharedInitialization()
@@ -43,10 +68,16 @@ class SpeedLimitView: UIView
     
     private func sharedInitialization()
     {
+        self.layer.addSublayer(self.borderLayer)
+        self.contentLabel.font = UIFont.systemFontOfSize(self.fontSize, weight: self.fontWeigth)
+        self.contentLabel.text = "\(self.limit)"
+        
+        self.addSubview(self.contentLabel)
+        
         self.applyDesign()
-        //self.layer.addSublayer(self.borderLayer)
     }
     
+    // MARK: - UI Setup
     private func applyDesign()
     {
         self.backgroundColor = .whiteColor()
@@ -54,6 +85,7 @@ class SpeedLimitView: UIView
         
         self.layer.shadowRadius = 5
         self.layer.shadowColor = UIColor.blackColor().CGColor
+        self.layer.cornerRadius = self.radius/2
         
         self.borderLayer.lineWidth = self.borderWidth
         self.borderLayer.strokeColor = Constants.Color.red.CGColor
@@ -67,7 +99,8 @@ extension SpeedLimitView
     override func layoutSubviews()
     {
         super.layoutSubviews()
-        self.layer.cornerRadius = min(self.height, self.width) / 2
+        self.layer.cornerRadius = self.radius / 2
+        self.contentLabel.frame = self.bounds
     }
     
     override func drawRect(rect: CGRect)
@@ -80,6 +113,4 @@ extension SpeedLimitView
         
         self.layer.cornerRadius = min(self.height, self.width) / 2
     }
-    
-    
 }
