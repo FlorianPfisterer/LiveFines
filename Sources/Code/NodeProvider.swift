@@ -13,6 +13,7 @@ import RealmSwift
 protocol NodeUpdateReceiver: class, AlertPresenter
 {
     func update(node node: Node)
+    func update(speed speed: Int)
 }
 
 final class NodeProvider: NSObject
@@ -94,6 +95,8 @@ extension NodeProvider: CLLocationManagerDelegate
             self.handle(error: .local(LocationError.noLocations))
             return 
         }
+
+        self.speedUpdate(location.speed)
         
         // no significant input changes
         if let cache = self.locationCache where cache ≈ location { return }
@@ -108,6 +111,12 @@ extension NodeProvider: CLLocationManagerDelegate
     }
     
     // MARK: - Callbacks
+    private func speedUpdate(speed: Double)
+    {
+        let roundedKmh = Int(speed * 3.6)
+        self.updateReceiver?.update(speed: roundedKmh)
+    }
+
     private func locationUpdate(location: CLLocation)
     {
         // query the database for similar location nodes
@@ -131,6 +140,7 @@ extension NodeProvider: CLLocationManagerDelegate
             self.handle(error: error)
             
         case .success((let speedLimit, let location)):
+            print("API REQUEST --------------------------------------")
             let node = Node(location: location, speedLimit: speedLimit.kmh, linkId: speedLimit.linkId)
             Database.insert(object: node, intoRealm: self.realm)
             

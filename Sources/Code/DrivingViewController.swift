@@ -12,16 +12,23 @@ import RealmSwift
 class DrivingViewController: UIViewController
 {
     @IBOutlet weak var speedLimitView: SpeedLimitView!
+
     @IBOutlet weak var punishmentsStackView: UIStackView!
+    @IBOutlet weak var separatorBackgroundView: UIView!
+
     private var punishmentViews: [Punishment.PType : PunishmentView] = [:]
+    private var okayView: OkayView!
     
     private var realm: Realm!
     private var provider: NodeProvider!
     private let country = NSLocale.currentCountry()
-    
+
+    // MARK: - View Lifecycle
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.view.backgroundColor = Constants.Color.darkGray
+
         self.setupDataProvider()
         self.setupPunishmentViews()
     }
@@ -29,13 +36,20 @@ class DrivingViewController: UIViewController
     override func viewWillAppear(animated: Bool)
     {
         super.viewWillAppear(animated)
-        self.provider.startReceivingUpdates(self)
+        self.provider?.startReceivingUpdates(self)
+    }
+
+    override func viewDidAppear(animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        self.separatorBackgroundView.alpha = 1
+        print(self.okayView.imageView.height)
     }
     
     override func viewDidDisappear(animated: Bool)
     {
         super.viewDidDisappear(animated)
-        self.provider.stopReceivingUpdates()
+        self.provider?.stopReceivingUpdates()
     }
     
     // MARK: - Setup
@@ -43,8 +57,8 @@ class DrivingViewController: UIViewController
     {
         switch Database.realm()
         {
-        case .error(let error) where error is Alertifiable:
-            self.present(error: error as! Alertifiable)
+        case .error(let error as Alertifiable):
+            self.present(error: error)
             return
             
         case .error(let error):
@@ -59,15 +73,24 @@ class DrivingViewController: UIViewController
     
     private func setupPunishmentViews()
     {
-//        self.punishmentViews.removeAll()
-//        self.punishmentsStackView.subviews.each { $0.removeFromSuperview() }
-//        
-//        for ptype in Punishment.PType.all
-//        {
-//            let punishmentView = PunishmentView()
-//            self.punishmentsStackView.addArrangedSubview(punishmentView)
-//            self.punishmentViews[ptype] = punishmentView
-//        }
+        self.separatorBackgroundView.alpha = 0
+
+        self.okayView?.removeFromSuperview()
+        self.punishmentViews.removeAll()
+        self.punishmentsStackView.subviews.each { $0.removeFromSuperview() }
+        
+        for ptype in Punishment.PType.all
+        {
+            let punishmentView = PunishmentView()
+            self.punishmentsStackView.addArrangedSubview(punishmentView)
+            self.punishmentViews[ptype] = punishmentView
+        }
+
+        // create okay view
+        self.okayView = OkayView(image: UIImage(asset: .PraiseIcon))
+        self.okayView.hidden = true
+        self.okayView.title = "Weiter so!"
+        self.punishmentsStackView.insertArrangedSubview(self.okayView, atIndex: 0)
     }
 }
 
@@ -75,8 +98,14 @@ extension DrivingViewController: NodeUpdateReceiver
 {
     func update(node node: Node)
     {
-        self.speedLimitView.limit = node.speedLimit
+        self.speedLimitView.limit = node.speedLimit // TODO update animation?
         self.configure(withPenalty: self.country.penalty(fromNode: node))
+    }
+
+    func update(speed speed: Int)
+    {
+        print("speed: \(speed)")
+        self.configure(withPenalty: self.country.penalty(fromSpeed: speed, limit: self.speedLimitView.limit))
     }
 }
 
@@ -84,17 +113,25 @@ extension DrivingViewController
 {
     private func configure(withPenalty penalty: Penalty?)
     {
-        guard let penalty = penalty where penalty.shouldPunish else
+        if let penalty = penalty where penalty.shouldPunish
+        {
+            self.okayView.animate(show: false)
+
+            // set up the punishment views properly
+            for ptype in Punishment.PType.all
+            {
+                self.punishmentViews[ptype]?.punishment = penalty[ptype]    // hides or shows the view
+            }
+        }
+        else
         {
             self.clearPunishments()
-            return
         }
-        
-        
     }
     
     private func clearPunishments()
     {
-        
+        self.okayView.animate(show: true)
+        self.punishmentViews.values.each { $0.punishment = nil }
     }
 }

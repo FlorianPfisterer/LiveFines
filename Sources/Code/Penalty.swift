@@ -41,6 +41,10 @@ extension Penalty
     subscript(punishmentType: Punishment.PType) -> Punishment? {
         return self.punishments.find { $0.type == punishmentType }
     }
+
+    var allPunishments: [Punishment] {
+        return Array(self.punishments)
+    }
 }
 
 extension Penalty
