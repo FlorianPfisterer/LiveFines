@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Al4-3I-xeT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Al4-3I-xeT">
     <dependencies>
         <deployment identifier="iOS"/>
         <development version="7000" identifier="xcode"/>
@@ -21,14 +21,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Fq-np-AMY" userLabel="Background">
-                                <rect key="frame" x="10" y="328" width="355" height="70"/>
+                                <rect key="frame" x="10" y="329" width="355" height="70"/>
                                 <color key="backgroundColor" red="0.30588235289999999" green="0.34901960780000002" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="Zbo-B3-fY8"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gjL-1Y-UKd" customClass="SpeedLimitView" customModule="LiveFines" customModuleProvider="target">
-                                <rect key="frame" x="56" y="30" width="262.5" height="262.5"/>
+                                <rect key="frame" x="56" y="30" width="263" height="263"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gjL-1Y-UKd" secondAttribute="height" multiplier="1:1" id="EtM-qG-MdE"/>
@@ -52,35 +52,35 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DSc-at-lSw" userLabel="Upper Line">
-                                <rect key="frame" x="9" y="322" width="356" height="1"/>
+                                <rect key="frame" x="9" y="323" width="356" height="1"/>
                                 <color key="backgroundColor" red="0.30588235289999999" green="0.34901960780000002" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="bfQ-Tf-89E"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WNC-9g-SRK" userLabel="Bottom Line">
-                                <rect key="frame" x="9" y="403" width="356" height="1"/>
+                                <rect key="frame" x="9" y="404" width="356" height="1"/>
                                 <color key="backgroundColor" red="0.30588235289999999" green="0.34901960780000002" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="NwH-OS-Eev"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="6kh-pm-eh2">
-                                <rect key="frame" x="8" y="323" width="359" height="80"/>
+                                <rect key="frame" x="8" y="324" width="359" height="80"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aLX-Mv-0Fm">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aLX-Mv-0Fm" customClass="PunishmentView" customModule="LiveFines" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="119" height="80"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€ STRAFE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9b-pC-E8a">
-                                                <rect key="frame" x="29" y="54" width="61" height="16"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" red="0.41385756955163228" green="0.47510122996989301" blue="0.50701809682513088" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jdF-F9-Adv">
                                                 <rect key="frame" x="29" y="9" width="61" height="43"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€ STRAFE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9b-pC-E8a">
+                                                <rect key="frame" x="29" y="54" width="61" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" red="0.41385756955163228" green="0.47510122996989301" blue="0.50701809682513088" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -92,7 +92,7 @@
                                             <constraint firstItem="d9b-pC-E8a" firstAttribute="centerX" secondItem="aLX-Mv-0Fm" secondAttribute="centerX" id="wp5-WA-rQ0"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xPo-K8-t0x">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xPo-K8-t0x" customClass="PunishmentView" customModule="LiveFines" customModuleProvider="target">
                                         <rect key="frame" x="120" y="0.0" width="119" height="80"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PUNKTE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IFd-NP-w97">
@@ -116,7 +116,7 @@
                                             <constraint firstItem="IFd-NP-w97" firstAttribute="top" secondItem="R50-iw-IXy" secondAttribute="bottom" constant="2" id="fyR-HQ-45J"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J0k-Rr-ibd">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J0k-Rr-ibd" customClass="PunishmentView" customModule="LiveFines" customModuleProvider="target">
                                         <rect key="frame" x="240" y="0.0" width="119" height="80"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MONATE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIV-gS-Ukh">
@@ -176,6 +176,10 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="punishmentsStackView" destination="6kh-pm-eh2" id="CdZ-Ea-ZXh"/>
+                        <outlet property="speedLimitView" destination="gjL-1Y-UKd" id="yql-su-nKv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jqi-2w-cKn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
