@@ -70,6 +70,7 @@ class SpeedLimitView: UIView
     {
         self.layer.addSublayer(self.borderLayer)
         self.contentLabel.font = UIFont.systemFontOfSize(self.fontSize, weight: self.fontWeigth)
+        self.contentLabel.backgroundColor = .clearColor()
         self.contentLabel.text = "\(self.limit)"
         
         self.addSubview(self.contentLabel)
@@ -99,7 +100,7 @@ extension SpeedLimitView
     override func layoutSubviews()
     {
         super.layoutSubviews()
-        self.layer.cornerRadius = self.radius / 2
+        self.layer.cornerRadius = self.radius
         self.contentLabel.frame = self.bounds
     }
     

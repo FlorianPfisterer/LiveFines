@@ -20,6 +20,14 @@ extension Country
     {
         return self.rule(onRoadType: self.roadType(forLimit: limit))
     }
+    
+    func penalty(fromNode node: Node) -> Penalty?
+    {
+        guard let offence = Offence(node: node) else { return nil }
+        
+        let rule = self.rule(forLimit: node.speedLimit)
+        return rule(offence)
+    }
 }
 
 extension NSLocale
