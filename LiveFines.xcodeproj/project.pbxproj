@@ -13,11 +13,16 @@
 		5C53D50F1D683B2C00CA22BF /* Test Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53D50E1D683B2C00CA22BF /* Test Mocks.swift */; };
 		5C53D5191D683FAA00CA22BF /* JSONDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53D5181D683FAA00CA22BF /* JSONDataProviderTests.swift */; };
 		5C53D51B1D68405B00CA22BF /* HereMapsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53D51A1D68405B00CA22BF /* HereMapsTest.swift */; };
+		5C5BD5BC1D7B0655007AED58 /* SpeedometerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5BD5BB1D7B0655007AED58 /* SpeedometerView.swift */; };
+		5C5BD5C31D7B0A1F007AED58 /* PunishmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5BD5C21D7B0A1F007AED58 /* PunishmentView.swift */; };
+		5C5BD5C61D7B178F007AED58 /* OkayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5BD5C51D7B178F007AED58 /* OkayView.swift */; };
+		5C5BD5C91D7B1C9B007AED58 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5BD5C81D7B1C9B007AED58 /* Images.swift */; };
+		5C5BD5CC1D7B1CD3007AED58 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5BD5CA1D7B1CD3007AED58 /* Constants.swift */; };
+		5C5BD5CD1D7B1CD3007AED58 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5BD5CB1D7B1CD3007AED58 /* Localization.swift */; };
 		5C90F6321D7B027B00AF733E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C90F5FD1D7B027B00AF733E /* Assets.xcassets */; };
 		5C90F6331D7B027B00AF733E /* Alertifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90F5FF1D7B027B00AF733E /* Alertifiable.swift */; };
 		5C90F6341D7B027B00AF733E /* APIAccessInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90F6001D7B027B00AF733E /* APIAccessInformation.swift */; };
 		5C90F6351D7B027B00AF733E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90F6011D7B027B00AF733E /* AppDelegate.swift */; };
-		5C90F6361D7B027B00AF733E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90F6021D7B027B00AF733E /* Constants.swift */; };
 		5C90F6371D7B027B00AF733E /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90F6031D7B027B00AF733E /* Country.swift */; };
 		5C90F6381D7B027B00AF733E /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90F6041D7B027B00AF733E /* Database.swift */; };
 		5C90F6391D7B027B00AF733E /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90F6051D7B027B00AF733E /* DataProvider.swift */; };
@@ -30,7 +35,6 @@
 		5C90F6401D7B027B00AF733E /* HereSpeedLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90F60C1D7B027B00AF733E /* HereSpeedLimit.swift */; };
 		5C90F6411D7B027B00AF733E /* JSONDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90F60D1D7B027B00AF733E /* JSONDataProvider.swift */; };
 		5C90F6421D7B027B00AF733E /* LFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90F60E1D7B027B00AF733E /* LFError.swift */; };
-		5C90F6431D7B027B00AF733E /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90F60F1D7B027B00AF733E /* Localization.swift */; };
 		5C90F6441D7B027B00AF733E /* Location Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90F6101D7B027B00AF733E /* Location Extensions.swift */; };
 		5C90F6451D7B027B00AF733E /* Model Additional Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90F6111D7B027B00AF733E /* Model Additional Types.swift */; };
 		5C90F6461D7B027B00AF733E /* Node Queries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90F6121D7B027B00AF733E /* Node Queries.swift */; };
@@ -40,7 +44,7 @@
 		5C90F64A1D7B027B00AF733E /* Other Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90F6161D7B027B00AF733E /* Other Errors.swift */; };
 		5C90F64B1D7B027B00AF733E /* Penalty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90F6171D7B027B00AF733E /* Penalty.swift */; };
 		5C90F64C1D7B027B00AF733E /* Punishment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90F6181D7B027B00AF733E /* Punishment.swift */; };
-		5C90F64D1D7B027B00AF733E /* PunishmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90F6191D7B027B00AF733E /* PunishmentView.swift */; };
+		5C90F64D1D7B027B00AF733E /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90F6191D7B027B00AF733E /* DisplayView.swift */; };
 		5C90F64E1D7B027B00AF733E /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90F61A1D7B027B00AF733E /* Realm.swift */; };
 		5C90F64F1D7B027B00AF733E /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90F61B1D7B027B00AF733E /* Result.swift */; };
 		5C90F6501D7B027B00AF733E /* SignificanceComparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90F61C1D7B027B00AF733E /* SignificanceComparable.swift */; };
@@ -48,7 +52,6 @@
 		5C90F6521D7B027B00AF733E /* UIKit Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90F61E1D7B027B00AF733E /* UIKit Extensions.swift */; };
 		5C90F6531D7B027B00AF733E /* URLRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90F61F1D7B027B00AF733E /* URLRequestHandler.swift */; };
 		5C90F6541D7B027B00AF733E /* USA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90F6201D7B027B00AF733E /* USA.swift */; };
-		5C90F6551D7B027B00AF733E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C90F6231D7B027B00AF733E /* Info.plist */; };
 		5C90F6561D7B027B00AF733E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C90F6251D7B027B00AF733E /* LaunchScreen.storyboard */; };
 		5C90F6571D7B027B00AF733E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C90F6271D7B027B00AF733E /* Main.storyboard */; };
 		5C90F6581D7B027B00AF733E /* LaunchScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C90F6291D7B027B00AF733E /* LaunchScreen.strings */; };
@@ -81,11 +84,16 @@
 		5C53D50E1D683B2C00CA22BF /* Test Mocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Test Mocks.swift"; sourceTree = "<group>"; };
 		5C53D5181D683FAA00CA22BF /* JSONDataProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDataProviderTests.swift; sourceTree = "<group>"; };
 		5C53D51A1D68405B00CA22BF /* HereMapsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HereMapsTest.swift; sourceTree = "<group>"; };
+		5C5BD5BB1D7B0655007AED58 /* SpeedometerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedometerView.swift; sourceTree = "<group>"; };
+		5C5BD5C21D7B0A1F007AED58 /* PunishmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PunishmentView.swift; sourceTree = "<group>"; };
+		5C5BD5C51D7B178F007AED58 /* OkayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OkayView.swift; sourceTree = "<group>"; };
+		5C5BD5C81D7B1C9B007AED58 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		5C5BD5CA1D7B1CD3007AED58 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5C5BD5CB1D7B1CD3007AED58 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		5C90F5FD1D7B027B00AF733E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C90F5FF1D7B027B00AF733E /* Alertifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alertifiable.swift; sourceTree = "<group>"; };
 		5C90F6001D7B027B00AF733E /* APIAccessInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIAccessInformation.swift; sourceTree = "<group>"; };
 		5C90F6011D7B027B00AF733E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5C90F6021D7B027B00AF733E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../Code/Constants.swift; sourceTree = "<group>"; };
 		5C90F6031D7B027B00AF733E /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		5C90F6041D7B027B00AF733E /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		5C90F6051D7B027B00AF733E /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
@@ -98,7 +106,6 @@
 		5C90F60C1D7B027B00AF733E /* HereSpeedLimit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HereSpeedLimit.swift; sourceTree = "<group>"; };
 		5C90F60D1D7B027B00AF733E /* JSONDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDataProvider.swift; sourceTree = "<group>"; };
 		5C90F60E1D7B027B00AF733E /* LFError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LFError.swift; sourceTree = "<group>"; };
-		5C90F60F1D7B027B00AF733E /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Localization.swift; path = ../Code/Localization.swift; sourceTree = "<group>"; };
 		5C90F6101D7B027B00AF733E /* Location Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location Extensions.swift"; sourceTree = "<group>"; };
 		5C90F6111D7B027B00AF733E /* Model Additional Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model Additional Types.swift"; sourceTree = "<group>"; };
 		5C90F6121D7B027B00AF733E /* Node Queries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Node Queries.swift"; sourceTree = "<group>"; };
@@ -108,7 +115,7 @@
 		5C90F6161D7B027B00AF733E /* Other Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Other Errors.swift"; sourceTree = "<group>"; };
 		5C90F6171D7B027B00AF733E /* Penalty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Penalty.swift; sourceTree = "<group>"; };
 		5C90F6181D7B027B00AF733E /* Punishment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Punishment.swift; sourceTree = "<group>"; };
-		5C90F6191D7B027B00AF733E /* PunishmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PunishmentView.swift; sourceTree = "<group>"; };
+		5C90F6191D7B027B00AF733E /* DisplayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
 		5C90F61A1D7B027B00AF733E /* Realm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Realm.swift; sourceTree = "<group>"; };
 		5C90F61B1D7B027B00AF733E /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		5C90F61C1D7B027B00AF733E /* SignificanceComparable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignificanceComparable.swift; sourceTree = "<group>"; };
@@ -189,6 +196,14 @@
 			name = Strings;
 			sourceTree = "<group>";
 		};
+		5C5BD5C41D7B176F007AED58 /* Global Views */ = {
+			isa = PBXGroup;
+			children = (
+				5C90F6191D7B027B00AF733E /* DisplayView.swift */,
+			);
+			name = "Global Views";
+			sourceTree = "<group>";
+		};
 		5C90F5FB1D7B027B00AF733E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,8 +237,9 @@
 		5C90F6211D7B027B00AF733E /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				5C90F6021D7B027B00AF733E /* Constants.swift */,
-				5C90F60F1D7B027B00AF733E /* Localization.swift */,
+				5C5BD5CA1D7B1CD3007AED58 /* Constants.swift */,
+				5C5BD5CB1D7B1CD3007AED58 /* Localization.swift */,
+				5C5BD5C81D7B1C9B007AED58 /* Images.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -251,6 +267,7 @@
 			children = (
 				5C90F6061D7B027B00AF733E /* DrivingViewController.swift */,
 				5C90F6651D7B03C200AF733E /* Views */,
+				5C5BD5C41D7B176F007AED58 /* Global Views */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -365,8 +382,10 @@
 		5C90F6651D7B03C200AF733E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5C5BD5C51D7B178F007AED58 /* OkayView.swift */,
 				5C90F61D1D7B027B00AF733E /* SpeedLimitView.swift */,
-				5C90F6191D7B027B00AF733E /* PunishmentView.swift */,
+				5C5BD5BB1D7B0655007AED58 /* SpeedometerView.swift */,
+				5C5BD5C21D7B0A1F007AED58 /* PunishmentView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -423,6 +442,7 @@
 				5CB896661D64C26600E64B99 /* Resources */,
 				5CB896AF1D64D1DC00E64B99 /* ShellScript */,
 				5CB896991D64C29400E64B99 /* ShellScript */,
+				5C5BD5C71D7B1C7F007AED58 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -528,7 +548,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C90F6561D7B027B00AF733E /* LaunchScreen.storyboard in Resources */,
-				5C90F6551D7B027B00AF733E /* Info.plist in Resources */,
 				5C90F6321D7B027B00AF733E /* Assets.xcassets in Resources */,
 				5C90F6591D7B027B00AF733E /* Main.strings in Resources */,
 				5C90F6581D7B027B00AF733E /* LaunchScreen.strings in Resources */,
@@ -570,6 +589,19 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
+		5C5BD5C71D7B1C7F007AED58 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftgen >/dev/null; then\n    swiftgen images \"$PROJECT_DIR\" --output \"$PROJECT_DIR/Sources/Constants/Images.swift\"\nelse\n    echo \"warning: SwiftGen not installed, download it from https://github.com/AliSoftware/SwiftGen\"\nfi";
+		};
 		5CB896991D64C29400E64B99 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -607,9 +639,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C5BD5CD1D7B1CD3007AED58 /* Localization.swift in Sources */,
 				5C90F63A1D7B027B00AF733E /* DrivingViewController.swift in Sources */,
-				5C90F6431D7B027B00AF733E /* Localization.swift in Sources */,
 				5C90F6381D7B027B00AF733E /* Database.swift in Sources */,
+				5C5BD5BC1D7B0655007AED58 /* SpeedometerView.swift in Sources */,
 				5C90F64E1D7B027B00AF733E /* Realm.swift in Sources */,
 				5C90F6351D7B027B00AF733E /* AppDelegate.swift in Sources */,
 				5C90F63F1D7B027B00AF733E /* HereJSONDataProvider.swift in Sources */,
@@ -617,11 +650,13 @@
 				5C90F6521D7B027B00AF733E /* UIKit Extensions.swift in Sources */,
 				5C90F6491D7B027B00AF733E /* Offence.swift in Sources */,
 				5C90F6471D7B027B00AF733E /* Node.swift in Sources */,
+				5C5BD5C91D7B1C9B007AED58 /* Images.swift in Sources */,
 				5C90F63C1D7B027B00AF733E /* Functions.swift in Sources */,
 				5C90F6481D7B027B00AF733E /* NodeProvider.swift in Sources */,
 				5C90F6331D7B027B00AF733E /* Alertifiable.swift in Sources */,
 				5C90F63B1D7B027B00AF733E /* Foundation Extensions.swift in Sources */,
 				5C90F64A1D7B027B00AF733E /* Other Errors.swift in Sources */,
+				5C5BD5C61D7B178F007AED58 /* OkayView.swift in Sources */,
 				5C90F64B1D7B027B00AF733E /* Penalty.swift in Sources */,
 				5C90F6461D7B027B00AF733E /* Node Queries.swift in Sources */,
 				5C90F6501D7B027B00AF733E /* SignificanceComparable.swift in Sources */,
@@ -631,15 +666,16 @@
 				5C90F6341D7B027B00AF733E /* APIAccessInformation.swift in Sources */,
 				5C90F6451D7B027B00AF733E /* Model Additional Types.swift in Sources */,
 				5C90F6371D7B027B00AF733E /* Country.swift in Sources */,
-				5C90F64D1D7B027B00AF733E /* PunishmentView.swift in Sources */,
+				5C90F64D1D7B027B00AF733E /* DisplayView.swift in Sources */,
 				5C90F6441D7B027B00AF733E /* Location Extensions.swift in Sources */,
-				5C90F6361D7B027B00AF733E /* Constants.swift in Sources */,
 				5C90F64F1D7B027B00AF733E /* Result.swift in Sources */,
 				5C90F63E1D7B027B00AF733E /* HereAPIAccessInformation.swift in Sources */,
 				5C90F6401D7B027B00AF733E /* HereSpeedLimit.swift in Sources */,
+				5C5BD5C31D7B0A1F007AED58 /* PunishmentView.swift in Sources */,
 				5C90F6511D7B027B00AF733E /* SpeedLimitView.swift in Sources */,
 				5C90F6531D7B027B00AF733E /* URLRequestHandler.swift in Sources */,
 				5C90F64C1D7B027B00AF733E /* Punishment.swift in Sources */,
+				5C5BD5CC1D7B1CD3007AED58 /* Constants.swift in Sources */,
 				5C90F6411D7B027B00AF733E /* JSONDataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

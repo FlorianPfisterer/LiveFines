@@ -27,13 +27,13 @@ final class Germany: Country
             switch delta
             {
             case 0...2:
-                return .none()
+                return .single(.financial(30))
                 
             case 3...10:
-                return .single(.financial(10))
+                return .multiple([.financial(60), .points(5)])
                 
             case 11...20:
-                return .single(.financial(20))
+                return .multiple([.financial(60), .points(2), .license(3)])
                 
             case 21...30:
                 return .multiple([.financial(30), .points(1)])

@@ -41,3 +41,47 @@ extension UIView
         return min(self.height, self.width) / 2
     }
 }
+
+extension NSLayoutAttribute
+{
+    static let edges: [NSLayoutAttribute] = [.Leading, .Top, .Trailing, .Bottom]
+}
+
+extension UIView
+{
+    // constraint
+    func constrain(toEdgesOfView view: UIView, margin: (NSLayoutAttribute) -> CGFloat?)
+    {
+        NSLayoutAttribute.edges.each { attribute in
+            if let constant = margin(attribute)
+            {
+                NSLayoutConstraint(item: self, attribute: attribute, relatedBy: .Equal, toItem: view, attribute: attribute, multiplier: 1, constant: constant).active = true
+            }
+        }
+    }
+}
+
+protocol Showable
+{
+    var animatedSubviews: [UIView] { get }
+    var setAlphaToZero: Bool { get }
+    func animate(show show: Bool)
+}
+
+extension UIView: Showable
+{
+    var animatedSubviews: [UIView] { return [] }
+    var setAlphaToZero: Bool { return true }
+
+    // MARK: - UI Update
+    func animate(show show: Bool)
+    {
+        guard self.hidden != !show else { return }
+        UIView.animateWithDuration(0.3, animations: {
+            self.hidden = !show
+            self.animatedSubviews.each { view in
+                view.alpha = (show || !self.setAlphaToZero) ? 1 : 0
+            }
+        })
+    }
+}

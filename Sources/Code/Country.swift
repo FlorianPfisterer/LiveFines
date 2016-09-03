@@ -28,6 +28,14 @@ extension Country
         let rule = self.rule(forLimit: node.speedLimit)
         return rule(offence)
     }
+
+    func penalty(fromSpeed speed: Int, limit: Int) -> Penalty?
+    {
+        guard let offence = Offence(speed: speed, limit: limit) else { return nil }
+
+        let rule = self.rule(forLimit: limit)
+        return rule(offence)
+    }
 }
 
 extension NSLocale
