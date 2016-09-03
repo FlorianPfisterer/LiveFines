@@ -45,9 +45,9 @@ extension Punishment: Hashable
         case .financial:
             return "€ Strafe"
         case .points:
-            return "Punkte"
+            return self.amount == 1 ? "Punkt" : "Punkte"
         case .license:
-            return "Monate"
+            return self.amount == 1 ? "Monat" : "Monate"
         }
     }
 }
