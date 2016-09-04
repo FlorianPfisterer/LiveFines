@@ -1,5 +1,5 @@
 //
-//  Germany.swift
+//  USA.swift
 //  LiveFines
 //
 //  Created by Florian Pfisterer on 18.08.16.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-final class Germany: Country
+final class USA: Country
 {
-    static let reference = Germany()
+    static let reference = USA()
     
     func roadType(forLimit limit: Int) -> RoadType
     {
@@ -26,21 +26,15 @@ final class Germany: Country
             
             switch delta
             {
-            case 0...2:
-                return .none()
-                
-            case 3...10:
+            case 3...7:
                 return .single(.financial(10))
-                
-            case 11...20:
-                return .single(.financial(20))
-                
-            case 21...30:
-                return .multiple([.financial(30), .points(1)])
-                
-            case 31...40:
-                return .multiple([.financial(60), .points(2), .license(3)])
-                
+
+            case 7...15:
+                return .multiple([.financial(20), .points(1)])
+
+            case 15...100:
+                return .multiple([.financial(40), .points(3), .license(2)])
+
             default:
                 return .none()
             }

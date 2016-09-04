@@ -1,5 +1,5 @@
 //
-//  LiveFinesProvider.swift
+//  NodeProvider.swift
 //  LiveFines
 //
 //  Created by Florian Pfisterer on 18.08.16.
@@ -10,12 +10,13 @@ import Foundation
 import CoreLocation
 import RealmSwift
 
-protocol LiveFinesUpdateReceiver: class, AlertPresenter
+protocol NodeUpdateReceiver: class, AlertPresenter
 {
     func update(node node: Node)
+    func update(speed speed: Int)
 }
 
-final class LiveFinesProvider: NSObject
+final class NodeProvider: NSObject
 {
     // MARK: - Data Provider
     private let locationManager: CLLocationManager
@@ -26,9 +27,8 @@ final class LiveFinesProvider: NSObject
     private var speedlimitCallbackId: Int?
     
     // MARK: - Other Private Properties
-    private weak var updateReceiver: LiveFinesUpdateReceiver?
+    private weak var updateReceiver: NodeUpdateReceiver?
     
-    private var drivingData: DrivingData
     private let country: Country
     private var realm: Realm
     
@@ -38,7 +38,6 @@ final class LiveFinesProvider: NSObject
         self.locationManager = CLLocationManager()
         self.speedlimitProvider = HereJSONDataProvider(requestHandler: requestHandler)
         
-        self.drivingData = DrivingData()
         self.country = NSLocale.currentCountry()
         self.realm = realm
         
@@ -60,10 +59,10 @@ final class LiveFinesProvider: NSObject
     }
 }
 
-extension LiveFinesProvider
+extension NodeProvider
 {
     // MARK: - Public Functions
-    func startReceivingUpdates(receiver: LiveFinesUpdateReceiver)
+    func startReceivingUpdates(receiver: NodeUpdateReceiver)
     {
         self.updateReceiver = receiver
         
@@ -86,7 +85,7 @@ extension LiveFinesProvider
     }
 }
 
-extension LiveFinesProvider: CLLocationManagerDelegate
+extension NodeProvider: CLLocationManagerDelegate
 {
     // MARK: - Location Manager Delegate
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
@@ -96,6 +95,8 @@ extension LiveFinesProvider: CLLocationManagerDelegate
             self.handle(error: .local(LocationError.noLocations))
             return 
         }
+
+        self.speedUpdate(location.speed)
         
         // no significant input changes
         if let cache = self.locationCache where cache ≈ location { return }
@@ -110,6 +111,12 @@ extension LiveFinesProvider: CLLocationManagerDelegate
     }
     
     // MARK: - Callbacks
+    private func speedUpdate(speed: Double)
+    {
+        let roundedKmh = Int(speed * 3.6)
+        self.updateReceiver?.update(speed: roundedKmh)
+    }
+
     private func locationUpdate(location: CLLocation)
     {
         // query the database for similar location nodes
@@ -133,6 +140,7 @@ extension LiveFinesProvider: CLLocationManagerDelegate
             self.handle(error: error)
             
         case .success((let speedLimit, let location)):
+            print("API REQUEST --------------------------------------")
             let node = Node(location: location, speedLimit: speedLimit.kmh, linkId: speedLimit.linkId)
             Database.insert(object: node, intoRealm: self.realm)
             
@@ -141,7 +149,7 @@ extension LiveFinesProvider: CLLocationManagerDelegate
     }
 }
 
-extension LiveFinesProvider
+extension NodeProvider
 {
     // MARK: - Realm Querying
     private func query(forNodeAtLocation location: CLLocation) -> Result<Node>
@@ -151,7 +159,7 @@ extension LiveFinesProvider
     }
 }
 
-extension LiveFinesProvider
+extension NodeProvider
 {
     private func handle(error error: LFError)
     {
