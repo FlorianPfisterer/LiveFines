@@ -16,7 +16,6 @@
 		5C5BD5BC1D7B0655007AED58 /* SpeedometerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5BD5BB1D7B0655007AED58 /* SpeedometerView.swift */; };
 		5C5BD5C31D7B0A1F007AED58 /* PunishmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5BD5C21D7B0A1F007AED58 /* PunishmentView.swift */; };
 		5C5BD5C61D7B178F007AED58 /* OkayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5BD5C51D7B178F007AED58 /* OkayView.swift */; };
-		5C5BD5C91D7B1C9B007AED58 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5BD5C81D7B1C9B007AED58 /* Images.swift */; };
 		5C5BD5CC1D7B1CD3007AED58 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5BD5CA1D7B1CD3007AED58 /* Constants.swift */; };
 		5C5BD5CD1D7B1CD3007AED58 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5BD5CB1D7B1CD3007AED58 /* Localization.swift */; };
 		5C90F6321D7B027B00AF733E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C90F5FD1D7B027B00AF733E /* Assets.xcassets */; };
@@ -85,7 +84,6 @@
 		5C5BD5BB1D7B0655007AED58 /* SpeedometerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedometerView.swift; sourceTree = "<group>"; };
 		5C5BD5C21D7B0A1F007AED58 /* PunishmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PunishmentView.swift; sourceTree = "<group>"; };
 		5C5BD5C51D7B178F007AED58 /* OkayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OkayView.swift; sourceTree = "<group>"; };
-		5C5BD5C81D7B1C9B007AED58 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		5C5BD5CA1D7B1CD3007AED58 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5C5BD5CB1D7B1CD3007AED58 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		5C5BD5D01D7B35D0007AED58 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
@@ -223,7 +221,6 @@
 			children = (
 				5C5BD5CA1D7B1CD3007AED58 /* Constants.swift */,
 				5C5BD5CB1D7B1CD3007AED58 /* Localization.swift */,
-				5C5BD5C81D7B1C9B007AED58 /* Images.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -424,7 +421,6 @@
 				5CB896651D64C26600E64B99 /* Frameworks */,
 				5CB896661D64C26600E64B99 /* Resources */,
 				5CB896AF1D64D1DC00E64B99 /* ShellScript */,
-				5CB896991D64C29400E64B99 /* ShellScript */,
 				5C5BD5C71D7B1C7F007AED58 /* ShellScript */,
 			);
 			buildRules = (
@@ -580,19 +576,6 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftgen >/dev/null; then\n    swiftgen images \"$PROJECT_DIR\" --output \"$PROJECT_DIR/Sources/Constants/Images.swift\"\nelse\n    echo \"warning: SwiftGen not installed, download it from https://github.com/AliSoftware/SwiftGen\"\nfi";
 		};
-		5CB896991D64C29400E64B99 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/bash;
-			shellScript = "#!/bin/bash\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
-		};
 		5CB896AF1D64D1DC00E64B99 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -628,7 +611,6 @@
 				5C90F6521D7B027B00AF733E /* UIKit Extensions.swift in Sources */,
 				5C90F6491D7B027B00AF733E /* Offence.swift in Sources */,
 				5C90F6471D7B027B00AF733E /* Node.swift in Sources */,
-				5C5BD5C91D7B1C9B007AED58 /* Images.swift in Sources */,
 				5C90F63C1D7B027B00AF733E /* Functions.swift in Sources */,
 				5C90F6481D7B027B00AF733E /* NodeProvider.swift in Sources */,
 				5C90F6331D7B027B00AF733E /* Alertifiable.swift in Sources */,
