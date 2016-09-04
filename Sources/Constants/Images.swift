@@ -10,6 +10,7 @@
 
 enum Asset: String {
   case Logo = "Logo"
+  case LaunchImage = "launchImage"
   case PraiseIcon = "praiseIcon"
 
   var image: Image {
