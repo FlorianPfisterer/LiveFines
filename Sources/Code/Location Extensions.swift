@@ -12,7 +12,7 @@ import CoreLocation
 extension CLLocation
 {
     var kmh: Int {
-        return Int(self.speed + 3.6)
+        return Int(self.speed * 3.6)
     }
 }
 

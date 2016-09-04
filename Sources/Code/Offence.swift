@@ -24,9 +24,9 @@ struct Offence
         self.limit = limit
     }
     
-    init?(drivingData: DrivingData)
+    init?(node: Node)
     {
-        guard let offence = Offence(speed: drivingData.speed, limit: drivingData.limit) else
+        guard let offence = Offence(speed: node.speed, limit: node.speedLimit) else
         {
             return nil
         }

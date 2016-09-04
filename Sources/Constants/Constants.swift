@@ -8,8 +8,20 @@
 
 import UIKit
 
+let π = CGFloat(M_PI)
+
 struct Constants
 {
+    struct Color
+    {
+        static let red = UIColor(red: 0.92, green: 0.19, blue: 0.39, alpha: 1.00)
+        static let orange = UIColor(red: 0.96, green: 0.52, blue: 0.11, alpha: 1.00)
+        static let green = UIColor(red: 0.62, green: 0.77, blue: 0.15, alpha: 1.00)
+
+        static let darkGray = UIColor(red: 35/255.0, green: 43/255.0, blue: 49/255.0, alpha: 1.00)
+        static let lightGray = UIColor(red: 0.31, green: 0.35, blue: 0.37, alpha: 1.00)
+    }
+    
     struct Config
     {
         static let coordinateSpan: Double = 0.003

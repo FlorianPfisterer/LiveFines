@@ -16,6 +16,8 @@ struct Punishment
         case financial
         case points
         case license
+        
+        static let all: [PType] = [.financial, .points, .license]
     }
     
     // MARK: - Properties
@@ -37,7 +39,16 @@ extension Punishment: Hashable
     }
     
     var description: String {
-        return "\(self.amount)"
+        // TODO Localized
+        switch self.type
+        {
+        case .financial:
+            return "€ Strafe"
+        case .points:
+            return self.amount == 1 ? "Punkt" : "Punkte"
+        case .license:
+            return self.amount == 1 ? "Monat" : "Monate"
+        }
     }
 }
 
