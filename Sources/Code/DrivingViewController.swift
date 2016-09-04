@@ -92,7 +92,7 @@ class DrivingViewController: UIViewController
         }
 
         // create okay view
-        self.okayView = OkayView(image: UIImage(asset: .PraiseIcon))
+        self.okayView = OkayView(image: UIImage(named: "praiseIcon") ?? UIImage())
         self.okayView.hidden = true
         self.okayView.title = "Weiter so!"
         self.punishmentsStackView.insertArrangedSubview(self.okayView, atIndex: 0)
