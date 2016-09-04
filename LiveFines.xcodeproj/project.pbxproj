@@ -365,10 +365,10 @@
 		5C90F6651D7B03C200AF733E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5C5BD5C51D7B178F007AED58 /* OkayView.swift */,
 				5C90F61D1D7B027B00AF733E /* SpeedLimitView.swift */,
-				5C5BD5BB1D7B0655007AED58 /* SpeedometerView.swift */,
 				5C5BD5C21D7B0A1F007AED58 /* PunishmentView.swift */,
+				5C5BD5C51D7B178F007AED58 /* OkayView.swift */,
+				5C5BD5BB1D7B0655007AED58 /* SpeedometerView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";

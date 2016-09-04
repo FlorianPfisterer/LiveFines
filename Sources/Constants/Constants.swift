@@ -8,6 +8,8 @@
 
 import UIKit
 
+let π = CGFloat(M_PI)
+
 struct Constants
 {
     struct Color

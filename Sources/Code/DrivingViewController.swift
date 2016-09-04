@@ -12,6 +12,7 @@ import RealmSwift
 class DrivingViewController: UIViewController
 {
     @IBOutlet weak var speedLimitView: SpeedLimitView!
+    @IBOutlet weak var speedometerView: SpeedometerView!
 
     @IBOutlet weak var punishmentsStackView: UIStackView!
     @IBOutlet weak var separatorBackgroundView: UIView!
@@ -44,6 +45,10 @@ class DrivingViewController: UIViewController
         super.viewDidAppear(animated)
         self.separatorBackgroundView.alpha = 1
         print(self.okayView.imageView.height)
+
+//        self.speedLimitView.hidden = true
+//        self.separatorBackgroundView.hidden = true
+//        self.punishmentsStackView.hidden = true
     }
     
     override func viewDidDisappear(animated: Bool)
@@ -99,12 +104,13 @@ extension DrivingViewController: NodeUpdateReceiver
     func update(node node: Node)
     {
         self.speedLimitView.limit = node.speedLimit // TODO update animation?
+        self.speedometerView.speedLimit = node.speedLimit
         self.configure(withPenalty: self.country.penalty(fromNode: node))
     }
 
     func update(speed speed: Int)
     {
-        print("speed: \(speed)")
+        self.speedometerView.speed = speed
         self.configure(withPenalty: self.country.penalty(fromSpeed: speed, limit: self.speedLimitView.limit))
     }
 }

@@ -11,21 +11,33 @@ import UIKit
 private let mainColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
 private let descriptionColor = Constants.Color.lightGray
 
-private let verticalMargin: CGFloat = 9
-
 class DisplayView: UIView
 {
     // MARK: - Subviews
     internal let amountLabel = UILabel()
     internal let typeLabel = UILabel()
 
+    var innerSeparatorConstraint: NSLayoutConstraint!
+
     override var animatedSubviews: [UIView] {
         return [self.amountLabel, self.typeLabel]
     }
 
-    // MARK: - Internal Configuration
-    internal var amountFont = UIFont.systemFontOfSize(36)
-    internal var typeFont = UIFont.systemFontOfSize(13)
+    // MARK: - Configuration
+    var amountFont = UIFont.systemFontOfSize(36) {
+        didSet { self.amountLabel.font = self.amountFont }
+    }
+    var typeFont = UIFont.systemFontOfSize(13) {
+        didSet { self.typeLabel.font = self.typeFont }
+    }
+    var verticalMargin: CGFloat = 9
+    var innerMargin: CGFloat = 2 {
+        didSet
+        {
+            self.innerSeparatorConstraint.constant = self.innerMargin
+            self.setNeedsLayout()
+        }
+    }
 
     // MARK: - Public UI Set Variables
     var amount: Int {
@@ -39,6 +51,12 @@ class DisplayView: UIView
     }
 
     // MARK: - Init
+    init()
+    {
+        super.init(frame: CGRectZero)
+        self.sharedInitialization()
+    }
+
     override init(frame: CGRect)
     {
         super.init(frame: frame)
@@ -74,10 +92,11 @@ class DisplayView: UIView
         // layout
         NSLayoutConstraint(item: self.amountLabel, attribute: .Top, relatedBy: .Equal,
                            toItem: self, attribute: .Top, multiplier: 1, constant: verticalMargin).active = true
-        NSLayoutConstraint(item: self.typeLabel, attribute: .Top, relatedBy: .Equal,
-                           toItem: self.amountLabel, attribute: .Bottom, multiplier: 1, constant: 2).active = true
-        NSLayoutConstraint(item: self.typeLabel, attribute: .Bottom, relatedBy: .Equal,
-                           toItem: self, attribute: .Bottom, multiplier: 1, constant: -verticalMargin).active = true
+        self.innerSeparatorConstraint = NSLayoutConstraint(item: self.typeLabel, attribute: .Top, relatedBy: .Equal,
+                           toItem: self.amountLabel, attribute: .Bottom, multiplier: 1, constant: self.innerMargin)
+        self.innerSeparatorConstraint.active = true
+//        NSLayoutConstraint(item: self.typeLabel, attribute: .Bottom, relatedBy: .Equal,
+//                           toItem: self, attribute: .Bottom, multiplier: 1, constant: -self.verticalMargin).active = true
 
     }
 }
