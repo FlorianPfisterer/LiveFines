@@ -61,6 +61,21 @@ extension UIView
     }
 }
 
+extension UIBezierPath
+{
+    func draw(to point: CGPoint) -> UIBezierPath
+    {
+        self.addLineToPoint(point)
+        return self
+    }
+
+    func move(to point: CGPoint) -> UIBezierPath
+    {
+        self.moveToPoint(point)
+        return self
+    }
+}
+
 protocol Showable
 {
     var animatedSubviews: [UIView] { get }
