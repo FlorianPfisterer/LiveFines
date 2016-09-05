@@ -16,6 +16,7 @@ struct Offence
     // MARK: - Init
     init?(speed: Int, limit: Int)
     {
+        guard limit > 0 else { return nil }
         if speed <= limit
         {
             return nil

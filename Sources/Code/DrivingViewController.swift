@@ -43,8 +43,6 @@ class DrivingViewController: UIViewController
     override func viewDidAppear(animated: Bool)
     {
         super.viewDidAppear(animated)
-        self.separatorBackgroundView.alpha = 1
-        print(self.okayView.imageView.height)
 
 //        self.speedLimitView.hidden = true
 //        self.separatorBackgroundView.hidden = true
@@ -79,22 +77,25 @@ class DrivingViewController: UIViewController
     private func setupPunishmentViews()
     {
         self.separatorBackgroundView.alpha = 0
-
-        self.okayView?.removeFromSuperview()
-        self.punishmentViews.removeAll()
-        self.punishmentsStackView.subviews.each { $0.removeFromSuperview() }
-        
+//
+//        self.okayView?.removeFromSuperview()
+//        self.punishmentViews.removeAll()
+//        self.punishmentsStackView.subviews.each { $0.removeFromSuperview() }
+//        
         for ptype in Punishment.PType.all
         {
             let punishmentView = PunishmentView()
+            punishmentView.hidden = true
             self.punishmentsStackView.addArrangedSubview(punishmentView)
             self.punishmentViews[ptype] = punishmentView
         }
 
+        self.speedometerView.speedLimit = -100
+
         // create okay view
         self.okayView = OkayView(image: UIImage(named: "praiseIcon") ?? UIImage())
-        self.okayView.hidden = true
-        self.okayView.title = "Weiter so!"
+        self.okayView.showMessage = false
+        self.okayView.title = "Weiter so!"  // TODO Localize
         self.punishmentsStackView.insertArrangedSubview(self.okayView, atIndex: 0)
     }
 }
@@ -111,7 +112,16 @@ extension DrivingViewController: NodeUpdateReceiver
     func update(speed speed: Int)
     {
         self.speedometerView.speed = speed
-        self.configure(withPenalty: self.country.penalty(fromSpeed: speed, limit: self.speedLimitView.limit))
+        self.configure(withPenalty: self.country.penalty(fromSpeed: speed, atLimit: self.speedLimitView.limit))
+    }
+
+    func receivedInvalidData()
+    {
+        // TODO timeout
+        self.speedLimitView.limit = -1
+        self.speedometerView.speedLimit = -100
+        self.okayView.showMessage = false
+        self.configure(withPenalty: nil)
     }
 }
 
@@ -133,11 +143,16 @@ extension DrivingViewController
         {
             self.clearPunishments()
         }
+
+        UIView.animateWithDuration(0.3, delay: 0.1, options: .CurveEaseIn, animations: {
+            self.separatorBackgroundView.alpha = 1
+        }, completion: nil)
     }
     
     private func clearPunishments()
     {
         self.okayView.animate(show: true)
+        self.okayView.showMessage = self.speedLimitView.state != .unknown
         self.punishmentViews.values.each { $0.punishment = nil }
     }
 }
