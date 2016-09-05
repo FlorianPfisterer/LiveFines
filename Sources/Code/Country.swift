@@ -29,7 +29,7 @@ extension Country
         return rule(offence)
     }
 
-    func penalty(fromSpeed speed: Int, limit: Int) -> Penalty?
+    func penalty(fromSpeed speed: Int, atLimit limit: Int) -> Penalty?
     {
         guard let offence = Offence(speed: speed, limit: limit) else { return nil }
 

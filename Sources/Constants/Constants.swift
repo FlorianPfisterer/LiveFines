@@ -25,8 +25,13 @@ struct Constants
     struct Config
     {
         static let coordinateSpan: Double = 0.003
-        static let courseSpan: Double = 20
+        static let courseSpan: Double = 15
         static let speedSpan: Int = 12
+        static let speedLimitMax: Double = 60  // m/s
+
+        static var speedLimitMaxKmh: Int {
+            return Int(Config.speedLimitMax * 3.6)
+        }
         
         static func courseRange(forCourse course: Double) -> (min: Double, max: Double)
         {

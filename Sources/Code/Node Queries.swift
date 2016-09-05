@@ -20,6 +20,8 @@ extension Node
         
         let (minCourse, maxCourse) = Constants.Config.courseRange(forCourse: location.course)
         let (minSpeed, maxSpeed) = Constants.Config.speedRange(forSpeed: location.kmh)
+
+        print("FOUND: \(realm.objects(Node.self).count) objects!")
         
         let results = realm.objects(Node.self)
             .filter("longitude >= %f AND longitude < %f AND latitude >= %f AND latitude < %f AND course >= %f AND course < %f AND speed >= %d AND speed < %d",

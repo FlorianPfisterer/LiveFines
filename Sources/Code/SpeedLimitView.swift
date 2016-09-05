@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+private let unknownSpeedlimitSign: String = "?"
+
 @IBDesignable
 class SpeedLimitView: UIView
 {
@@ -20,23 +22,23 @@ class SpeedLimitView: UIView
             self.contentLabel.font = UIFont.systemFontOfSize(self.fontSize, weight: self.fontWeigth)
         }
     }
-    @IBInspectable var fontWeigth: CGFloat = 0.6 {
+
+    @IBInspectable var fontWeigth: CGFloat = 0.34 {
         didSet
         {
             self.contentLabel.font = UIFont.systemFontOfSize(self.fontSize, weight: self.fontWeigth)
         }
     }
+
     @IBInspectable var borderWidth: CGFloat = 30 {
         didSet
         {
             self.borderLayer.lineWidth = self.borderWidth
         }
     }
-    @IBInspectable var limit: Int = 0 {
-        didSet
-        {
-            self.contentLabel.text = "\(self.limit)"
-        }
+
+    @IBInspectable var limit: Int = -1 {
+        didSet { self.updatedLimit() }
     }
     
     // MARK: - Private Subviews etc.
@@ -44,12 +46,24 @@ class SpeedLimitView: UIView
         let layer = CAShapeLayer()
         return layer
     }()
+
     private let contentLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .Center
         return label
     }()
+
+    var state: State = .unknown {
+        didSet { self.applyDesign() }
+    }
+
+    enum State
+    {
+        case limited
+        case unlimited
+        case unknown
+    }
     
     // MARK: - Init
     override init(frame: CGRect)
@@ -69,28 +83,41 @@ class SpeedLimitView: UIView
     private func sharedInitialization()
     {
         self.layer.addSublayer(self.borderLayer)
+        self.borderLayer.lineWidth = self.borderWidth
+        self.borderLayer.strokeColor = Constants.Color.red.CGColor  //  default
+        self.borderLayer.fillColor = UIColor.whiteColor().CGColor
+
         self.contentLabel.font = UIFont.systemFontOfSize(self.fontSize, weight: self.fontWeigth)
         self.contentLabel.backgroundColor = .clearColor()
-        self.contentLabel.text = "\(self.limit)"
         
         self.addSubview(self.contentLabel)
-        
-        self.applyDesign()
+
+        self.backgroundColor = .whiteColor()
+        self.clipsToBounds = true
+        self.layer.shadowRadius = 5
+        self.layer.shadowColor = UIColor.blackColor().CGColor
+        self.layer.cornerRadius = self.radius
+
+        self.updatedLimit()
     }
     
     // MARK: - UI Setup
     private func applyDesign()
     {
-        self.backgroundColor = .whiteColor()
-        self.clipsToBounds = true
-        
-        self.layer.shadowRadius = 5
-        self.layer.shadowColor = UIColor.blackColor().CGColor
-        self.layer.cornerRadius = self.radius/2
-        
-        self.borderLayer.lineWidth = self.borderWidth
-        self.borderLayer.strokeColor = Constants.Color.red.CGColor
-        self.borderLayer.fillColor = UIColor.whiteColor().CGColor
+        switch self.state
+        {
+        case .unknown:
+            // TODO
+            self.contentLabel.text = unknownSpeedlimitSign
+
+        case .limited:
+            self.contentLabel.text = "\(self.limit)"
+            self.borderLayer.strokeColor = Constants.Color.red.CGColor
+
+        case .unlimited:
+            self.contentLabel.text = ""
+            self.borderLayer.strokeColor = Constants.Color.lightGray.CGColor    // TODO
+        }
     }
 }
 
@@ -106,12 +133,31 @@ extension SpeedLimitView
     
     override func drawRect(rect: CGRect)
     {
-        self.applyDesign()
-        
         let arcRadius = self.radius - self.marginWidth - self.borderWidth / 2
         let arcPath = UIBezierPath(arcCenter: self.innerCenter, radius: arcRadius, startAngle: 0, endAngle: -0.000001, clockwise: true)
         self.borderLayer.path = arcPath.CGPath
-        
-        self.layer.cornerRadius = min(self.height, self.width) / 2
+
+        self.layer.cornerRadius = self.radius
+    }
+}
+
+extension SpeedLimitView
+{
+    private func updatedLimit()
+    {
+        switch self.limit
+        {
+        case let x where x <= 0:
+            self.state = .unknown
+
+        case let x where x <= Constants.Config.speedLimitMaxKmh:
+            self.state = .limited
+
+        case let x where x > Constants.Config.speedLimitMaxKmh:    // greater than max => unlimited
+            self.state = .unlimited
+
+        default:
+            fatalError()
+        }
     }
 }

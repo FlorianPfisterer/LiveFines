@@ -28,6 +28,16 @@ class OkayView: UIView
         set { self.imageView.image = newValue }
     }
 
+    var showMessage: Bool = false {
+        didSet
+        {
+            guard oldValue != self.showMessage || !oldValue else { return }
+            UIView.animateWithDuration(0.3, animations: {
+                self.animatedSubviews.each { $0.alpha = self.showMessage ? 1 : 0 }
+            })
+        }
+    }
+
     var title: String? {
         get { return self.descriptionLabel.text ?? "" }
         set { self.descriptionLabel.text = newValue?.uppercaseString }
@@ -66,10 +76,12 @@ class OkayView: UIView
         self.imageView.contentMode = .ScaleAspectFit
         self.imageView.image = self.image
         self.imageView.tintColor = self.tintColor
+        self.imageView.alpha = 0
 
         self.descriptionLabel.textAlignment = .Center
         self.descriptionLabel.font = descriptionFont
         self.descriptionLabel.textColor = .whiteColor()
+        self.descriptionLabel.alpha = 0
 
         // constraints
         NSLayoutConstraint(item: self.imageView, attribute: .Width, relatedBy: .Equal,
