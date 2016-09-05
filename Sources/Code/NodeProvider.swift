@@ -14,6 +14,7 @@ protocol NodeUpdateReceiver: class, AlertPresenter
 {
     func update(node node: Node)
     func update(speed speed: Int)
+    func receivedInvalidData()
 }
 
 final class NodeProvider: NSObject
@@ -138,6 +139,7 @@ extension NodeProvider: CLLocationManagerDelegate
         {
         case .error(let error):
             self.handle(error: error)
+            self.updateReceiver?.receivedInvalidData()
             
         case .success((let speedLimit, let location)):
             print("API REQUEST --------------------------------------")

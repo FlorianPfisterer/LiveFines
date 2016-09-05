@@ -24,10 +24,10 @@ class SpeedometerView: UIView
     private let limitArc = CAShapeLayer()
 
     // MARK: - Public Configuration
-    @IBInspectable var speed: Int = 100 {
+    @IBInspectable var speed: Int = 0 {
         didSet
         {
-            self.displayView.amount = self.speed
+            self.displayView.amount = max(self.speed, 0)
             self.setupSpeedArc(animated: true)
         }
     }

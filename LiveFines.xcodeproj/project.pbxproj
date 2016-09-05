@@ -421,7 +421,6 @@
 				5CB896651D64C26600E64B99 /* Frameworks */,
 				5CB896661D64C26600E64B99 /* Resources */,
 				5CB896AF1D64D1DC00E64B99 /* ShellScript */,
-				5C5BD5C71D7B1C7F007AED58 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -562,19 +561,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-		5C5BD5C71D7B1C7F007AED58 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftgen >/dev/null; then\n    swiftgen images \"$PROJECT_DIR\" --output \"$PROJECT_DIR/Sources/Constants/Images.swift\"\nelse\n    echo \"warning: SwiftGen not installed, download it from https://github.com/AliSoftware/SwiftGen\"\nfi";
 		};
 		5CB896AF1D64D1DC00E64B99 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
