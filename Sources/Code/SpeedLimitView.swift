@@ -138,6 +138,7 @@ extension SpeedLimitView
     override func layoutSubviews()
     {
         super.layoutSubviews()
+
         self.layer.cornerRadius = self.radius
         self.contentLabel.frame = self.bounds
     }

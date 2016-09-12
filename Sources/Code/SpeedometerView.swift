@@ -17,7 +17,7 @@ private let arcsMargin: CGFloat = 10
 class SpeedometerView: UIView
 {
     // MARK: - Subviews
-    private let displayView = DisplayView()
+    let displayView = DisplayView()
 
     private let scaleArc = CAShapeLayer()
     private let speedArc = CAShapeLayer()
@@ -81,7 +81,7 @@ class SpeedometerView: UIView
         self.displayView.amountFont = UIFont.systemFontOfSize(43)
         self.displayView.typeFont = UIFont.systemFontOfSize(17)
 
-        self.displayView.amount = self.speed
+        self.displayView.amount = max(0, self.speed)
         self.displayView.type = self.type
         self.displayView.innerMargin = -4
 

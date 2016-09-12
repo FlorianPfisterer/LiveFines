@@ -30,6 +30,7 @@ class DisplayView: UIView
     var typeFont = UIFont.systemFontOfSize(13) {
         didSet { self.typeLabel.font = self.typeFont }
     }
+    
     var verticalMargin: CGFloat = 9
     var innerMargin: CGFloat = 2 {
         didSet

@@ -55,6 +55,7 @@
 		5C90F6571D7B027B00AF733E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C90F6271D7B027B00AF733E /* Main.storyboard */; };
 		5CB896811D64C26600E64B99 /* LiveFinesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB896801D64C26600E64B99 /* LiveFinesTests.swift */; };
 		5CB8968C1D64C26600E64B99 /* LiveFinesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB8968B1D64C26600E64B99 /* LiveFinesUITests.swift */; };
+		5CFE62961D7F164200A704C8 /* DrivingViewController Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE62951D7F164200A704C8 /* DrivingViewController Animations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +132,7 @@
 		5CB896871D64C26600E64B99 /* LiveFinesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiveFinesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CB8968B1D64C26600E64B99 /* LiveFinesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveFinesUITests.swift; sourceTree = "<group>"; };
 		5CB8968D1D64C26600E64B99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CFE62951D7F164200A704C8 /* DrivingViewController Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DrivingViewController Animations.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				5C90F6061D7B027B00AF733E /* DrivingViewController.swift */,
+				5CFE62951D7F164200A704C8 /* DrivingViewController Animations.swift */,
 				5C90F6651D7B03C200AF733E /* Views */,
 				5C5BD5C41D7B176F007AED58 /* Global Views */,
 			);
@@ -618,6 +621,7 @@
 				5C90F63E1D7B027B00AF733E /* HereAPIAccessInformation.swift in Sources */,
 				5C90F6401D7B027B00AF733E /* HereSpeedLimit.swift in Sources */,
 				5C5BD5C31D7B0A1F007AED58 /* PunishmentView.swift in Sources */,
+				5CFE62961D7F164200A704C8 /* DrivingViewController Animations.swift in Sources */,
 				5C90F6511D7B027B00AF733E /* SpeedLimitView.swift in Sources */,
 				5C90F6531D7B027B00AF733E /* URLRequestHandler.swift in Sources */,
 				5C90F64C1D7B027B00AF733E /* Punishment.swift in Sources */,

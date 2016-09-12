@@ -18,7 +18,7 @@ class PunishmentView: DisplayView
             {
                 if self.amount != punishment.amount { self.blink(forChange: punishment.amount - self.amount, newValue: punishment.amount) }
                 self.amount = punishment.amount
-                self.type = punishment.description.uppercaseString
+                self.type = punishment.typeDescription.uppercaseString
 
                 self.animate(show: true)
             }

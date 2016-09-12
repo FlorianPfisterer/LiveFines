@@ -11,18 +11,32 @@ import RealmSwift
 
 class DrivingViewController: UIViewController
 {
+    // MARK: - IBOutlets
     @IBOutlet weak var speedLimitView: SpeedLimitView!
     @IBOutlet weak var speedometerView: SpeedometerView!
 
     @IBOutlet weak var punishmentsStackView: UIStackView!
     @IBOutlet weak var separatorBackgroundView: UIView!
 
+    // constraints for animation
+    @IBOutlet var standardStateConstraints: [NSLayoutConstraint]!
+    internal var expandedStateConstraints: [NSLayoutConstraint] = []
+
+    // MARK: - Private Variables
     private var punishmentViews: [Punishment.PType : PunishmentView] = [:]
     private var okayView: OkayView!
     
     private var realm: Realm!
     private var provider: NodeProvider!
     private let country = NSLocale.currentCountry()
+
+    internal var state: ViewState = .standard {
+        didSet
+        {
+            guard oldValue != self.state else { return }
+            self.transition(to: self.state)
+        }
+    }
 
     // MARK: - View Lifecycle
     override func viewDidLoad()
@@ -107,6 +121,8 @@ extension DrivingViewController: NodeUpdateReceiver
         self.speedLimitView.limit = node.speedLimit // TODO update animation?
         self.speedometerView.speedLimit = node.speedLimit
         self.configure(withPenalty: self.country.penalty(fromNode: node))
+
+        self.state = (self.state == .standard) ? .expanded : .standard
     }
 
     func update(speed speed: Int)

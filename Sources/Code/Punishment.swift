@@ -38,12 +38,12 @@ extension Punishment: Hashable
         return self.type.hashValue
     }
     
-    var description: String {
+    var typeDescription: String {
         // TODO Localized
         switch self.type
         {
         case .financial:
-            return "€ Strafe"
+            return "Strafe"
         case .points:
             return self.amount == 1 ? "Punkt" : "Punkte"
         case .license:
