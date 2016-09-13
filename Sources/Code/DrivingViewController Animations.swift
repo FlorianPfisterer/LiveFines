@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let animationDuration: NSTimeInterval = 0.4
+private let animationDuration: NSTimeInterval = 0.3
 private let horizontalMargin: CGFloat = 23
 private let verticalMargin: CGFloat = 20
 
@@ -41,17 +41,21 @@ extension DrivingViewController
 
     private func expandSpeedLimitView(expand: Bool = true)
     {
-        guard expand else
-        {
-            self.speedLimitView.transform = CGAffineTransformConcat(CGAffineTransformMakeTranslation(0, 0), CGAffineTransformMakeScale(1, 1))
-            return
-        }
-
         let availableWidth = self.availableWidth
         let targetFrame = CGRect(x: horizontalMargin,
                                  y: verticalMargin,
                                  width: availableWidth * 0.53,
                                  height: availableWidth * 0.53)
+
+        // expand the punishmentStackview & the separator lines
+        self.expandPunishmentStackView(expand, withSpeedLimitBottomY: targetFrame.lowerOuterCenter.y)
+
+        guard expand else
+        {
+            self.speedLimitView.transform = CGAffineTransformIdentity
+            return
+        }
+
         let sizeMultiplier = targetFrame.width / self.speedLimitView.width
         let translationVector = targetFrame.outerCenter - self.speedLimitView.frame.outerCenter
 
@@ -64,9 +68,9 @@ extension DrivingViewController
     {
         guard expand else
         {
-            self.speedometerView.transform = CGAffineTransformConcat(CGAffineTransformMakeTranslation(0, 0), CGAffineTransformMakeScale(1, 1))
-            self.speedometerView.displayView.amountLabel.transform = CGAffineTransformMakeScale(1, 1)
-            self.speedometerView.displayView.typeLabel.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1, 1), CGAffineTransformMakeTranslation(0, 0))
+            self.speedometerView.transform = CGAffineTransformIdentity
+            self.speedometerView.displayView.amountLabel.transform = CGAffineTransformIdentity
+            self.speedometerView.displayView.typeLabel.transform = CGAffineTransformIdentity
             return
         }
 
@@ -86,5 +90,33 @@ extension DrivingViewController
         self.speedometerView.displayView.typeLabel.transform = CGAffineTransformConcat(
             CGAffineTransformMakeScale(speedometerDisplayViewTypeScale, speedometerDisplayViewTypeScale),
             CGAffineTransformMakeTranslation(0, speedometerDisplayViewTypeYTranslation))
+    }
+
+    private func expandPunishmentStackView(expand: Bool = true, withSpeedLimitBottomY bottomY: CGFloat = 0)
+    {
+        self.punishmentsStackView.alpha = expand ? 0 : 1
+        self.separatorBackgroundView.alpha = expand ? 0 : 1
+
+        guard expand else
+        {
+            // separator lines
+            self.upperSeparatorView.transform = CGAffineTransformIdentity
+            self.lowerSeparatorView.transform = CGAffineTransformIdentity
+
+            self.punishmentsStackView.transform = CGAffineTransformIdentity
+            self.separatorBackgroundView.transform = CGAffineTransformIdentity
+
+            return
+        }
+
+        // separator lines
+        let upperYTranslation = -(self.upperSeparatorView.frame.origin.y - bottomY - verticalMargin)
+        self.upperSeparatorView.transform = CGAffineTransformMakeTranslation(0, upperYTranslation)
+        let lowerYTranslation = self.view.height - self.lowerSeparatorView.lowerLeft.y + 3
+        self.lowerSeparatorView.transform = CGAffineTransformMakeTranslation(0, lowerYTranslation)
+
+        let stackViewTranslation: CGFloat = lowerYTranslation + self.punishmentsStackView.height
+        self.punishmentsStackView.transform = CGAffineTransformMakeTranslation(0, stackViewTranslation)
+        self.separatorBackgroundView.transform = CGAffineTransformMakeTranslation(0, stackViewTranslation)
     }
 }

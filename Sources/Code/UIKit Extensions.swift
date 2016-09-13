@@ -37,10 +37,12 @@ extension UIView
         return CGPoint(x: self.width/2, y: self.height/2)
     }
 
-
-
     var upperRight: CGPoint {
         return CGPoint(x: self.frame.origin.x + self.width, y: self.frame.origin.y)
+    }
+
+    var lowerLeft: CGPoint {
+        return CGPoint(x: self.frame.origin.x, y: self.frame.origin.y + self.height)
     }
     
     var radius: CGFloat {
@@ -53,6 +55,10 @@ extension CGRect
     var outerCenter: CGPoint {
         return CGPoint(x: self.origin.x + self.size.width/2,
                        y: self.origin.y + self.size.height/2)
+    }
+
+    var lowerOuterCenter: CGPoint {
+        return CGPoint(x: self.origin.x + self.size.width/2, y: self.origin.y + self.size.height)
     }
 }
 

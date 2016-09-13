@@ -18,10 +18,9 @@ class DrivingViewController: UIViewController
     @IBOutlet weak var punishmentsStackView: UIStackView!
     @IBOutlet weak var separatorBackgroundView: UIView!
 
-    // constraints for animation
-    @IBOutlet var standardStateConstraints: [NSLayoutConstraint]!
-    internal var expandedStateConstraints: [NSLayoutConstraint] = []
-
+    @IBOutlet weak var upperSeparatorView: UIView!
+    @IBOutlet weak var lowerSeparatorView: UIView!
+    
     // MARK: - Private Variables
     private var punishmentViews: [Punishment.PType : PunishmentView] = [:]
     private var okayView: OkayView!

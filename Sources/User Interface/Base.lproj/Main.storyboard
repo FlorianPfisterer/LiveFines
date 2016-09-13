@@ -119,10 +119,12 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="lowerSeparatorView" destination="WNC-9g-SRK" id="JVv-Wj-ocI"/>
                         <outlet property="punishmentsStackView" destination="6kh-pm-eh2" id="CdZ-Ea-ZXh"/>
                         <outlet property="separatorBackgroundView" destination="8Fq-np-AMY" id="gVo-B2-5gZ"/>
                         <outlet property="speedLimitView" destination="gjL-1Y-UKd" id="yql-su-nKv"/>
                         <outlet property="speedometerView" destination="goT-Yp-qsc" id="hXw-Vg-JeQ"/>
+                        <outlet property="upperSeparatorView" destination="DSc-at-lSw" id="SxE-pu-gVg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jqi-2w-cKn" userLabel="First Responder" sceneMemberID="firstResponder"/>
