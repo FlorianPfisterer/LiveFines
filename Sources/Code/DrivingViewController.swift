@@ -20,6 +20,9 @@ class DrivingViewController: UIViewController
 
     @IBOutlet weak var upperSeparatorView: UIView!
     @IBOutlet weak var lowerSeparatorView: UIView!
+
+    @IBOutlet weak var expandedContainerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var expandedPunishmentsContainer: UIView!
     
     // MARK: - Private Variables
     private var punishmentViews: [Punishment.PType : PunishmentView] = [:]
@@ -41,6 +44,8 @@ class DrivingViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+
+        self.expandedContainerHeightConstraint.constant = 0
         self.view.backgroundColor = Constants.Color.darkGray
 
         self.setupDataProvider()
@@ -121,7 +126,7 @@ extension DrivingViewController: NodeUpdateReceiver
         self.speedometerView.speedLimit = node.speedLimit
         self.configure(withPenalty: self.country.penalty(fromNode: node))
 
-        self.state = (self.state == .standard) ? .expanded : .standard
+        self.state = (node.speed > node.speedLimit) ? .expanded : .standard
     }
 
     func update(speed speed: Int)

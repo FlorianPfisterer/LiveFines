@@ -8,7 +8,8 @@
 
 import UIKit
 
-private let animationDuration: NSTimeInterval = 0.3
+private let expandAnimationDuration: NSTimeInterval = 0.3
+private let standardAnimationDuration: NSTimeInterval = 0.5
 private let horizontalMargin: CGFloat = 23
 private let verticalMargin: CGFloat = 20
 
@@ -28,34 +29,35 @@ extension DrivingViewController
         return self.view.width - 3*horizontalMargin
     }
 
+    private var expandedSpeedlimitBottom: CGFloat {
+        return 2*verticalMargin + self.availableWidth * 0.53
+    }
+
     internal func transition(to state: ViewState)
     {
         let isExpanded = state == .expanded
 
-        UIView.animateWithDuration(animationDuration, delay: 0, options: .CurveEaseOut, animations: {
+        UIView.animateWithDuration(isExpanded ? expandAnimationDuration : standardAnimationDuration, delay: 0, options: .CurveEaseOut, animations: {
             self.expandSpeedLimitView(isExpanded)
             self.expandSpeedometerView(isExpanded)
+            self.expandPunishmentStackView(isExpanded)
+            self.view.layoutIfNeeded()
         }, completion: nil)
-
     }
 
     private func expandSpeedLimitView(expand: Bool = true)
     {
-        let availableWidth = self.availableWidth
-        let targetFrame = CGRect(x: horizontalMargin,
-                                 y: verticalMargin,
-                                 width: availableWidth * 0.53,
-                                 height: availableWidth * 0.53)
-
-        // expand the punishmentStackview & the separator lines
-        self.expandPunishmentStackView(expand, withSpeedLimitBottomY: targetFrame.lowerOuterCenter.y)
-
         guard expand else
         {
             self.speedLimitView.transform = CGAffineTransformIdentity
             return
         }
 
+        let availableWidth = self.availableWidth
+        let targetFrame = CGRect(x: horizontalMargin,
+                                 y: verticalMargin,
+                                 width: availableWidth * 0.53,
+                                 height: availableWidth * 0.53)
         let sizeMultiplier = targetFrame.width / self.speedLimitView.width
         let translationVector = targetFrame.outerCenter - self.speedLimitView.frame.outerCenter
 
@@ -92,10 +94,12 @@ extension DrivingViewController
             CGAffineTransformMakeTranslation(0, speedometerDisplayViewTypeYTranslation))
     }
 
-    private func expandPunishmentStackView(expand: Bool = true, withSpeedLimitBottomY bottomY: CGFloat = 0)
+    private func expandPunishmentStackView(expand: Bool = true)
     {
+        // stackview with background
         self.punishmentsStackView.alpha = expand ? 0 : 1
         self.separatorBackgroundView.alpha = expand ? 0 : 1
+        self.expandedPunishmentsContainer.alpha = expand ? 1 : 0
 
         guard expand else
         {
@@ -105,18 +109,22 @@ extension DrivingViewController
 
             self.punishmentsStackView.transform = CGAffineTransformIdentity
             self.separatorBackgroundView.transform = CGAffineTransformIdentity
+            self.expandedContainerHeightConstraint.constant = 0
 
             return
         }
 
         // separator lines
-        let upperYTranslation = -(self.upperSeparatorView.frame.origin.y - bottomY - verticalMargin)
+        let upperYTranslation = -(self.upperSeparatorView.frame.origin.y - self.expandedSpeedlimitBottom)
         self.upperSeparatorView.transform = CGAffineTransformMakeTranslation(0, upperYTranslation)
         let lowerYTranslation = self.view.height - self.lowerSeparatorView.lowerLeft.y + 3
         self.lowerSeparatorView.transform = CGAffineTransformMakeTranslation(0, lowerYTranslation)
 
+        // stackview with background
         let stackViewTranslation: CGFloat = lowerYTranslation + self.punishmentsStackView.height
         self.punishmentsStackView.transform = CGAffineTransformMakeTranslation(0, stackViewTranslation)
         self.separatorBackgroundView.transform = CGAffineTransformMakeTranslation(0, stackViewTranslation)
+
+        self.expandedContainerHeightConstraint.constant = self.view.height - self.expandedSpeedlimitBottom - 3
     }
 }
