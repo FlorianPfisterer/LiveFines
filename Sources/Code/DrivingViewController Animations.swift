@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let expandAnimationDuration: NSTimeInterval = 0.3
+private let expandAnimationDuration: NSTimeInterval = 0.4
 private let standardAnimationDuration: NSTimeInterval = 0.5
 private let horizontalMargin: CGFloat = 23
 private let verticalMargin: CGFloat = 20
@@ -37,7 +37,7 @@ extension DrivingViewController
     {
         let isExpanded = state == .expanded
 
-        UIView.animateWithDuration(isExpanded ? expandAnimationDuration : standardAnimationDuration, delay: 0, options: .CurveEaseOut, animations: {
+        UIView.animateWithDuration(isExpanded ? expandAnimationDuration : standardAnimationDuration, delay: 0, options: .CurveEaseInOut, animations: {
             self.expandSpeedLimitView(isExpanded)
             self.expandSpeedometerView(isExpanded)
             self.expandPunishmentStackView(isExpanded)
@@ -99,7 +99,8 @@ extension DrivingViewController
         // stackview with background
         self.punishmentsStackView.alpha = expand ? 0 : 1
         self.separatorBackgroundView.alpha = expand ? 0 : 1
-        self.expandedPunishmentsContainer.alpha = expand ? 1 : 0
+
+        self.upperSeparatorView.alpha = expand ? 0 : 1
 
         guard expand else
         {
@@ -109,8 +110,6 @@ extension DrivingViewController
 
             self.punishmentsStackView.transform = CGAffineTransformIdentity
             self.separatorBackgroundView.transform = CGAffineTransformIdentity
-            self.expandedContainerHeightConstraint.constant = 0
-
             return
         }
 
@@ -124,7 +123,5 @@ extension DrivingViewController
         let stackViewTranslation: CGFloat = lowerYTranslation + self.punishmentsStackView.height
         self.punishmentsStackView.transform = CGAffineTransformMakeTranslation(0, stackViewTranslation)
         self.separatorBackgroundView.transform = CGAffineTransformMakeTranslation(0, stackViewTranslation)
-
-        self.expandedContainerHeightConstraint.constant = self.view.height - self.expandedSpeedlimitBottom - 3
     }
 }

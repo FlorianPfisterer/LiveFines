@@ -20,11 +20,10 @@ class DrivingViewController: UIViewController
 
     @IBOutlet weak var upperSeparatorView: UIView!
     @IBOutlet weak var lowerSeparatorView: UIView!
-
-    @IBOutlet weak var expandedContainerHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var expandedPunishmentsContainer: UIView!
     
     // MARK: - Private Variables
+    private var expandedPunishmentController: ExpandedPunishmentsViewController?
+
     private var punishmentViews: [Punishment.PType : PunishmentView] = [:]
     private var okayView: OkayView!
     
@@ -44,12 +43,11 @@ class DrivingViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
-        self.expandedContainerHeightConstraint.constant = 0
         self.view.backgroundColor = Constants.Color.darkGray
 
         self.setupDataProvider()
         self.setupPunishmentViews()
+        self.setupExpandedPunishmentController()
     }
     
     override func viewWillAppear(animated: Bool)
@@ -116,8 +114,14 @@ class DrivingViewController: UIViewController
         self.okayView.title = "Weiter so!"  // TODO Localize
         self.punishmentsStackView.insertArrangedSubview(self.okayView, atIndex: 0)
     }
+
+    private func setupExpandedPunishmentController()
+    {
+        
+    }
 }
 
+// MARK: - Node Updates
 extension DrivingViewController: NodeUpdateReceiver
 {
     func update(node node: Node)
@@ -149,6 +153,8 @@ extension DrivingViewController
 {
     private func configure(withPenalty penalty: Penalty?)
     {
+        self.expandedPunishmentController?.updatePenalty(penalty)
+        
         if let penalty = penalty where penalty.shouldPunish
         {
             self.okayView.animate(show: false)

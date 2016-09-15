@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C4514C61D8AF927006FF53E /* ExpandedPunishmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4514C51D8AF927006FF53E /* ExpandedPunishmentsViewController.swift */; };
 		5C53D5081D683ABA00CA22BF /* PunishmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53D5071D683ABA00CA22BF /* PunishmentTests.swift */; };
 		5C53D50A1D683AD000CA22BF /* PenaltyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53D5091D683AD000CA22BF /* PenaltyTests.swift */; };
 		5C53D50C1D683AFA00CA22BF /* OffenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53D50B1D683AFA00CA22BF /* OffenceTests.swift */; };
@@ -76,6 +77,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5C4514C51D8AF927006FF53E /* ExpandedPunishmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandedPunishmentsViewController.swift; sourceTree = "<group>"; };
 		5C53D5071D683ABA00CA22BF /* PunishmentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PunishmentTests.swift; sourceTree = "<group>"; };
 		5C53D5091D683AD000CA22BF /* PenaltyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PenaltyTests.swift; sourceTree = "<group>"; };
 		5C53D50B1D683AFA00CA22BF /* OffenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffenceTests.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 			children = (
 				5C90F6061D7B027B00AF733E /* DrivingViewController.swift */,
 				5CFE62951D7F164200A704C8 /* DrivingViewController Animations.swift */,
+				5C4514C51D8AF927006FF53E /* ExpandedPunishmentsViewController.swift */,
 				5C90F6651D7B03C200AF733E /* Views */,
 				5C5BD5C41D7B176F007AED58 /* Global Views */,
 			);
@@ -613,6 +616,7 @@
 				5C90F6541D7B027B00AF733E /* USA.swift in Sources */,
 				5C90F63D1D7B027B00AF733E /* Germany.swift in Sources */,
 				5C90F6341D7B027B00AF733E /* APIAccessInformation.swift in Sources */,
+				5C4514C61D8AF927006FF53E /* ExpandedPunishmentsViewController.swift in Sources */,
 				5C90F6451D7B027B00AF733E /* Model Additional Types.swift in Sources */,
 				5C90F6371D7B027B00AF733E /* Country.swift in Sources */,
 				5C90F64D1D7B027B00AF733E /* DisplayView.swift in Sources */,
