@@ -9,6 +9,8 @@
 import UIKit
 import RealmSwift
 
+private let expandedPunishmentVCIdentifier = "ExpandedPunishmentsViewController"
+
 class DrivingViewController: UIViewController
 {
     // MARK: - IBOutlets
@@ -22,7 +24,8 @@ class DrivingViewController: UIViewController
     @IBOutlet weak var lowerSeparatorView: UIView!
     
     // MARK: - Private Variables
-    private var expandedPunishmentController: ExpandedPunishmentsViewController?
+    internal var expandedPunishmentsController: ExpandedPunishmentsViewController?
+    internal var expandedPunishmentsVCHeightConstraint: NSLayoutConstraint?
 
     private var punishmentViews: [Punishment.PType : PunishmentView] = [:]
     private var okayView: OkayView!
@@ -117,7 +120,35 @@ class DrivingViewController: UIViewController
 
     private func setupExpandedPunishmentController()
     {
-        
+        guard let storyboard = self.storyboard,
+              let expandedPunishmentsVC = storyboard.instantiateViewControllerWithIdentifier(expandedPunishmentVCIdentifier) as? ExpandedPunishmentsViewController else
+        {
+            print("ERROR: couldn't instantiate ExpandedPunishmentsVC!")
+            return
+        }
+
+        expandedPunishmentsVC.willMoveToParentViewController(self)
+        self.view.addSubview(expandedPunishmentsVC.view)
+        self.addChildViewController(expandedPunishmentsVC)
+        expandedPunishmentsVC.didMoveToParentViewController(self)
+
+        // add constraints
+        expandedPunishmentsVC.view.translatesAutoresizingMaskIntoConstraints = false
+        expandedPunishmentsVC.view.constrain(toEdgesOfView: self.view, margin: { attribute in
+            switch attribute
+            {
+            case .Leading, .Trailing: return 0
+            default: return nil
+            }
+        })
+
+        NSLayoutConstraint(item: expandedPunishmentsVC.view, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1, constant: 0).active = true
+
+        let heightConstraint = NSLayoutConstraint(item: expandedPunishmentsVC.view, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 460)
+        heightConstraint.active = true
+        self.expandedPunishmentsVCHeightConstraint = heightConstraint
+
+        self.expandedPunishmentsController = expandedPunishmentsVC
     }
 }
 
@@ -153,7 +184,7 @@ extension DrivingViewController
 {
     private func configure(withPenalty penalty: Penalty?)
     {
-        self.expandedPunishmentController?.updatePenalty(penalty)
+        self.expandedPunishmentsController?.updatePenalty(penalty)
         
         if let penalty = penalty where penalty.shouldPunish
         {
