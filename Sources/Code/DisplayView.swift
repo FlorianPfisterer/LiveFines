@@ -91,6 +91,11 @@ class DisplayView: UIView
         self.typeLabel.textColor = descriptionColor
 
         // layout
+        NSLayoutConstraint(item: self.amountLabel, attribute: .Leading, relatedBy: .GreaterThanOrEqual,
+                           toItem: self, attribute: .Leading, multiplier: 1, constant: 0).active = true
+        NSLayoutConstraint(item: self, attribute: .Trailing, relatedBy: .GreaterThanOrEqual,
+                           toItem: self.amountLabel, attribute: .Trailing, multiplier: 1, constant: 0).active = true
+        
         NSLayoutConstraint(item: self.amountLabel, attribute: .Top, relatedBy: .Equal,
                            toItem: self, attribute: .Top, multiplier: 1, constant: verticalMargin).active = true
         self.innerSeparatorConstraint = NSLayoutConstraint(item: self.typeLabel, attribute: .Top, relatedBy: .Equal,

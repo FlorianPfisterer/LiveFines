@@ -84,6 +84,28 @@ extension UIView
             }
         }
     }
+
+    func constrainCenter(to view: UIView)
+    {
+        [NSLayoutAttribute.CenterX, .CenterY].each { attribute in
+            NSLayoutConstraint(item: self, attribute: attribute, relatedBy: .Equal,
+                toItem: view, attribute: attribute, multiplier: 1, constant: 0).active = true
+        }
+    }
+
+    func constrain(width width: CGFloat? = nil, height: CGFloat? = nil)
+    {
+        if let width = width
+        {
+            NSLayoutConstraint(item: self, attribute: .Width, relatedBy: .Equal,
+                               toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: width).active = true
+        }
+        if let height = height
+        {
+            NSLayoutConstraint(item: self, attribute: .Height, relatedBy: .Equal,
+                               toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: height).active = true
+        }
+    }
 }
 
 extension UIBezierPath

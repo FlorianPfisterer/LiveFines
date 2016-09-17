@@ -29,10 +29,10 @@ final class Germany: Country
             case 0...7:
                 return .single(.financial(10))
                 
-            case 7...15:
+            case 7...11:
                 return .multiple([.financial(20), .points(1)])
-                
-            case 15...100:
+
+            case 12...100:
                 return .multiple([.financial(40), .points(3), .license(2)])
                 
             default:

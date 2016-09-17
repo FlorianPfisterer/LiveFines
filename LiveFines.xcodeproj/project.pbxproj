@@ -54,6 +54,7 @@
 		5C90F6541D7B027B00AF733E /* USA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90F6201D7B027B00AF733E /* USA.swift */; };
 		5C90F6561D7B027B00AF733E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C90F6251D7B027B00AF733E /* LaunchScreen.storyboard */; };
 		5C90F6571D7B027B00AF733E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C90F6271D7B027B00AF733E /* Main.storyboard */; };
+		5C9E809A1D8C3C3200C2279C /* AdditionalPunishmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9E80991D8C3C3200C2279C /* AdditionalPunishmentView.swift */; };
 		5CB896811D64C26600E64B99 /* LiveFinesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB896801D64C26600E64B99 /* LiveFinesTests.swift */; };
 		5CB8968C1D64C26600E64B99 /* LiveFinesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB8968B1D64C26600E64B99 /* LiveFinesUITests.swift */; };
 		5CFE62961D7F164200A704C8 /* DrivingViewController Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE62951D7F164200A704C8 /* DrivingViewController Animations.swift */; };
@@ -127,6 +128,7 @@
 		5C90F6231D7B027B00AF733E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C90F6261D7B027B00AF733E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C90F6281D7B027B00AF733E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5C9E80991D8C3C3200C2279C /* AdditionalPunishmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalPunishmentView.swift; sourceTree = "<group>"; };
 		5CB896681D64C26600E64B99 /* LiveFines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveFines.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CB8967C1D64C26600E64B99 /* LiveFinesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiveFinesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CB896801D64C26600E64B99 /* LiveFinesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveFinesTests.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 			isa = PBXGroup;
 			children = (
 				5C90F61D1D7B027B00AF733E /* SpeedLimitView.swift */,
+				5C9E80991D8C3C3200C2279C /* AdditionalPunishmentView.swift */,
 				5C5BD5C21D7B0A1F007AED58 /* PunishmentView.swift */,
 				5C5BD5C51D7B178F007AED58 /* OkayView.swift */,
 				5C5BD5BB1D7B0655007AED58 /* SpeedometerView.swift */,
@@ -616,6 +619,7 @@
 				5C90F6541D7B027B00AF733E /* USA.swift in Sources */,
 				5C90F63D1D7B027B00AF733E /* Germany.swift in Sources */,
 				5C90F6341D7B027B00AF733E /* APIAccessInformation.swift in Sources */,
+				5C9E809A1D8C3C3200C2279C /* AdditionalPunishmentView.swift in Sources */,
 				5C4514C61D8AF927006FF53E /* ExpandedPunishmentsViewController.swift in Sources */,
 				5C90F6451D7B027B00AF733E /* Model Additional Types.swift in Sources */,
 				5C90F6371D7B027B00AF733E /* Country.swift in Sources */,

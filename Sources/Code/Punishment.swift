@@ -43,11 +43,27 @@ extension Punishment: Hashable
         switch self.type
         {
         case .financial:
-            return "Strafe"
+            return "€ Strafe"
         case .points:
             return self.amount == 1 ? "Punkt" : "Punkte"
         case .license:
             return self.amount == 1 ? "Monat" : "Monate"
+        }
+    }
+
+    var plainTypeDescription: String {
+        switch self.type
+        {
+        case .financial: return "Strafe"
+        default: return self.typeDescription
+        }
+    }
+
+    var amountDescription: String {
+        switch self.type
+        {
+        case .financial: return "\(self.amount) €"
+        default: return "\(self.amount)"
         }
     }
 }

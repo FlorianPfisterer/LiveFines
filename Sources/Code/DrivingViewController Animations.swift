@@ -110,6 +110,8 @@ extension DrivingViewController
 
             self.punishmentsStackView.transform = CGAffineTransformIdentity
             self.separatorBackgroundView.transform = CGAffineTransformIdentity
+
+            self.expandedPunishmentsController?.view.transform = CGAffineTransformIdentity
             return
         }
 
@@ -123,5 +125,13 @@ extension DrivingViewController
         let stackViewTranslation: CGFloat = lowerYTranslation + self.punishmentsStackView.height
         self.punishmentsStackView.transform = CGAffineTransformMakeTranslation(0, stackViewTranslation)
         self.separatorBackgroundView.transform = CGAffineTransformMakeTranslation(0, stackViewTranslation)
+
+        // expandedPunishmentsVC
+        guard let expandedVCY: CGFloat = self.expandedPunishmentsController?.view.frame.origin.y else { return }
+        let expandedVCYTranslation = self.expandedSpeedlimitBottom - expandedVCY
+        self.expandedPunishmentsController?.view.transform = CGAffineTransformMakeTranslation(0, expandedVCYTranslation)
+
+        self.expandedPunishmentsVCHeightConstraint?.constant = abs(expandedVCYTranslation)
+        self.expandedPunishmentsController?.view.layoutIfNeeded()
     }
 }
