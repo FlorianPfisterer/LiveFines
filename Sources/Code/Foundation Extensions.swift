@@ -8,18 +8,18 @@
 
 import Foundation
 
-extension CollectionType
+extension Collection
 {
-    func find(condition: (Self.Generator.Element) -> Bool) -> Self.Generator.Element?
+    func find(_ condition: (Self.Iterator.Element) -> Bool) -> Self.Iterator.Element?
     {
         for x in self where condition(x) { return x }
         return nil
     }
 }
 
-extension SequenceType
+extension Sequence
 {
-    func each(@noescape body: (Self.Generator.Element) throws -> Void) rethrows
+    func each(_ body: (Self.Iterator.Element) throws -> Void) rethrows
     {
         try self.forEach(body)
     }
@@ -32,5 +32,12 @@ extension Int
     {
         let diff = self % 10
         return diff >= 5 ? self + (10-diff) : self - diff
+    }
+}
+
+extension TimeInterval
+{
+    static var now: TimeInterval {
+        return Date().timeIntervalSinceReferenceDate
     }
 }

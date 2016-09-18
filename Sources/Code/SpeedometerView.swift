@@ -19,9 +19,9 @@ class SpeedometerView: UIView
     // MARK: - Subviews
     let displayView = DisplayView()
 
-    private let scaleArc = CAShapeLayer()
-    private let speedArc = CAShapeLayer()
-    private let limitArc = CAShapeLayer()
+    fileprivate let scaleArc = CAShapeLayer()
+    fileprivate let speedArc = CAShapeLayer()
+    fileprivate let limitArc = CAShapeLayer()
 
     // MARK: - Public Configuration
     @IBInspectable var speed: Int = 0 {
@@ -46,7 +46,7 @@ class SpeedometerView: UIView
     }
 
     @IBInspectable var type: String = "KM/H" {
-        didSet { self.displayView.type = self.type.uppercaseString }
+        didSet { self.displayView.type = self.type.uppercased() }
     }
 
     @IBInspectable var scaleArcWidth: CGFloat = 2
@@ -68,9 +68,9 @@ class SpeedometerView: UIView
         self.sharedInitialization()
     }
 
-    private func sharedInitialization()
+    fileprivate func sharedInitialization()
     {
-        self.backgroundColor = .clearColor()
+        self.backgroundColor = .clear
 
         // setup the display view
         [self.displayView].each { view in
@@ -78,32 +78,32 @@ class SpeedometerView: UIView
             self.addSubview(view)
         }
 
-        self.displayView.amountFont = UIFont.systemFontOfSize(43)
-        self.displayView.typeFont = UIFont.systemFontOfSize(17)
+        self.displayView.amountFont = UIFont.systemFont(ofSize: 43)
+        self.displayView.typeFont = UIFont.systemFont(ofSize: 17)
 
         self.displayView.amount = max(0, self.speed)
         self.displayView.type = self.type
         self.displayView.innerMargin = -4
 
-        NSLayoutConstraint(item: self.displayView, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1, constant: 0).active = true
-        NSLayoutConstraint(item: self.displayView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: -25).active = true
-        NSLayoutConstraint(item: self.displayView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 83).active = true
-        NSLayoutConstraint(item: self.displayView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 70).active = true
+        NSLayoutConstraint(item: self.displayView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: self.displayView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: -25).isActive = true
+        NSLayoutConstraint(item: self.displayView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 83).isActive = true
+        NSLayoutConstraint(item: self.displayView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 70).isActive = true
 
         // setup the arcs
         [self.scaleArc, self.speedArc, self.limitArc].each { arc in
-            arc.fillColor = UIColor.clearColor().CGColor
+            arc.fillColor = UIColor.clear.cgColor
             arc.lineCap = kCALineCapButt
             self.layer.addSublayer(arc)
         }
 
-        self.scaleArc.strokeColor = UIColor.whiteColor().CGColor
+        self.scaleArc.strokeColor = UIColor.white.cgColor
         self.scaleArc.lineWidth = self.scaleArcWidth
 
-        self.speedArc.strokeColor = Constants.Color.green.CGColor
+        self.speedArc.strokeColor = Constants.Color.green.cgColor
         self.speedArc.lineWidth = self.speedArcWidth
 
-        self.limitArc.strokeColor = Constants.Color.red.CGColor
+        self.limitArc.strokeColor = Constants.Color.red.cgColor
         self.limitArc.lineWidth = self.limitArcWidth
     }
 }
@@ -119,24 +119,24 @@ extension SpeedometerView
         // create the proper arc
         let outerArcRadius = self.radius - 2
         let scaleArcPath = UIBezierPath(arcCenter: arcCenter, radius: outerArcRadius, startAngle: scaleStartAngle, endAngle: endAngle, clockwise: true)
-        self.scaleArc.path = scaleArcPath.CGPath
+        self.scaleArc.path = scaleArcPath.cgPath
 
         let speedArcPath = UIBezierPath(arcCenter: arcCenter, radius: outerArcRadius - arcsMargin - self.speedArcWidth/2, startAngle: scaleStartAngle, endAngle: endAngle, clockwise: true)
-        self.speedArc.path = speedArcPath.CGPath
+        self.speedArc.path = speedArcPath.cgPath
         self.setupSpeedArc(animated: false)
 
-        self.limitArc.path = speedArcPath.CGPath
+        self.limitArc.path = speedArcPath.cgPath
         self.setupLimitArc(animated: false)
     }
 
-    private func setupLimitArc(animated animated: Bool = false)
+    fileprivate func setupLimitArc(animated: Bool = false)
     {
         let limitArcStrokeMiddle = CGFloat(self.speedLimit) / CGFloat(self.maxSpeed)
         self.limitArc.strokeStart = limitArcStrokeMiddle - self.limitArcSpan/2
         self.limitArc.strokeEnd = limitArcStrokeMiddle + self.limitArcSpan/2
     }
 
-    private func setupSpeedArc(animated animated: Bool = false)
+    fileprivate func setupSpeedArc(animated: Bool = false)
     {
         self.speedArc.strokeEnd = min(CGFloat(self.speed) / CGFloat(self.maxSpeed), 1)
     }

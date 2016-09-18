@@ -9,10 +9,10 @@
 import Foundation
 import CoreLocation
 
-final class HereJSONDataProvider: JSONDataProvider<CLLocation, HereSpeedLimit, HereAPIAccessInformation>
+final class HereJSONDataProvider: JSONDataProvider<CLLocation, HereSpeedLimit>
 {
     init(requestHandler: URLRequestHandler)
     {
-        super.init(HereAPIAccessInformation.self, requestHandler: requestHandler)
+        super.init(apiInformation: HereAPIAccessInformation.reference, requestHandler: requestHandler)
     }
 }

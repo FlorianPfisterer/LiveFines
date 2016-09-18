@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let descriptionFont = UIFont.systemFontOfSize(21)
+private let descriptionFont = UIFont.systemFont(ofSize: 21)
 private let outerMargin: CGFloat = 14
 private let innerMargin: CGFloat = 13
 
@@ -16,8 +16,8 @@ class OkayView: UIView
 {
     // MARK: - Subviews
     let imageView = UIImageView()
-    private let descriptionLabel = UILabel()
-    private let containerView = UIView()
+    fileprivate let descriptionLabel = UILabel()
+    fileprivate let containerView = UIView()
 
     override var animatedSubviews: [UIView] {
         return [self.imageView, self.descriptionLabel]
@@ -32,7 +32,7 @@ class OkayView: UIView
         didSet
         {
             guard oldValue != self.showMessage || !oldValue else { return }
-            UIView.animateWithDuration(0.3, animations: {
+            UIView.animate(withDuration: 0.3, animations: {
                 self.animatedSubviews.each { $0.alpha = self.showMessage ? 1 : 0 }
             })
         }
@@ -40,13 +40,13 @@ class OkayView: UIView
 
     var title: String? {
         get { return self.descriptionLabel.text ?? "" }
-        set { self.descriptionLabel.text = newValue?.uppercaseString }
+        set { self.descriptionLabel.text = newValue?.uppercased() }
     }
 
     // MARK: - Init
     init(image: UIImage)
     {
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         self.image = image
         self.sharedInitialization()
     }
@@ -63,7 +63,7 @@ class OkayView: UIView
         self.sharedInitialization()
     }
 
-    private func sharedInitialization()
+    fileprivate func sharedInitialization()
     {
         self.backgroundColor = Constants.Color.darkGray
         self.tintColor = Constants.Color.green
@@ -73,35 +73,35 @@ class OkayView: UIView
             self.addSubview(view)
         }
 
-        self.imageView.contentMode = .ScaleAspectFit
+        self.imageView.contentMode = .scaleAspectFit
         self.imageView.image = self.image
         self.imageView.tintColor = self.tintColor
         self.imageView.alpha = 0
 
-        self.descriptionLabel.textAlignment = .Center
+        self.descriptionLabel.textAlignment = .center
         self.descriptionLabel.font = descriptionFont
-        self.descriptionLabel.textColor = .whiteColor()
+        self.descriptionLabel.textColor = .white
         self.descriptionLabel.alpha = 0
 
         // constraints
-        NSLayoutConstraint(item: self.imageView, attribute: .Width, relatedBy: .Equal,
-                           toItem: self.imageView, attribute: .Height, multiplier: 1, constant: 0).active = true
-        NSLayoutConstraint(item: self.imageView, attribute: .CenterX, relatedBy: .Equal,
-                           toItem: self, attribute: .CenterX, multiplier: 0.65, constant: 0).active = true
+        NSLayoutConstraint(item: self.imageView, attribute: .width, relatedBy: .equal,
+                           toItem: self.imageView, attribute: .height, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: self.imageView, attribute: .centerX, relatedBy: .equal,
+                           toItem: self, attribute: .centerX, multiplier: 0.65, constant: 0).isActive = true
         self.imageView.constrain(toEdgesOfView: self, margin: { attribute in
             switch attribute
             {
-            case .Top: return outerMargin
-            case .Bottom: return -outerMargin
+            case .top: return outerMargin
+            case .bottom: return -outerMargin
             default: return nil
             }
         })
-        NSLayoutConstraint(item: self.imageView, attribute: .Trailing, relatedBy: .Equal,
-                           toItem: self.descriptionLabel, attribute: .Leading, multiplier: 1, constant: -innerMargin).active = true
-        NSLayoutConstraint(item: self.descriptionLabel, attribute: .Top, relatedBy: .Equal,
-                           toItem: self.imageView, attribute: .Top, multiplier: 1, constant: 0).active = true
-        NSLayoutConstraint(item: self.descriptionLabel, attribute: .Bottom, relatedBy: .Equal,
-                           toItem: self.imageView, attribute: .Bottom, multiplier: 1, constant: 0).active = true
+        NSLayoutConstraint(item: self.imageView, attribute: .trailing, relatedBy: .equal,
+                           toItem: self.descriptionLabel, attribute: .leading, multiplier: 1, constant: -innerMargin).isActive = true
+        NSLayoutConstraint(item: self.descriptionLabel, attribute: .top, relatedBy: .equal,
+                           toItem: self.imageView, attribute: .top, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: self.descriptionLabel, attribute: .bottom, relatedBy: .equal,
+                           toItem: self.imageView, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
     }
 
     override func tintColorDidChange()

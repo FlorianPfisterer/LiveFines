@@ -38,11 +38,10 @@ extension Country
     }
 }
 
-extension NSLocale
+extension Locale
 {
-    static func currentCountry() -> Country
-    {
-        switch NSLocale.autoupdatingCurrentLocale().localeIdentifier.lowercaseString
+    static var currentCountry: Country {
+        switch NSLocale.autoupdatingCurrent.identifier.lowercased()
         {
         case "de":
             return Germany.reference

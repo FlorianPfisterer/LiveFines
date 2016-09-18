@@ -12,26 +12,26 @@ import RealmSwift
 
 protocol NodeUpdateReceiver: class, AlertPresenter
 {
-    func update(node node: Node)
-    func update(speed speed: Int)
+    func update(node: Node)
+    func update(speed: Int)
     func receivedInvalidData()
 }
 
 final class NodeProvider: NSObject
 {
     // MARK: - Data Provider
-    private let locationManager: CLLocationManager
-    private var locationCache: CLLocation?
-    private var isFetchingLocation = false
+    fileprivate let locationManager: CLLocationManager
+    fileprivate var locationCache: CLLocation?
+    fileprivate var isFetchingLocation = false
     
-    private var speedlimitProvider: HereJSONDataProvider
-    private var speedlimitCallbackId: Int?
+    fileprivate var speedlimitProvider: HereJSONDataProvider
+    fileprivate var speedlimitCallbackId: Int?
     
     // MARK: - Other Private Properties
-    private weak var updateReceiver: NodeUpdateReceiver?
+    fileprivate weak var updateReceiver: NodeUpdateReceiver?
     
-    private let country: Country
-    private var realm: Realm
+    fileprivate let country: Country
+    fileprivate var realm: Realm
     
     // MARK: - Initialization
     init(requestHandler: URLRequestHandler, realm: Realm)
@@ -39,7 +39,7 @@ final class NodeProvider: NSObject
         self.locationManager = CLLocationManager()
         self.speedlimitProvider = HereJSONDataProvider(requestHandler: requestHandler)
         
-        self.country = NSLocale.currentCountry()
+        self.country = Locale.currentCountry
         self.realm = realm
         
         super.init()
@@ -49,10 +49,10 @@ final class NodeProvider: NSObject
     }
     
     // MARK: - Setup
-    private func setupLocationManager()
+    fileprivate func setupLocationManager()
     {
         self.locationManager.delegate = self
-        self.locationManager.activityType = .AutomotiveNavigation
+        self.locationManager.activityType = .automotiveNavigation
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.distanceFilter = 0
         
@@ -63,7 +63,7 @@ final class NodeProvider: NSObject
 extension NodeProvider
 {
     // MARK: - Public Functions
-    func startReceivingUpdates(receiver: NodeUpdateReceiver)
+    func startReceivingUpdates(_ receiver: NodeUpdateReceiver)
     {
         self.updateReceiver = receiver
         
@@ -79,7 +79,7 @@ extension NodeProvider
         self.updateReceiver = nil
         
         // unregister Callbacks
-        if let id = self.speedlimitCallbackId { self.speedlimitProvider.unregisterCallback(withId: id) }
+        if let id = self.speedlimitCallbackId { self.speedlimitProvider.unregisterCallback(with: id) }
         
         self.locationManager.stopUpdatingLocation()
         self.isFetchingLocation = false
@@ -89,9 +89,9 @@ extension NodeProvider
 extension NodeProvider: CLLocationManagerDelegate
 {
     // MARK: - Location Manager Delegate
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
-        guard let location = locations.last where location.horizontalAccuracy > 0 else
+        guard let location = locations.last , location.horizontalAccuracy > 0 else
         {
             self.handle(error: .local(LocationError.noLocations))
             return 
@@ -100,25 +100,25 @@ extension NodeProvider: CLLocationManagerDelegate
         self.speedUpdate(location.speed)
         
         // no significant input changes
-        if let cache = self.locationCache where cache ≈ location { return }
+        if let cache = self.locationCache , cache ≈ location { return }
         self.locationCache = location
         
         self.locationUpdate(location)
     }
-    
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError)
+
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Swift.Error)
     {
         self.handle(error: .local(LocationError.other(error.localizedDescription)))
     }
     
     // MARK: - Callbacks
-    private func speedUpdate(speed: Double)
+    fileprivate func speedUpdate(_ speed: Double)
     {
         let roundedKmh = Int(speed * 3.6)
         self.updateReceiver?.update(speed: roundedKmh)
     }
 
-    private func locationUpdate(location: CLLocation)
+    fileprivate func locationUpdate(_ location: CLLocation)
     {
         // query the database for similar location nodes
         let result = self.query(forNodeAtLocation: location)
@@ -133,7 +133,7 @@ extension NodeProvider: CLLocationManagerDelegate
         }
     }
     
-    func speedlimitUpdate(speedlimitResult: Result<(HereSpeedLimit, CLLocation)>)
+    func speedlimitUpdate(_ speedlimitResult: Result<(HereSpeedLimit, CLLocation)>)
     {
         switch speedlimitResult
         {
@@ -154,7 +154,7 @@ extension NodeProvider: CLLocationManagerDelegate
 extension NodeProvider
 {
     // MARK: - Realm Querying
-    private func query(forNodeAtLocation location: CLLocation) -> Result<Node>
+    fileprivate func query(forNodeAtLocation location: CLLocation) -> Result<Node>
     {
         let node = Node.node(closeToLocation: location, inRealm: self.realm)
         return node == nil ? .error(.local(LocationError.noMatchingNodes)) : .success(node!)
@@ -163,7 +163,7 @@ extension NodeProvider
 
 extension NodeProvider
 {
-    private func handle(error error: LFError)
+    fileprivate func handle(error: LFError)
     {
         switch error
         {

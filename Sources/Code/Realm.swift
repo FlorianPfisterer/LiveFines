@@ -13,12 +13,12 @@ import RealmSwift
 extension Realm
 {
     // MARK: - General
-    func write(object object: Object) throws
+    func write(object: Object) throws
     {
         try self.write { self.add(object) }
     }
     
-    func update(@autoclosure object object: () -> Object) throws
+    func update(object: @autoclosure () -> Object) throws
     {
         try self.write { self.add(object(), update: true) }
     }

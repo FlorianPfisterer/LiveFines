@@ -24,10 +24,10 @@ class DisplayView: UIView
     }
 
     // MARK: - Configuration
-    var amountFont = UIFont.systemFontOfSize(36) {
+    var amountFont = UIFont.systemFont(ofSize: 36) {
         didSet { self.amountLabel.font = self.amountFont }
     }
-    var typeFont = UIFont.systemFontOfSize(13) {
+    var typeFont = UIFont.systemFont(ofSize: 13) {
         didSet { self.typeLabel.font = self.typeFont }
     }
     
@@ -54,7 +54,7 @@ class DisplayView: UIView
     // MARK: - Init
     init()
     {
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         self.sharedInitialization()
     }
 
@@ -70,18 +70,18 @@ class DisplayView: UIView
         self.sharedInitialization()
     }
 
-    private func sharedInitialization()
+    fileprivate func sharedInitialization()
     {
         self.backgroundColor = Constants.Color.darkGray
 
         // setup labels
         [self.amountLabel, self.typeLabel].each { label in
             label.translatesAutoresizingMaskIntoConstraints = false
-            label.textAlignment = .Center
+            label.textAlignment = .center
             self.addSubview(label)
 
-            NSLayoutConstraint(item: label, attribute: .CenterX, relatedBy: .Equal,
-                toItem: self, attribute: .CenterX, multiplier: 1, constant: 0).active = true
+            NSLayoutConstraint(item: label, attribute: .centerX, relatedBy: .equal,
+                toItem: self, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
         }
 
         // configure
@@ -91,16 +91,11 @@ class DisplayView: UIView
         self.typeLabel.textColor = descriptionColor
 
         // layout
-        NSLayoutConstraint(item: self.amountLabel, attribute: .Leading, relatedBy: .GreaterThanOrEqual,
-                           toItem: self, attribute: .Leading, multiplier: 1, constant: 0).active = true
-        NSLayoutConstraint(item: self, attribute: .Trailing, relatedBy: .GreaterThanOrEqual,
-                           toItem: self.amountLabel, attribute: .Trailing, multiplier: 1, constant: 0).active = true
-        
-        NSLayoutConstraint(item: self.amountLabel, attribute: .Top, relatedBy: .Equal,
-                           toItem: self, attribute: .Top, multiplier: 1, constant: verticalMargin).active = true
-        self.innerSeparatorConstraint = NSLayoutConstraint(item: self.typeLabel, attribute: .Top, relatedBy: .Equal,
-                           toItem: self.amountLabel, attribute: .Bottom, multiplier: 1, constant: self.innerMargin)
-        self.innerSeparatorConstraint.active = true
+        NSLayoutConstraint(item: self.amountLabel, attribute: .top, relatedBy: .equal,
+                           toItem: self, attribute: .top, multiplier: 1, constant: verticalMargin).isActive = true
+        self.innerSeparatorConstraint = NSLayoutConstraint(item: self.typeLabel, attribute: .top, relatedBy: .equal,
+                           toItem: self.amountLabel, attribute: .bottom, multiplier: 1, constant: self.innerMargin)
+        self.innerSeparatorConstraint.isActive = true
 //        NSLayoutConstraint(item: self.typeLabel, attribute: .Bottom, relatedBy: .Equal,
 //                           toItem: self, attribute: .Bottom, multiplier: 1, constant: -self.verticalMargin).active = true
 

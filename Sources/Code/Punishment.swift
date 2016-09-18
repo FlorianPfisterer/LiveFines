@@ -71,17 +71,17 @@ extension Punishment: Hashable
 // MARK: - Convenience Static Functions
 extension Punishment
 {
-    static func financial(amount: Int) -> Punishment
+    static func financial(_ amount: Int) -> Punishment
     {
         return Punishment(type: .financial, amount: amount)
     }
     
-    static func points(count: Int) -> Punishment
+    static func points(_ count: Int) -> Punishment
     {
         return Punishment(type: .points, amount: count)
     }
     
-    static func license(months: Int) -> Punishment
+    static func license(_ months: Int) -> Punishment
     {
         return Punishment(type: .license, amount: months)
     }

@@ -21,20 +21,20 @@ class SpeedLimitView: UIView
     @IBInspectable var fontSize: CGFloat = 100 {
         didSet
         {
-            self.contentLabel.font = UIFont.systemFontOfSize(self.fontSize, weight: self.fontWeigth)
+            self.contentLabel.font = UIFont.systemFont(ofSize: self.fontSize, weight: self.fontWeigth)
         }
     }
 
     @IBInspectable var fontWeigth: CGFloat = 0.34 {
         didSet
         {
-            self.contentLabel.font = UIFont.systemFontOfSize(self.fontSize, weight: self.fontWeigth)
+            self.contentLabel.font = UIFont.systemFont(ofSize: self.fontSize, weight: self.fontWeigth)
         }
     }
 
     @IBInspectable var borderWidth: CGFloat = 28
     @IBInspectable var unlimitedBorderWidth: CGFloat = 15
-    private var currentBorderWidth: CGFloat = 28 {
+    fileprivate var currentBorderWidth: CGFloat = 28 {
         didSet { self.borderLayer.lineWidth = self.currentBorderWidth }
     }
 
@@ -45,13 +45,13 @@ class SpeedLimitView: UIView
     @IBInspectable var unlimitedLineWidth: CGFloat = 6
     
     // MARK: - Private Subviews etc.
-    private let borderLayer = CAShapeLayer()
-    private let linesLayer = CAShapeLayer()
+    fileprivate let borderLayer = CAShapeLayer()
+    fileprivate let linesLayer = CAShapeLayer()
 
-    private let contentLabel: UILabel = {
+    fileprivate let contentLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .Center
+        label.textAlignment = .center
         return label
     }()
 
@@ -79,27 +79,27 @@ class SpeedLimitView: UIView
         self.sharedInitialization()
     }
     
-    private func sharedInitialization()
+    fileprivate func sharedInitialization()
     {
         self.currentBorderWidth = self.borderWidth
 
         self.layer.addSublayer(self.borderLayer)
-        self.borderLayer.strokeColor = Constants.Color.red.CGColor  //  default
-        self.borderLayer.fillColor = UIColor.whiteColor().CGColor
+        self.borderLayer.strokeColor = Constants.Color.red.cgColor  //  default
+        self.borderLayer.fillColor = UIColor.white.cgColor
 
         self.linesLayer.lineCap = kCALineCapButt
-        self.linesLayer.strokeColor = UIColor.blackColor().CGColor
+        self.linesLayer.strokeColor = UIColor.black.cgColor
         self.linesLayer.lineWidth = self.unlimitedLineWidth
 
-        self.contentLabel.font = UIFont.systemFontOfSize(self.fontSize, weight: self.fontWeigth)
-        self.contentLabel.backgroundColor = .clearColor()
+        self.contentLabel.font = UIFont.systemFont(ofSize: self.fontSize, weight: self.fontWeigth)
+        self.contentLabel.backgroundColor = .clear
         
         self.addSubview(self.contentLabel)
 
-        self.backgroundColor = .whiteColor()
+        self.backgroundColor = .white
         self.clipsToBounds = true
         self.layer.shadowRadius = 5
-        self.layer.shadowColor = UIColor.blackColor().CGColor
+        self.layer.shadowColor = UIColor.black.cgColor
         self.layer.cornerRadius = self.radius
         self.layer.masksToBounds = true
 
@@ -107,7 +107,7 @@ class SpeedLimitView: UIView
     }
     
     // MARK: - UI Setup
-    private func applyDesign()
+    fileprivate func applyDesign()
     {
         switch self.state
         {
@@ -121,11 +121,11 @@ class SpeedLimitView: UIView
             self.linesLayer.removeFromSuperlayer()
             self.contentLabel.text = "\(self.limit)"
             self.currentBorderWidth = self.borderWidth
-            self.borderLayer.strokeColor = Constants.Color.red.CGColor
+            self.borderLayer.strokeColor = Constants.Color.red.cgColor
 
         case .unlimited:
             self.contentLabel.text = ""
-            self.borderLayer.strokeColor = UIColor.blackColor().CGColor
+            self.borderLayer.strokeColor = UIColor.black.cgColor
             self.currentBorderWidth = self.unlimitedLineWidth
             self.layer.addSublayer(self.linesLayer)
         }
@@ -143,11 +143,11 @@ extension SpeedLimitView
         self.contentLabel.frame = self.bounds
     }
     
-    override func drawRect(rect: CGRect)
+    override func draw(_ rect: CGRect)
     {
         let arcRadius = self.radius - self.marginWidth - self.currentBorderWidth / 2
         let arcPath = UIBezierPath(arcCenter: self.innerCenter, radius: arcRadius, startAngle: 0, endAngle: -0.000001, clockwise: true)
-        self.borderLayer.path = arcPath.CGPath
+        self.borderLayer.path = arcPath.cgPath
 
         if self.state == .unlimited
         {
@@ -156,15 +156,15 @@ extension SpeedLimitView
             for offset: CGFloat in [0, 0.08, -0.08, 0.16, -0.16]
             {
                 let radiusOffset: CGFloat = abs(offset) * 30 + self.marginWidth
-                linePath.move(to: self.point(forAngle: unlimitedStartAngle + offset, withRadiusOffset: radiusOffset))
-                linePath.draw(to: self.point(forAngle: unlimitedEndAngle - offset, withRadiusOffset: radiusOffset))
+                _ = linePath.moved(to: self.point(forAngle: unlimitedStartAngle + offset, withRadiusOffset: radiusOffset))
+                            .drawn(to: self.point(forAngle: unlimitedEndAngle - offset, withRadiusOffset: radiusOffset))
             }
 
-            self.linesLayer.path = linePath.CGPath
+            self.linesLayer.path = linePath.cgPath
         }
     }
 
-    private func point(forAngle angle: CGFloat, withRadiusOffset offset: CGFloat = 0) -> CGPoint
+    fileprivate func point(forAngle angle: CGFloat, withRadiusOffset offset: CGFloat = 0) -> CGPoint
     {
         let x = self.innerCenter.x + cos(angle) * (self.radius - offset)
         let y = self.innerCenter.y + sin(angle) * (self.radius - offset)
@@ -174,7 +174,7 @@ extension SpeedLimitView
 
 extension SpeedLimitView
 {
-    private func updatedLimit()
+    fileprivate func updatedLimit()
     {
         switch self.limit
         {

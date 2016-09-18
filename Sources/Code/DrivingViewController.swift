@@ -10,6 +10,8 @@ import UIKit
 import RealmSwift
 
 private let expandedPunishmentVCIdentifier = "ExpandedPunishmentsViewController"
+fileprivate let expandTimeout: TimeInterval = 1
+fileprivate let standardTimeout: TimeInterval = 3
 
 class DrivingViewController: UIViewController
 {
@@ -27,13 +29,15 @@ class DrivingViewController: UIViewController
     internal var expandedPunishmentsController: ExpandedPunishmentsViewController?
     internal var expandedPunishmentsVCHeightConstraint: NSLayoutConstraint?
 
-    private var punishmentViews: [Punishment.PType : PunishmentView] = [:]
-    private var okayView: OkayView!
+    fileprivate var punishmentViews: [Punishment.PType : PunishmentView] = [:]
+    fileprivate var okayView: OkayView!
     
-    private var realm: Realm!
-    private var provider: NodeProvider!
-    private let country = NSLocale.currentCountry()
+    fileprivate var realm: Realm!
+    fileprivate var provider: NodeProvider!
+    fileprivate let country = Locale.currentCountry
 
+    fileprivate var punishedSince: TimeInterval?
+    fileprivate var okaySince: TimeInterval?
     internal var state: ViewState = .standard {
         didSet
         {
@@ -53,13 +57,13 @@ class DrivingViewController: UIViewController
         self.setupExpandedPunishmentController()
     }
     
-    override func viewWillAppear(animated: Bool)
+    override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
         self.provider?.startReceivingUpdates(self)
     }
 
-    override func viewDidAppear(animated: Bool)
+    override func viewDidAppear(_ animated: Bool)
     {
         super.viewDidAppear(animated)
 
@@ -68,14 +72,14 @@ class DrivingViewController: UIViewController
 //        self.punishmentsStackView.hidden = true
     }
     
-    override func viewDidDisappear(animated: Bool)
+    override func viewDidDisappear(_ animated: Bool)
     {
         super.viewDidDisappear(animated)
         self.provider?.stopReceivingUpdates()
     }
     
     // MARK: - Setup
-    private func setupDataProvider()
+    fileprivate func setupDataProvider()
     {
         switch Database.realm()
         {
@@ -93,7 +97,7 @@ class DrivingViewController: UIViewController
         }
     }
     
-    private func setupPunishmentViews()
+    fileprivate func setupPunishmentViews()
     {
         self.separatorBackgroundView.alpha = 0
 //
@@ -104,7 +108,7 @@ class DrivingViewController: UIViewController
         for ptype in Punishment.PType.all
         {
             let punishmentView = PunishmentView()
-            punishmentView.hidden = true
+            punishmentView.isHidden = true
             self.punishmentsStackView.addArrangedSubview(punishmentView)
             self.punishmentViews[ptype] = punishmentView
         }
@@ -114,38 +118,38 @@ class DrivingViewController: UIViewController
         // create okay view
         self.okayView = OkayView(image: UIImage(named: "praiseIcon") ?? UIImage())
         self.okayView.showMessage = false
-        self.okayView.title = "Weiter so!"  // TODO Localize
-        self.punishmentsStackView.insertArrangedSubview(self.okayView, atIndex: 0)
+        self.okayView.title = "Weiter so !"  // TODO Localize TODO make more interesting with changing motivational messages
+        self.punishmentsStackView.insertArrangedSubview(self.okayView, at: 0)
     }
 
-    private func setupExpandedPunishmentController()
+    fileprivate func setupExpandedPunishmentController()
     {
         guard let storyboard = self.storyboard,
-              let expandedPunishmentsVC = storyboard.instantiateViewControllerWithIdentifier(expandedPunishmentVCIdentifier) as? ExpandedPunishmentsViewController else
+              let expandedPunishmentsVC = storyboard.instantiateViewController(withIdentifier: expandedPunishmentVCIdentifier) as? ExpandedPunishmentsViewController else
         {
             print("ERROR: couldn't instantiate ExpandedPunishmentsVC!")
             return
         }
 
-        expandedPunishmentsVC.willMoveToParentViewController(self)
+        expandedPunishmentsVC.willMove(toParentViewController: self)
         self.view.addSubview(expandedPunishmentsVC.view)
         self.addChildViewController(expandedPunishmentsVC)
-        expandedPunishmentsVC.didMoveToParentViewController(self)
+        expandedPunishmentsVC.didMove(toParentViewController: self)
 
         // add constraints
         expandedPunishmentsVC.view.translatesAutoresizingMaskIntoConstraints = false
         expandedPunishmentsVC.view.constrain(toEdgesOfView: self.view, margin: { attribute in
             switch attribute
             {
-            case .Leading, .Trailing: return 0
+            case .leading, .trailing: return 0
             default: return nil
             }
         })
 
-        NSLayoutConstraint(item: expandedPunishmentsVC.view, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1, constant: 0).active = true
+        NSLayoutConstraint(item: expandedPunishmentsVC.view, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
 
-        let heightConstraint = NSLayoutConstraint(item: expandedPunishmentsVC.view, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 460)
-        heightConstraint.active = true
+        let heightConstraint = NSLayoutConstraint(item: expandedPunishmentsVC.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 460)
+        heightConstraint.isActive = true
         self.expandedPunishmentsVCHeightConstraint = heightConstraint
 
         self.expandedPunishmentsController = expandedPunishmentsVC
@@ -155,19 +159,19 @@ class DrivingViewController: UIViewController
 // MARK: - Node Updates
 extension DrivingViewController: NodeUpdateReceiver
 {
-    func update(node node: Node)
+    func update(node: Node)
     {
         self.speedLimitView.limit = node.speedLimit // TODO update animation?
         self.speedometerView.speedLimit = node.speedLimit
-        self.configure(withPenalty: self.country.penalty(fromNode: node))
-
-        self.state = (node.speed > node.speedLimit) ? .expanded : .standard
+        let penalty = self.country.penalty(fromNode: node)
+        self.configure(withPenalty: penalty)
     }
 
-    func update(speed speed: Int)
+    func update(speed: Int)
     {
         self.speedometerView.speed = speed
-        self.configure(withPenalty: self.country.penalty(fromSpeed: speed, atLimit: self.speedLimitView.limit))
+        let penalty = self.country.penalty(fromSpeed: speed, atLimit: self.speedLimitView.limit)
+        self.configure(withPenalty: penalty)
     }
 
     func receivedInvalidData()
@@ -182,11 +186,12 @@ extension DrivingViewController: NodeUpdateReceiver
 
 extension DrivingViewController
 {
-    private func configure(withPenalty penalty: Penalty?)
+    fileprivate func configure(withPenalty penalty: Penalty?)
     {
+        self.updateViewState(for: penalty)
         self.expandedPunishmentsController?.updatePenalty(penalty)
         
-        if let penalty = penalty where penalty.shouldPunish
+        if let penalty = penalty , penalty.shouldPunish
         {
             self.okayView.animate(show: false)
 
@@ -201,15 +206,43 @@ extension DrivingViewController
             self.clearPunishments()
         }
 
-        UIView.animateWithDuration(0.3, delay: 0.1, options: .CurveEaseIn, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveEaseIn, animations: {
             self.separatorBackgroundView.alpha = 1
         }, completion: nil)
     }
     
-    private func clearPunishments()
+    fileprivate func clearPunishments()
     {
         self.okayView.animate(show: true)
         self.okayView.showMessage = self.speedLimitView.state != .unknown
         self.punishmentViews.values.each { $0.punishment = nil }
+    }
+
+    fileprivate func updateViewState(for penalty: Penalty?)
+    {
+        if let penalty = penalty, penalty.shouldPunish
+        {
+            if let punishedSince = self.punishedSince, TimeInterval.now >= punishedSince + expandTimeout, self.state != .expanded
+            {
+                self.state = .expanded
+                self.punishedSince = nil
+            }
+            else if self.state == .standard
+            {
+                self.punishedSince = TimeInterval.now
+            }
+        }
+        else if let okaySince = self.okaySince
+        {
+            if TimeInterval.now >= okaySince + standardTimeout
+            {
+                self.okaySince = nil
+                self.state = .standard
+            }
+        }
+        else if self.state == .expanded
+        {
+            self.okaySince = TimeInterval.now
+        }
     }
 }

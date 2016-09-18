@@ -29,7 +29,7 @@ extension Node
                     minSpeed, maxSpeed)
         
         // sort by the closes Node first
-        let nodes = Array(results).sort({ $0.distance(to: coordinate) < $1.distance(to: coordinate) })
+        let nodes = Array(results).sorted(by: { $0.distance(to: coordinate) < $1.distance(to: coordinate) })
         return nodes.first
     }
 }

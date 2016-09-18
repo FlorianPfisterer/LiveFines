@@ -25,10 +25,10 @@ final class HereMapsTests: XCTestCase
     
     func testHereAPIReturnsCorrectSpeedLimit()
     {
-        let expectation = self.expectationWithDescription("Here Maps API should return the correct speed limit: 70")
+        let expectation = self.expectation(description: "Here Maps API should return the correct speed limit: 70")
         let location = CLLocation(latitude: 48.611442, longitude: 8.881654)
         
-        self.dataProvider.registerCallback { result in
+        _ = self.dataProvider.registerCallback { result in
             switch result
             {
             case .error(let error):
@@ -43,7 +43,7 @@ final class HereMapsTests: XCTestCase
         
         self.dataProvider.updateInputData(location)
         
-        self.waitForExpectationsWithTimeout(4) { error in
+        self.waitForExpectations(timeout: 4) { error in
             if let error = error { print(error.localizedDescription) }
         }
     }

@@ -16,49 +16,46 @@ protocol JSONDataType
     init?(json: JSON)
 }
 
-class JSONDataProvider<Input, Output, APIInformation where APIInformation: APIAccessInformation, APIInformation.InputDataType == Input, Input: Equatable, Input: SignificanceComparable, Output: JSONDataType>: DataProvider
+class JSONDataProvider<Input, Output>: DataProvider
+    where Output: JSONDataType, Input: Equatable, Input: SignificanceComparable
 {
-    typealias InputDataType = Input
-    typealias OutputDataType = Output
-    
     static var updateCallbacksWithoutInputChange: Bool { return false }
     
     // MARK: - Protocol Variables
-    var callbackId = 0
-    var callbacks: [Int : ((Result<(Output, Input)>) -> Void)]
+    var callbackId: Int = 0
+    var callbacks: [Int : (Result<(Output, Input)>) -> ()]
     
     var inputCache: Input?
     var outputCache: Result<(Output, Input)>?
     
     // MARK: - Private Properties
-    private var apiInformation: APIInformation.Type
-    private var requestHandler: URLRequestHandler
+    fileprivate let apiInformation: APIAccessInformation<Input>
+    fileprivate let requestHandler: URLRequestHandler
     
     // MARK: - Init
-    init(_ apiInformation: APIInformation.Type, requestHandler: URLRequestHandler)
+    init(apiInformation: APIAccessInformation<Input>, requestHandler: URLRequestHandler)
     {
         self.apiInformation = apiInformation
         self.requestHandler = requestHandler
         self.callbacks = [:]
     }
 }
+
 extension JSONDataProvider
 {
     // MARK: - Fetch Data
-    func fetchData(fromInput input: InputDataType)
+    func fetchData(from input: Input)
     {
         let method = self.apiInformation.requestMethod
         let url = self.apiInformation.baseURL
-        let parameters = self.apiInformation.apiParameters(forInputData: input)
-        
-        self.requestHandler.request(method, url, parameters: parameters) { response in
+        let parameters = self.apiInformation.apiParameters(for: input)
+
+        self.requestHandler.request(url, method: method, parameters: parameters as [String : AnyObject]?, completion: { response in
             let result = response.result
-            guard let value = result.value,
-                let output = OutputDataType(json: JSON(value))
-                where result.error == nil else
+            guard let value = result.value, let output = Output(json: JSON(value)), result.error == nil else
             {
                 var output: Result<(Output, Input)>
-                if let error = result.error as? ErrorType
+                if let error = result.error
                 {
                     output = .error(.local(error))
                     Log.info("\(error) with response: \(response.debugDescription)")
@@ -67,12 +64,12 @@ extension JSONDataProvider
                 {
                     output = .error(.other("Couldn't complete request \(response.request ?? nil) with response: \(response.debugDescription)"))
                 }
-                
-                self.notifyCallbacks(withOutput: output)
+
+                self.notifyCallbacks(with: output)
                 return
             }
-            
-            self.notifyCallbacks(withOutput: .success((output, input)))
-        }
+
+            self.notifyCallbacks(with: .success((output, input)))
+        })
     }
 }
