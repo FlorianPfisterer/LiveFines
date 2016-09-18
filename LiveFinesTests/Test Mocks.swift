@@ -15,31 +15,31 @@ import SwiftyJSON
 struct TestURLRequestHandler: URLRequestHandler
 { 
     // test request function returns the parameters after 1 second
-    func request(method: Alamofire.Method, _ url: URLStringConvertible, parameters: [String : AnyObject]?, completion: (Response<AnyObject, NSError>) -> Void)
+    func request(_ url: URLConvertible, method: HTTPMethod, parameters: [String : AnyObject]?, completion: @escaping (DataResponse<Any>) -> Void)
     {
         async(1) {
-            let response = Response<AnyObject, NSError>(request: nil, response: nil, data: nil, result: Alamofire.Result.Success(parameters!))
+            let response = DataResponse<Any>(request: nil, response: nil, data: nil, result: Alamofire.Result.success(parameters!))
             completion(response)
         }
     }
 }
 
-struct TestAPIInformation: APIAccessInformation
+final class TestAPIInformation: APIAccessInformation<String>
 {
-    typealias InputDataType = String
+    typealias Input = String
     
-    static var baseURL: String {
+    override var baseURL: String {
         return "test URL"
     }
     
-    static var requestMethod: Alamofire.Method {
-        return .GET
+    override var requestMethod: Alamofire.HTTPMethod {
+        return .get
     }
     
     // returns inputData for "content" key
-    static func apiParameters(forInputData inputData: String) -> [String : AnyObject]
+    override func apiParameters(for input: String) -> [String : Any]
     {
-        return ["content" : inputData]
+        return ["content" : input]
     }
 }
 
@@ -56,7 +56,7 @@ struct TestJSONData: JSONDataType
 
 extension String: SignificanceComparable
 {
-    func significantChanges(to to: String) -> Bool
+    func significantChanges(to: String) -> Bool
     {
         return self != to
     }

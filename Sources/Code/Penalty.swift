@@ -10,7 +10,7 @@ import Foundation
 
 struct Penalty
 {
-    private let punishments: Set<Punishment>
+    fileprivate let punishments: Set<Punishment>
     
     var shouldPunish: Bool { return !self.punishments.isEmpty }
     
@@ -55,12 +55,12 @@ extension Penalty
         return Penalty()
     }
     
-    static func single(punishment: Punishment) -> Penalty
+    static func single(_ punishment: Punishment) -> Penalty
     {
         return Penalty(punishment)
     }
     
-    static func multiple(punishments: [Punishment]) -> Penalty
+    static func multiple(_ punishments: [Punishment]) -> Penalty
     {
         return Penalty(multiple: punishments)
     }

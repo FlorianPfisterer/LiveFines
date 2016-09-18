@@ -15,17 +15,17 @@ class ExpandedPunishmentsViewController: UIViewController
 {
     // MARK: - IBOutlets
     @IBOutlet weak var mainContainerView: UIView!
-    private let okayImageView = UIImageView()
+    fileprivate let okayImageView = UIImageView()
 
-    private var showsMainPunishment: Bool = false
+    fileprivate var showsMainPunishment: Bool = false
     @IBOutlet weak var mainAmountLabel: UILabel!
     @IBOutlet weak var mainCurrencyLabel: UILabel!
     @IBOutlet weak var mainTypeLabel: UILabel!
 
-    private var showsAdditionalPunishments: Int = 0 {
+    fileprivate var showsAdditionalPunishments: Int = 0 {
         didSet {
             self.stackViewHeightConstraint.constant = CGFloat(self.showsAdditionalPunishments) * punishmentViewHeight
-            UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions(), animations: {
                 self.view.layoutIfNeeded()
             }, completion: nil)
         }
@@ -39,7 +39,7 @@ class ExpandedPunishmentsViewController: UIViewController
     // MARK: - Private Properties
     var state: State = .okay {
         didSet {
-            UIView.animateWithDuration(self.state == .okay ? 0.3 : 0.6, delay: 0, options: .CurveEaseInOut, animations: {
+            UIView.animate(withDuration: self.state == .okay ? 0.3 : 0.6, delay: 0, options: UIViewAnimationOptions(), animations: {
                 self.view.backgroundColor = self.state.color
                 self.okayImageView.alpha = self.state == .okay ? 1 : 0
             }, completion: nil)
@@ -53,14 +53,14 @@ class ExpandedPunishmentsViewController: UIViewController
         self.configureOkayImageView()
     }
 
-    override func viewWillAppear(animated: Bool)
+    override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
     }
 
-    private func configureOkayImageView()
+    fileprivate func configureOkayImageView()
     {
-        self.okayImageView.contentMode = .ScaleAspectFit
+        self.okayImageView.contentMode = .scaleAspectFit
         self.okayImageView.image = UIImage(named: "praiseIconInversed")
         self.okayImageView.translatesAutoresizingMaskIntoConstraints = false
         self.okayImageView.alpha = 0
@@ -90,11 +90,11 @@ extension ExpandedPunishmentsViewController
         }
     }
 
-    func updatePenalty(penalty: Penalty?)
+    func updatePenalty(_ penalty: Penalty?)
     {
         // TODO state
         if let penalty = penalty, let financial = penalty[.financial]
-        where penalty.shouldPunish
+        , penalty.shouldPunish
         {
             self.state = .fatal // TODO
 
@@ -108,18 +108,18 @@ extension ExpandedPunishmentsViewController
         }
     }
 
-    private func showMainPunishment(punishment: Punishment)
+    fileprivate func showMainPunishment(_ punishment: Punishment)
     {
         self.mainAmountLabel.text = "\(punishment.amount)"
         self.mainCurrencyLabel.text = "€"   // TODO
         self.mainTypeLabel.text = "\(punishment.plainTypeDescription)"
 
-        UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions(), animations: {
             self.mainContainerView.alpha = 1
         }, completion: nil)
     }
 
-    private func showAdditionalPunishments(punishments: [Punishment])
+    fileprivate func showAdditionalPunishments(_ punishments: [Punishment])
     {
         self.showsAdditionalPunishments = punishments.count // adjusts the stackview height
 
@@ -128,35 +128,35 @@ extension ExpandedPunishmentsViewController
         case 0:
             self.upperAdditionalPunishmentView.alpha = 0
             self.lowerAdditionalPunishmentView.alpha = 0
-            self.lowerAdditionalPunishmentView.hidden = true
+            self.lowerAdditionalPunishmentView.isHidden = true
 
         case 1:
             self.upperAdditionalPunishmentView.configure(with: punishments[0])
             self.upperAdditionalPunishmentView.alpha = 1
             self.lowerAdditionalPunishmentView.alpha = 0
-            self.lowerAdditionalPunishmentView.hidden = true
+            self.lowerAdditionalPunishmentView.isHidden = true
 
         case 2:
             self.upperAdditionalPunishmentView.configure(with: punishments[0])
             self.upperAdditionalPunishmentView.alpha = 1
             self.lowerAdditionalPunishmentView.configure(with: punishments[1])
             self.lowerAdditionalPunishmentView.alpha = 1
-            self.lowerAdditionalPunishmentView.hidden = false
+            self.lowerAdditionalPunishmentView.isHidden = false
 
 
         default: return
         }
     }
 
-    private func clearPunishments()
+    fileprivate func clearPunishments()
     {
         self.state = .okay
         self.showsAdditionalPunishments = 0
         self.upperAdditionalPunishmentView.alpha = 0
         self.lowerAdditionalPunishmentView.alpha = 0
-        self.lowerAdditionalPunishmentView.hidden = true
+        self.lowerAdditionalPunishmentView.isHidden = true
 
-        UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions(), animations: {
             self.mainContainerView.alpha = 0
         }, completion: nil)
     }

@@ -11,13 +11,13 @@ import Alamofire
 
 protocol URLRequestHandler
 {
-    func request(method: Alamofire.Method, _ url: URLStringConvertible, parameters: [String : AnyObject]?, completion: (Alamofire.Response<AnyObject, NSError>) -> Void)
+    func request(_ url: URLConvertible, method: HTTPMethod, parameters: [String : AnyObject]?, completion: @escaping (DataResponse<Any>) -> Void)
 }
 
 struct AlamofireRequestHandler: URLRequestHandler
 {
-    func request(method: Alamofire.Method, _ url: URLStringConvertible, parameters: [String : AnyObject]?, completion: (Alamofire.Response<AnyObject, NSError>) -> Void)
+    func request(_ url: URLConvertible, method: HTTPMethod, parameters: [String : AnyObject]?, completion: @escaping (DataResponse<Any>) -> Void)
     {
-        Alamofire.request(method, url, parameters: parameters).responseJSON(completionHandler: completion)
+        Alamofire.request(url, method: method, parameters: parameters, headers: nil).responseJSON(completionHandler: completion)
     }
 }

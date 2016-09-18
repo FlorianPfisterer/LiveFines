@@ -18,7 +18,7 @@ class PunishmentView: DisplayView
             {
                 if self.amount != punishment.amount { self.blink(forChange: punishment.amount - self.amount, newValue: punishment.amount) }
                 self.amount = punishment.amount
-                self.type = punishment.typeDescription.uppercaseString
+                self.type = punishment.typeDescription.uppercased()
 
                 self.animate(show: true)
             }
@@ -30,7 +30,7 @@ class PunishmentView: DisplayView
         }
     }
 
-    private func blink(forChange change: Int, newValue: Int)
+    fileprivate func blink(forChange change: Int, newValue: Int)
     {
         guard !self.isBlinking else { return }
         self.isBlinking = true
@@ -50,11 +50,11 @@ class PunishmentView: DisplayView
         }
 
         let originalBackgroundColor = self.backgroundColor
-        UIView.animateKeyframesWithDuration(0.8, delay: 0.1, options: UIViewKeyframeAnimationOptions.AllowUserInteraction, animations: {
-            UIView.addKeyframeWithRelativeStartTime(0, relativeDuration: 0.15, animations: {
+        UIView.animateKeyframes(withDuration: 0.8, delay: 0.1, options: UIViewKeyframeAnimationOptions.allowUserInteraction, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.15, animations: {
                 self.backgroundColor = blinkColor
             })
-            UIView.addKeyframeWithRelativeStartTime(0.7, relativeDuration: 0.3, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.7, relativeDuration: 0.3, animations: {
                 self.backgroundColor = originalBackgroundColor
             })
         }, completion: { _ in self.isBlinking = false })

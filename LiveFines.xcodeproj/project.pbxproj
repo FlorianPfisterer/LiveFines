@@ -490,17 +490,20 @@
 					5CB896671D64C26600E64B99 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = LY9X4575EQ;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 					5CB8967B1D64C26600E64B99 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = LY9X4575EQ;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 5CB896671D64C26600E64B99;
 					};
 					5CB896861D64C26600E64B99 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = LY9X4575EQ;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 5CB896671D64C26600E64B99;
 					};
@@ -511,7 +514,6 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
 			);
 			mainGroup = 5CB8965F1D64C26600E64B99;
@@ -801,7 +803,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.florianpfisterer.LiveFines;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -820,7 +822,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.florianpfisterer.LiveFines;
 				PRODUCT_NAME = "$(TARGET_NAME)";

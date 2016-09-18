@@ -18,7 +18,7 @@ final class Database
         {
             return .success(try Realm())
         }
-        catch let error as Error
+        catch let error as RealmSwift.Error
         {
             return .error(.realm(error))
         }
@@ -28,7 +28,7 @@ final class Database
         }
     }
 
-    static func insert(object object: Object, intoRealm realm: Realm)
+    static func insert(object: Object, intoRealm realm: Realm)
     {
         do
         {
@@ -40,7 +40,7 @@ final class Database
         }
     }
     
-    static func update(@autoclosure object object: () -> Object, inRealm realm: Realm)
+    static func update(object: @autoclosure () -> Object, inRealm realm: Realm)
     {
         do
         {

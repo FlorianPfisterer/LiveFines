@@ -16,13 +16,13 @@ final class AdditionalPunishmentView: UIView
         didSet { self.amountLabel.text = self.amount }
     }
     @IBInspectable var type: String = "PUNKT" {
-        didSet { self.typeLabel.text = self.type.uppercaseString }
+        didSet { self.typeLabel.text = self.type.uppercased() }
     }
 
     // MARK: - Subviews
-    private let amountLabel = UILabel()
-    private let typeLabel = UILabel()
-    private let plusImageView = UIImageView()
+    fileprivate let amountLabel = UILabel()
+    fileprivate let typeLabel = UILabel()
+    fileprivate let plusImageView = UIImageView()
 
     // MARK: - Init
     override init(frame: CGRect)
@@ -37,41 +37,41 @@ final class AdditionalPunishmentView: UIView
         self.sharedInitialization()
     }
 
-    private func sharedInitialization()
+    fileprivate func sharedInitialization()
     {
         self.amountLabel.text = self.amount
-        self.amountLabel.font = UIFont.systemFontOfSize(57, weight: UIFontWeightMedium)
+        self.amountLabel.font = UIFont.systemFont(ofSize: 57, weight: UIFontWeightMedium)
         self.typeLabel.text = self.type
-        self.typeLabel.font = UIFont.systemFontOfSize(33, weight: UIFontWeightMedium)
+        self.typeLabel.font = UIFont.systemFont(ofSize: 33, weight: UIFontWeightMedium)
 
         [self.amountLabel, self.typeLabel].each { label in
-            label.textColor = UIColor.whiteColor()
-            label.textAlignment = .Center
+            label.textColor = UIColor.white
+            label.textAlignment = .center
             label.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview(label)
         }
 
         self.plusImageView.translatesAutoresizingMaskIntoConstraints = false
-        self.plusImageView.contentMode = .ScaleAspectFit
+        self.plusImageView.contentMode = .scaleAspectFit
         self.plusImageView.image = UIImage(named: "plusIcon")
         self.addSubview(self.plusImageView)
 
         // constraints
         [self.plusImageView, self.amountLabel, self.typeLabel].each { subview in
-            NSLayoutConstraint(item: subview, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1, constant: 0).active = true
+            NSLayoutConstraint(item: subview, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
         }
 
-        NSLayoutConstraint(item: self.plusImageView, attribute: .Width, relatedBy: .Equal,
-                           toItem: self.plusImageView, attribute: .Height, multiplier: 1, constant: 0).active = true
-        NSLayoutConstraint(item: self.plusImageView, attribute: .Width, relatedBy: .Equal,
-                           toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 20).active = true
-        self.plusImageView.constrain(toEdgesOfView: self, margin: { $0 == .Leading ? 20 : nil })
+        NSLayoutConstraint(item: self.plusImageView, attribute: .width, relatedBy: .equal,
+                           toItem: self.plusImageView, attribute: .height, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: self.plusImageView, attribute: .width, relatedBy: .equal,
+                           toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 20).isActive = true
+        self.plusImageView.constrain(toEdgesOfView: self, margin: { $0 == .leading ? 20 : nil })
 
-        NSLayoutConstraint(item: self.amountLabel, attribute: .Leading, relatedBy: .Equal,
-                           toItem: self.plusImageView, attribute: .Trailing, multiplier: 1, constant: 20).active = true
+        NSLayoutConstraint(item: self.amountLabel, attribute: .leading, relatedBy: .equal,
+                           toItem: self.plusImageView, attribute: .trailing, multiplier: 1, constant: 20).isActive = true
 
-        NSLayoutConstraint(item: self.typeLabel, attribute: .Trailing, relatedBy: .Equal,
-                           toItem: self, attribute: .Trailing, multiplier: 1, constant: -40).active = true
+        NSLayoutConstraint(item: self.typeLabel, attribute: .trailing, relatedBy: .equal,
+                           toItem: self, attribute: .trailing, multiplier: 1, constant: -40).isActive = true
     }
 }
 

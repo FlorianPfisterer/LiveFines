@@ -8,13 +8,13 @@
 
 import Foundation
 
-enum HereError: ErrorType
+enum HereError: Error
 {
     case noSpeedLimit
     case noLinkId
 }
 
-enum LocationError: ErrorType
+enum LocationError: Error
 {
     case noLocations
     case noMatchingNodes

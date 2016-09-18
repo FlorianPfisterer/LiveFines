@@ -11,7 +11,7 @@ import SwiftyJSON
 
 struct HereSpeedLimit: JSONDataType
 {
-    private let metersPerSecond: Speed
+    fileprivate let metersPerSecond: Speed
     let linkId: String
     
     var kmh: Int {

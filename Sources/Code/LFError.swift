@@ -9,12 +9,12 @@
 import Foundation
 import RealmSwift
 
-enum LFError: ErrorType
+enum LFError: Swift.Error
 {
-    case realm(Error)
+    case realm(RealmSwift.Error)
     
     case user(Alertifiable)
-    case local(ErrorType)
+    case local(Swift.Error)
     
     case other(String)
 }
@@ -25,14 +25,14 @@ extension LFError
         switch self
         {
         case .realm(let error):
-            return String(error)
+            return String(describing: error)
             
         case .user(let alertifiable):
             let (title, message) = alertifiable.alertTuple
             return message == nil ? title : "\(title) - \(message!)"
             
         case .local(let error):
-            return String(error)
+            return String(describing: error)
             
         case .other(let string):
             return string

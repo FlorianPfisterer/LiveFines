@@ -40,7 +40,7 @@ struct Constants
             
             if course > (360 - Config.courseSpan)
             {
-                max = max % 360
+                max = max.truncatingRemainder(dividingBy: 360)
             }
             else if course < Config.courseSpan
             {

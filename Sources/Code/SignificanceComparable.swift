@@ -11,16 +11,16 @@ import CoreLocation
 
 protocol SignificanceComparable
 {
-    func significantChanges(to to: Self) -> Bool
+    func significantChanges(to: Self) -> Bool
 }
 
-infix operator >> { }
+infix operator >>
 func >> <T: SignificanceComparable>(lhs: T, rhs: T) -> Bool
 {
     return lhs.significantChanges(to: rhs)
 }
 
-infix operator ≈ { }
+infix operator ≈
 func ≈ <T: SignificanceComparable>(lhs: T, rhs: T) -> Bool
 {
     return !(lhs >> rhs)
@@ -28,7 +28,7 @@ func ≈ <T: SignificanceComparable>(lhs: T, rhs: T) -> Bool
 
 extension CLLocation: SignificanceComparable
 {
-    func significantChanges(to to: CLLocation) -> Bool
+    func significantChanges(to: CLLocation) -> Bool
     {
         let coordinate = self.coordinate
         let toCoordinate = to.coordinate

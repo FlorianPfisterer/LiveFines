@@ -26,15 +26,15 @@ class Node: Object
     dynamic var speedLimit: Int = 0
  
     // 3. Experience Data
-    dynamic var createdAt: NSDate? = nil
-    dynamic var visitedAt: NSDate? = nil
+    dynamic var createdAt: Date? = nil
+    dynamic var visitedAt: Date? = nil
     
     // MARK: - Init
     convenience init(location: CLLocation, speedLimit: Int, linkId: String)
     {
         self.init()
         
-        self.id = NSUUID().UUIDString
+        self.id = UUID().uuidString
         self.latitude = location.coordinate.latitude
         self.longitude = location.coordinate.longitude
         
@@ -43,7 +43,7 @@ class Node: Object
         self.speed = location.kmh
         self.course = location.course
         
-        let now = NSDate()
+        let now = Date()
         self.createdAt = now
         self.visitedAt = now
     }
@@ -77,7 +77,7 @@ extension Node
     
     func visit() -> Node
     {
-        self.visitedAt = NSDate()
+        self.visitedAt = Date()
         return self
     }
 }

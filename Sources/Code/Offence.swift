@@ -10,8 +10,8 @@ import Foundation
 
 struct Offence
 {
-    private let speed: Int
-    private let limit: Int
+    fileprivate let speed: Int
+    fileprivate let limit: Int
     
     // MARK: - Init
     init?(speed: Int, limit: Int)

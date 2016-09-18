@@ -11,15 +11,15 @@ import UIKit
 extension UIAlertAction
 {
     static var okay: UIAlertAction {
-        return UIAlertAction(title: Localization.Plain.okay, style: .Default, handler: nil)
+        return UIAlertAction(title: Localization.Plain.okay, style: .default, handler: nil)
     }
 }
 
 extension UIViewController: AlertPresenter
 {
-    func present(error error: Alertifiable, completion: (() -> Void)? = nil)
+    func present(error: Alertifiable, completion: (() -> Void)? = nil)
     {
-        self.presentViewController(error.alert, animated: true, completion: { _ in completion?() })
+        self.present(error.alert, animated: true, completion: { _ in completion?() })
     }
 }
 
@@ -69,56 +69,56 @@ func - (lhs: CGPoint, rhs: CGPoint) -> CGVector
 
 extension NSLayoutAttribute
 {
-    static let edges: [NSLayoutAttribute] = [.Leading, .Top, .Trailing, .Bottom]
+    static let edges: [NSLayoutAttribute] = [.leading, .top, .trailing, .bottom]
 }
 
 extension UIView
 {
     // constraint
-    func constrain(toEdgesOfView view: UIView, margin: (NSLayoutAttribute) -> CGFloat?)
+    func constrain(toEdgesOfView view: UIView, margin: @escaping (NSLayoutAttribute) -> CGFloat?)
     {
         NSLayoutAttribute.edges.each { attribute in
             if let constant = margin(attribute)
             {
-                NSLayoutConstraint(item: self, attribute: attribute, relatedBy: .Equal, toItem: view, attribute: attribute, multiplier: 1, constant: constant).active = true
+                NSLayoutConstraint(item: self, attribute: attribute, relatedBy: .equal, toItem: view, attribute: attribute, multiplier: 1, constant: constant).isActive = true
             }
         }
     }
 
     func constrainCenter(to view: UIView)
     {
-        [NSLayoutAttribute.CenterX, .CenterY].each { attribute in
-            NSLayoutConstraint(item: self, attribute: attribute, relatedBy: .Equal,
-                toItem: view, attribute: attribute, multiplier: 1, constant: 0).active = true
+        [NSLayoutAttribute.centerX, .centerY].each { attribute in
+            NSLayoutConstraint(item: self, attribute: attribute, relatedBy: .equal,
+                toItem: view, attribute: attribute, multiplier: 1, constant: 0).isActive = true
         }
     }
 
-    func constrain(width width: CGFloat? = nil, height: CGFloat? = nil)
+    func constrain(width: CGFloat? = nil, height: CGFloat? = nil)
     {
         if let width = width
         {
-            NSLayoutConstraint(item: self, attribute: .Width, relatedBy: .Equal,
-                               toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: width).active = true
+            NSLayoutConstraint(item: self, attribute: .width, relatedBy: .equal,
+                               toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: width).isActive = true
         }
         if let height = height
         {
-            NSLayoutConstraint(item: self, attribute: .Height, relatedBy: .Equal,
-                               toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: height).active = true
+            NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal,
+                               toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: height).isActive = true
         }
     }
 }
 
 extension UIBezierPath
 {
-    func draw(to point: CGPoint) -> UIBezierPath
+    func drawn(to point: CGPoint) -> UIBezierPath
     {
-        self.addLineToPoint(point)
+        self.addLine(to: point)
         return self
     }
 
-    func move(to point: CGPoint) -> UIBezierPath
+    func moved(to point: CGPoint) -> UIBezierPath
     {
-        self.moveToPoint(point)
+        self.move(to: point)
         return self
     }
 }
@@ -127,7 +127,7 @@ protocol Showable
 {
     var animatedSubviews: [UIView] { get }
     var setAlphaToZero: Bool { get }
-    func animate(show show: Bool)
+    func animate(show: Bool)
 }
 
 extension UIView: Showable
@@ -136,11 +136,11 @@ extension UIView: Showable
     var setAlphaToZero: Bool { return true }
 
     // MARK: - UI Update
-    func animate(show show: Bool)
+    func animate(show: Bool)
     {
-        guard self.hidden != !show else { return }
-        UIView.animateWithDuration(0.3, animations: {
-            self.hidden = !show
+        guard self.isHidden != !show else { return }
+        UIView.animate(withDuration: 0.3, animations: {
+            self.isHidden = !show
             self.animatedSubviews.each { view in
                 view.alpha = (show || !self.setAlphaToZero) ? 1 : 0
             }

@@ -10,16 +10,16 @@ import Foundation
 import RealmSwift
 
 // MARK: - Dispatch Handy Functions
-func async(delay: Double = 0, block: () -> Void)
+func async(_ delay: Double = 0, block: @escaping () -> Void)
 {
     if delay <= 0
     {
-        dispatch_async(dispatch_get_main_queue(), block)
+        DispatchQueue.main.async(execute: block)
     }
     else
     {
-        let after: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
-        dispatch_after(after, dispatch_get_main_queue(), block)
+        let after: DispatchTime = DispatchTime.now() + delay
+        DispatchQueue.main.asyncAfter(deadline: after, execute: block)
     }
 }
 
@@ -30,28 +30,28 @@ private enum PrintTag: String
     case error
 }
 
-private func print(tag tag: PrintTag, description: String)
+private func print(tag: PrintTag, description: String)
 {
-    print("\(tag.rawValue.uppercaseString): \(description)")
+    print("\(tag.rawValue.uppercased()): \(description)")
 }
 
 struct Log
 {
-    static func info(description: String)
+    static func info(_ description: String)
     {
         print(tag: .info, description: description)
     }
     
-    static func error(error: LFError)
+    static func error(_ error: LFError)
     {
         print(tag: .error, description: error.description)
     }
     
-    static func error(specify errorType: ErrorType)
+    static func error(specify errorType: Swift.Error)
     {
         switch errorType
         {
-        case let error as Error:    // Realm
+        case let error as RealmSwift.Error:    // Realm
             self.error(.realm(error))
             
         default:

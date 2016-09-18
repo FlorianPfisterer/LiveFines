@@ -8,12 +8,17 @@
 
 import Alamofire
 
-protocol APIAccessInformation
+class APIAccessInformation<Input> where Input: Equatable, Input: SignificanceComparable
 {
-    associatedtype InputDataType: Equatable, SignificanceComparable
-    
-    static var requestMethod: Alamofire.Method { get }
-    static var baseURL: String { get }
-    
-    static func apiParameters(forInputData inputData: InputDataType) -> [String : AnyObject]
+    var baseURL: String {
+        return "localhost"
+    }
+    var requestMethod: Alamofire.HTTPMethod {
+        return .get
+    }
+
+    func apiParameters(for input: Input) -> [String : Any]
+    {
+        return [:]  // implemented by subclass
+    }
 }
