@@ -17,7 +17,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>389</string>
+	<string>869</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -26,9 +26,9 @@
 		<true/>
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>We need your location to track your speed &amp; fetch limits</string>
+	<string>für die aktuelle Geschwindigkeit und um die Begrenzung herauszufinden</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We need your location to track your speed &amp; fetch limits</string>
+	<string>für die aktuelle Geschwindigkeit und um die Begrenzung herauszufinden</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

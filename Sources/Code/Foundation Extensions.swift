@@ -25,6 +25,14 @@ extension Sequence
     }
 }
 
+extension Array
+{
+    var randomElement: Element {
+        let randomIndex = Int(arc4random_uniform(UInt32(self.count)))
+        return self[randomIndex]
+    }
+}
+
 // MARK: - Primitive Types
 extension Int
 {

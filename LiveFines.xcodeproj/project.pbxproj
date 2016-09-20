@@ -430,6 +430,7 @@
 				5CB896651D64C26600E64B99 /* Frameworks */,
 				5CB896661D64C26600E64B99 /* Resources */,
 				5CB896AF1D64D1DC00E64B99 /* ShellScript */,
+				5CF061921D8E86F1007B3791 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -589,6 +590,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		5CF061921D8E86F1007B3791 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "#!/bin/bash\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -799,7 +813,7 @@
 				DEVELOPMENT_TEAM = LY9X4575EQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/LiveFines",
+					"$(PROJECT_DIR)/Sources",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Supporting Files/Info.plist";
@@ -818,7 +832,7 @@
 				DEVELOPMENT_TEAM = LY9X4575EQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/LiveFines",
+					"$(PROJECT_DIR)/Sources",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Supporting Files/Info.plist";

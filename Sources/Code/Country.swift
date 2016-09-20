@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol Country    // TODO (independent from UIKit) - layout for speed sign
+protocol Country    // TOD+ (independent from UIKit) - layout for speed sign
 {
     func roadType(forLimit limit: Int) -> RoadType
     func rule(onRoadType roadType: RoadType) -> Rule

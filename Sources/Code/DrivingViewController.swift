@@ -13,6 +13,8 @@ private let expandedPunishmentVCIdentifier = "ExpandedPunishmentsViewController"
 fileprivate let expandTimeout: TimeInterval = 1
 fileprivate let standardTimeout: TimeInterval = 3
 
+fileprivate let motivators = ["Weiter so !", "Super !", "So ist's brav !", "Halt durch !", "Gut so !", "Brav !", "Du fährst günstig !", "Fantastisch !", "Gute Fahrt !"]
+
 class DrivingViewController: UIViewController
 {
     // MARK: - IBOutlets
@@ -43,6 +45,11 @@ class DrivingViewController: UIViewController
         {
             guard oldValue != self.state else { return }
             self.transition(to: self.state)
+
+            if self.state == .standard
+            {
+                self.okayView.title = motivators.randomElement
+            }
         }
     }
 
@@ -118,7 +125,7 @@ class DrivingViewController: UIViewController
         // create okay view
         self.okayView = OkayView(image: UIImage(named: "praiseIcon") ?? UIImage())
         self.okayView.showMessage = false
-        self.okayView.title = "Weiter so !"  // TODO Localize TODO make more interesting with changing motivational messages
+        self.okayView.title = motivators.randomElement
         self.punishmentsStackView.insertArrangedSubview(self.okayView, at: 0)
     }
 
