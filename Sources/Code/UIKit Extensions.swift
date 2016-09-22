@@ -147,3 +147,23 @@ extension UIView: Showable
         })
     }
 }
+
+extension UIColor
+{
+    func mixed(with color: UIColor, by fraction: CGFloat) -> UIColor
+    {
+        guard let c1 = self.cgColor.components, let c2 = color.cgColor.components else
+        {
+            return self
+        }
+
+        let factor = min(1, max(0, fraction))
+
+        let r = CGFloat(c1[0] + (c2[0] - c1[0]) * factor)
+        let g = CGFloat(c1[1] + (c2[1] - c1[1]) * factor)
+        let b = CGFloat(c1[2] + (c2[2] - c1[2]) * factor)
+        let a = CGFloat(c1[3] + (c2[3] - c1[3]) * factor)
+
+        return UIColor(red: r, green: g, blue: b, alpha: a)
+    }
+}

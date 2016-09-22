@@ -10,6 +10,8 @@ import Foundation
 import CoreLocation
 import RealmSwift
 
+private let accuracyTippingPoint: Int = 70
+
 protocol NodeUpdateReceiver: class, AlertPresenter
 {
     func update(node: Node)
@@ -53,10 +55,10 @@ final class NodeProvider: NSObject
     {
         self.locationManager.delegate = self
         self.locationManager.activityType = .automotiveNavigation
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.distanceFilter = 0
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        self.locationManager.distanceFilter = kCLDistanceFilterNone
         
-        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.requestWhenInUseAuthorization()
     }
 }
 
@@ -91,7 +93,7 @@ extension NodeProvider: CLLocationManagerDelegate
     // MARK: - Location Manager Delegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
-        guard let location = locations.last , location.horizontalAccuracy > 0 else
+        guard let location = locations.last, location.horizontalAccuracy > 0 else
         {
             self.handle(error: .local(LocationError.noLocations))
             return 
@@ -100,7 +102,7 @@ extension NodeProvider: CLLocationManagerDelegate
         self.speedUpdate(location.speed)
         
         // no significant input changes
-        if let cache = self.locationCache , cache ≈ location { return }
+        if let cache = self.locationCache, cache ≈ location { return }
         self.locationCache = location
         
         self.locationUpdate(location)
@@ -115,6 +117,10 @@ extension NodeProvider: CLLocationManagerDelegate
     fileprivate func speedUpdate(_ speed: Double)
     {
         let roundedKmh = Int(speed * 3.6)
+
+        let isHighSpeed = roundedKmh >= accuracyTippingPoint
+        self.locationManager.desiredAccuracy = isHighSpeed ? kCLLocationAccuracyHundredMeters : kCLLocationAccuracyBestForNavigation
+
         self.updateReceiver?.update(speed: roundedKmh)
     }
 

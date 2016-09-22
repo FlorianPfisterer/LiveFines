@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A319" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Al4-3I-xeT">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -78,16 +77,23 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGK-ZG-4Dz">
+                                <state key="normal" image="menuIcon40">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.13725490196078433" green="0.16862745098039217" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="gjL-1Y-UKd" firstAttribute="top" secondItem="zzm-Eh-ZLH" secondAttribute="bottom" constant="30" id="0Jc-KH-Wap"/>
+                            <constraint firstItem="BGK-ZG-4Dz" firstAttribute="top" secondItem="zzm-Eh-ZLH" secondAttribute="bottom" constant="13" id="2ad-4e-loi"/>
                             <constraint firstItem="gjL-1Y-UKd" firstAttribute="width" secondItem="dCg-8i-jfE" secondAttribute="width" multiplier="0.7" id="3MT-Hs-M1P"/>
                             <constraint firstItem="8Fq-np-AMY" firstAttribute="top" secondItem="gjL-1Y-UKd" secondAttribute="top" id="47X-Ak-Spz"/>
                             <constraint firstItem="gjL-1Y-UKd" firstAttribute="centerX" secondItem="dCg-8i-jfE" secondAttribute="centerX" id="5g2-L3-2GA"/>
                             <constraint firstItem="WNC-9g-SRK" firstAttribute="top" secondItem="8Fq-np-AMY" secondAttribute="bottom" id="6Hs-BF-Asa"/>
                             <constraint firstItem="DSc-at-lSw" firstAttribute="width" secondItem="dCg-8i-jfE" secondAttribute="width" multiplier="0.95" id="6rR-z6-dYU"/>
                             <constraint firstItem="8Fq-np-AMY" firstAttribute="top" secondItem="DSc-at-lSw" secondAttribute="bottom" constant="5" id="7fk-PT-cEQ"/>
+                            <constraint firstAttribute="trailing" secondItem="BGK-ZG-4Dz" secondAttribute="trailing" constant="20" id="Bxc-ss-j4N"/>
                             <constraint firstAttribute="trailing" secondItem="6kh-pm-eh2" secondAttribute="trailing" constant="8" id="E8l-MC-CDE"/>
                             <constraint firstItem="DSc-at-lSw" firstAttribute="top" secondItem="gjL-1Y-UKd" secondAttribute="bottom" constant="30" id="I4Y-c2-qqi"/>
                             <constraint firstAttribute="trailing" secondItem="goT-Yp-qsc" secondAttribute="trailing" constant="8" id="NTb-7f-QRK"/>
@@ -122,7 +128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jqi-2w-cKn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-403.5" y="208.5"/>
+            <point key="canvasLocation" x="-404" y="208.24587706146929"/>
         </scene>
         <!--Expanded Punishments View Controller-->
         <scene sceneID="2zn-cr-pjr">
@@ -295,4 +301,7 @@
             <point key="canvasLocation" x="334" y="301"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="menuIcon40" width="30" height="6"/>
+    </resources>
 </document>

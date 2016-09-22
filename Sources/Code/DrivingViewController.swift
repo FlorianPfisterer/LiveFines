@@ -9,11 +9,11 @@
 import UIKit
 import RealmSwift
 
-private let expandedPunishmentVCIdentifier = "ExpandedPunishmentsViewController"
+fileprivate let expandedPunishmentVCIdentifier = "ExpandedPunishmentsViewController"
 fileprivate let expandTimeout: TimeInterval = 1
 fileprivate let standardTimeout: TimeInterval = 3
 
-fileprivate let motivators = ["Weiter so !", "Super !", "So ist's brav !", "Halt durch !", "Gut so !", "Brav !", "Du fährst günstig !", "Fantastisch !", "Gute Fahrt !"]
+fileprivate let motivators = ["Weiter so !", "Super !", "So ist's brav !", "Gut so !", "Brav !", "Du fährst günstig !", "Fantastisch !", "Gute Fahrt !"]
 
 class DrivingViewController: UIViewController
 {

@@ -217,6 +217,7 @@
 			children = (
 				5C90F6011D7B027B00AF733E /* AppDelegate.swift */,
 				5C90F65B1D7B02A100AF733E /* Core */,
+				5C5BD5C41D7B176F007AED58 /* Global Views */,
 				5C90F65A1D7B029800AF733E /* View Controllers */,
 			);
 			path = Code;
@@ -255,7 +256,6 @@
 				5CFE62951D7F164200A704C8 /* DrivingViewController Animations.swift */,
 				5C4514C51D8AF927006FF53E /* ExpandedPunishmentsViewController.swift */,
 				5C90F6651D7B03C200AF733E /* Views */,
-				5C5BD5C41D7B176F007AED58 /* Global Views */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";

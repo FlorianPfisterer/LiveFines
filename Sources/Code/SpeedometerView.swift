@@ -29,12 +29,14 @@ class SpeedometerView: UIView
         {
             self.displayView.amount = max(self.speed, 0)
             self.setupSpeedArc(animated: true)
+            self.updatedSpeedData()
         }
     }
     @IBInspectable var speedLimit: Int = 120 {
         didSet
         {
             self.setupLimitArc(animated: true)
+            self.updatedSpeedData()
         }
     }
     @IBInspectable var maxSpeed: Int = 200 {
@@ -139,5 +141,24 @@ extension SpeedometerView
     fileprivate func setupSpeedArc(animated: Bool = false)
     {
         self.speedArc.strokeEnd = min(CGFloat(self.speed) / CGFloat(self.maxSpeed), 1)
+    }
+
+    fileprivate func updatedSpeedData()
+    {
+        self.speedArc.strokeColor = self.arcColor(for: self.speed - self.speedLimit).cgColor
+    }
+
+    fileprivate func arcColor(for delta: Int) -> UIColor
+    {
+        let filter: Int = 4
+        switch delta
+        {
+        case let x where x <= filter:
+            return Constants.Color.green
+
+        default:
+            let fraction: CGFloat = CGFloat(delta-filter)/13
+            return Constants.Color.green.mixed(with: Constants.Color.red, by: fraction)
+        }
     }
 }
