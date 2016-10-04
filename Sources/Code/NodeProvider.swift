@@ -117,10 +117,6 @@ extension NodeProvider: CLLocationManagerDelegate
     fileprivate func speedUpdate(_ speed: Double)
     {
         let roundedKmh = Int(speed * 3.6)
-
-        let isHighSpeed = roundedKmh >= accuracyTippingPoint
-        self.locationManager.desiredAccuracy = isHighSpeed ? kCLLocationAccuracyHundredMeters : kCLLocationAccuracyBestForNavigation
-
         self.updateReceiver?.update(speed: roundedKmh)
     }
 

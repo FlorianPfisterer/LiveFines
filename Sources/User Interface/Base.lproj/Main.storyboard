@@ -77,23 +77,36 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGK-ZG-4Dz">
-                                <state key="normal" image="menuIcon40">
+                            <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGK-ZG-4Dz">
+                                <color key="backgroundColor" red="0.61568627450000002" green="0.76862745099999996" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="BGK-ZG-4Dz" secondAttribute="height" multiplier="1:1" id="NiM-2z-HaV"/>
+                                    <constraint firstAttribute="width" constant="30" id="iCx-qn-aFw"/>
+                                </constraints>
+                                <state key="normal" image="menuIcon19">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="bqo-i5-gCF" kind="show" identifier="menuViewSegue" id="tMI-9K-kwL"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.13725490196078433" green="0.16862745098039217" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="gjL-1Y-UKd" firstAttribute="top" secondItem="zzm-Eh-ZLH" secondAttribute="bottom" constant="30" id="0Jc-KH-Wap"/>
-                            <constraint firstItem="BGK-ZG-4Dz" firstAttribute="top" secondItem="zzm-Eh-ZLH" secondAttribute="bottom" constant="13" id="2ad-4e-loi"/>
+                            <constraint firstItem="BGK-ZG-4Dz" firstAttribute="top" secondItem="zzm-Eh-ZLH" secondAttribute="bottom" constant="14" id="2ad-4e-loi"/>
                             <constraint firstItem="gjL-1Y-UKd" firstAttribute="width" secondItem="dCg-8i-jfE" secondAttribute="width" multiplier="0.7" id="3MT-Hs-M1P"/>
                             <constraint firstItem="8Fq-np-AMY" firstAttribute="top" secondItem="gjL-1Y-UKd" secondAttribute="top" id="47X-Ak-Spz"/>
                             <constraint firstItem="gjL-1Y-UKd" firstAttribute="centerX" secondItem="dCg-8i-jfE" secondAttribute="centerX" id="5g2-L3-2GA"/>
                             <constraint firstItem="WNC-9g-SRK" firstAttribute="top" secondItem="8Fq-np-AMY" secondAttribute="bottom" id="6Hs-BF-Asa"/>
                             <constraint firstItem="DSc-at-lSw" firstAttribute="width" secondItem="dCg-8i-jfE" secondAttribute="width" multiplier="0.95" id="6rR-z6-dYU"/>
                             <constraint firstItem="8Fq-np-AMY" firstAttribute="top" secondItem="DSc-at-lSw" secondAttribute="bottom" constant="5" id="7fk-PT-cEQ"/>
-                            <constraint firstAttribute="trailing" secondItem="BGK-ZG-4Dz" secondAttribute="trailing" constant="20" id="Bxc-ss-j4N"/>
+                            <constraint firstAttribute="trailing" secondItem="BGK-ZG-4Dz" secondAttribute="trailing" constant="14" id="Bxc-ss-j4N"/>
                             <constraint firstAttribute="trailing" secondItem="6kh-pm-eh2" secondAttribute="trailing" constant="8" id="E8l-MC-CDE"/>
                             <constraint firstItem="DSc-at-lSw" firstAttribute="top" secondItem="gjL-1Y-UKd" secondAttribute="bottom" constant="30" id="I4Y-c2-qqi"/>
                             <constraint firstAttribute="trailing" secondItem="goT-Yp-qsc" secondAttribute="trailing" constant="8" id="NTb-7f-QRK"/>
@@ -123,6 +136,7 @@
                         <outlet property="separatorBackgroundView" destination="8Fq-np-AMY" id="gVo-B2-5gZ"/>
                         <outlet property="speedLimitView" destination="gjL-1Y-UKd" id="yql-su-nKv"/>
                         <outlet property="speedometerView" destination="goT-Yp-qsc" id="hXw-Vg-JeQ"/>
+                        <outlet property="toggleMenuButton" destination="BGK-ZG-4Dz" id="cl2-lT-VnB"/>
                         <outlet property="upperSeparatorView" destination="DSc-at-lSw" id="SxE-pu-gVg"/>
                     </connections>
                 </viewController>
@@ -298,10 +312,57 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkl-TH-rGS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="334" y="301"/>
+            <point key="canvasLocation" x="-404" y="768"/>
+        </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="2m2-Ep-fJc">
+            <objects>
+                <viewController id="bqo-i5-gCF" customClass="MenuViewController" customModule="LiveFines" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RgX-mo-IO8"/>
+                        <viewControllerLayoutGuide type="bottom" id="vtM-JB-a61"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ePB-O8-k3a">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C7g-SK-gvk">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="tk6-tu-WqV"/>
+                                    <constraint firstAttribute="width" secondItem="C7g-SK-gvk" secondAttribute="height" multiplier="1:1" id="xNg-JG-beO"/>
+                                </constraints>
+                                <state key="normal" image="menuIconGreen19">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="dismiss" destination="bqo-i5-gCF" eventType="touchUpInside" id="PlZ-Oj-h2H"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.61568627450000002" green="0.76862745099999996" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="C7g-SK-gvk" firstAttribute="width" secondItem="C7g-SK-gvk" secondAttribute="height" multiplier="1:1" id="HhQ-kd-Ma1"/>
+                            <constraint firstItem="C7g-SK-gvk" firstAttribute="top" secondItem="RgX-mo-IO8" secondAttribute="bottom" constant="14" id="aS2-mx-ZJU"/>
+                            <constraint firstAttribute="trailing" secondItem="C7g-SK-gvk" secondAttribute="trailing" constant="14" id="y2G-0q-O1G"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="menuToggleButton" destination="C7g-SK-gvk" id="qTz-9K-SnC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iZj-fT-xgv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="374" y="208"/>
         </scene>
     </scenes>
     <resources>
-        <image name="menuIcon40" width="30" height="6"/>
+        <image name="menuIcon19" width="19" height="4"/>
+        <image name="menuIconGreen19" width="19" height="4"/>
     </resources>
 </document>

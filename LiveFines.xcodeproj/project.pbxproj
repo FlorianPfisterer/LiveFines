@@ -57,6 +57,8 @@
 		5C9E809A1D8C3C3200C2279C /* AdditionalPunishmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9E80991D8C3C3200C2279C /* AdditionalPunishmentView.swift */; };
 		5CB896811D64C26600E64B99 /* LiveFinesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB896801D64C26600E64B99 /* LiveFinesTests.swift */; };
 		5CB8968C1D64C26600E64B99 /* LiveFinesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB8968B1D64C26600E64B99 /* LiveFinesUITests.swift */; };
+		5CFC59A61D93B309006A57B0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFC59A51D93B309006A57B0 /* MenuViewController.swift */; };
+		5CFC59A81D93B970006A57B0 /* CircularTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFC59A71D93B970006A57B0 /* CircularTransition.swift */; };
 		5CFE62961D7F164200A704C8 /* DrivingViewController Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE62951D7F164200A704C8 /* DrivingViewController Animations.swift */; };
 /* End PBXBuildFile section */
 
@@ -136,6 +138,8 @@
 		5CB896871D64C26600E64B99 /* LiveFinesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiveFinesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CB8968B1D64C26600E64B99 /* LiveFinesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveFinesUITests.swift; sourceTree = "<group>"; };
 		5CB8968D1D64C26600E64B99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CFC59A51D93B309006A57B0 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		5CFC59A71D93B970006A57B0 /* CircularTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularTransition.swift; sourceTree = "<group>"; };
 		5CFE62951D7F164200A704C8 /* DrivingViewController Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DrivingViewController Animations.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -252,10 +256,8 @@
 		5C90F65A1D7B029800AF733E /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5C90F6061D7B027B00AF733E /* DrivingViewController.swift */,
-				5CFE62951D7F164200A704C8 /* DrivingViewController Animations.swift */,
-				5C4514C51D8AF927006FF53E /* ExpandedPunishmentsViewController.swift */,
-				5C90F6651D7B03C200AF733E /* Views */,
+				5CFC59A31D93B259006A57B0 /* Driving */,
+				5CFC59A41D93B2EF006A57B0 /* Menu */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -417,6 +419,26 @@
 				5CB8968D1D64C26600E64B99 /* Info.plist */,
 			);
 			path = LiveFinesUITests;
+			sourceTree = "<group>";
+		};
+		5CFC59A31D93B259006A57B0 /* Driving */ = {
+			isa = PBXGroup;
+			children = (
+				5C90F6061D7B027B00AF733E /* DrivingViewController.swift */,
+				5CFE62951D7F164200A704C8 /* DrivingViewController Animations.swift */,
+				5C4514C51D8AF927006FF53E /* ExpandedPunishmentsViewController.swift */,
+				5C90F6651D7B03C200AF733E /* Views */,
+			);
+			name = Driving;
+			sourceTree = "<group>";
+		};
+		5CFC59A41D93B2EF006A57B0 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				5CFC59A71D93B970006A57B0 /* CircularTransition.swift */,
+				5CFC59A51D93B309006A57B0 /* MenuViewController.swift */,
+			);
+			name = Menu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -624,6 +646,7 @@
 				5C90F6471D7B027B00AF733E /* Node.swift in Sources */,
 				5C90F63C1D7B027B00AF733E /* Functions.swift in Sources */,
 				5C90F6481D7B027B00AF733E /* NodeProvider.swift in Sources */,
+				5CFC59A61D93B309006A57B0 /* MenuViewController.swift in Sources */,
 				5C90F6331D7B027B00AF733E /* Alertifiable.swift in Sources */,
 				5C90F63B1D7B027B00AF733E /* Foundation Extensions.swift in Sources */,
 				5C90F64A1D7B027B00AF733E /* Other Errors.swift in Sources */,
@@ -647,6 +670,7 @@
 				5C5BD5C31D7B0A1F007AED58 /* PunishmentView.swift in Sources */,
 				5CFE62961D7F164200A704C8 /* DrivingViewController Animations.swift in Sources */,
 				5C90F6511D7B027B00AF733E /* SpeedLimitView.swift in Sources */,
+				5CFC59A81D93B970006A57B0 /* CircularTransition.swift in Sources */,
 				5C90F6531D7B027B00AF733E /* URLRequestHandler.swift in Sources */,
 				5C90F64C1D7B027B00AF733E /* Punishment.swift in Sources */,
 				5C5BD5CC1D7B1CD3007AED58 /* Constants.swift in Sources */,

@@ -8,14 +8,16 @@
 
 import UIKit
 
-private let expandAnimationDuration: TimeInterval = 0.4
-private let standardAnimationDuration: TimeInterval = 0.5
-private let horizontalMargin: CGFloat = 23
-private let verticalMargin: CGFloat = 20
+fileprivate let hideMenuButtonInExpandedMode = true
 
-private let speedometerDisplayViewScale: CGFloat = 1.7
-private let speedometerDisplayViewTypeScale: CGFloat = 1.3
-private let speedometerDisplayViewTypeYTranslation: CGFloat = 15
+fileprivate let expandAnimationDuration: TimeInterval = 0.4
+fileprivate let standardAnimationDuration: TimeInterval = 0.5
+fileprivate let horizontalMargin: CGFloat = 23
+fileprivate let verticalMargin: CGFloat = 20
+
+fileprivate let speedometerDisplayViewScale: CGFloat = 1.7
+fileprivate let speedometerDisplayViewTypeScale: CGFloat = 1.3
+fileprivate let speedometerDisplayViewTypeYTranslation: CGFloat = 15
 
 extension DrivingViewController
 {
@@ -33,16 +35,20 @@ extension DrivingViewController
         return 2*verticalMargin + self.availableWidth * 0.53
     }
 
-    internal func transition(to state: ViewState)
+    internal func transition(to state: ViewState)       // Menu Button isHidden TODO
     {
         let isExpanded = state == .expanded
+//        if !isExpanded && hideMenuButtonInExpandedMode { self.toggleMenuButton.isHidden = false }
 
         UIView.animate(withDuration: isExpanded ? expandAnimationDuration : standardAnimationDuration, delay: 0, options: UIViewAnimationOptions(), animations: {
+//            if hideMenuButtonInExpandedMode { self.toggleMenuButton.alpha = isExpanded ? 0 : 1 }
             self.expandSpeedLimitView(isExpanded)
             self.expandSpeedometerView(isExpanded)
             self.expandPunishmentStackView(isExpanded)
             self.view.layoutIfNeeded()
-        }, completion: nil)
+        }, completion: { _ in
+//            if isExpanded && hideMenuButtonInExpandedMode { self.toggleMenuButton.isHidden = true }
+        })
     }
 
     fileprivate func expandSpeedLimitView(_ expand: Bool = true)

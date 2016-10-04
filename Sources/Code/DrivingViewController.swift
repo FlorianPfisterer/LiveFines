@@ -9,15 +9,17 @@
 import UIKit
 import RealmSwift
 
+fileprivate let menuSegueIdentifier = "menuViewSegue"
 fileprivate let expandedPunishmentVCIdentifier = "ExpandedPunishmentsViewController"
 fileprivate let expandTimeout: TimeInterval = 1
 fileprivate let standardTimeout: TimeInterval = 3
 
-fileprivate let motivators = ["Weiter so !", "Super !", "So ist's brav !", "Gut so !", "Brav !", "Du fährst günstig !", "Fantastisch !", "Gute Fahrt !"]
+fileprivate let motivators = ["Weiter so !", "Super !", "Gut so !", "Fantastisch !", "Gute Fahrt !"]
 
 class DrivingViewController: UIViewController
 {
     // MARK: - IBOutlets
+    @IBOutlet weak var toggleMenuButton: UIButton!
     @IBOutlet weak var speedLimitView: SpeedLimitView!
     @IBOutlet weak var speedometerView: SpeedometerView!
 
@@ -28,6 +30,8 @@ class DrivingViewController: UIViewController
     @IBOutlet weak var lowerSeparatorView: UIView!
     
     // MARK: - Private Variables
+    fileprivate let transition = CircularTransition()
+
     internal var expandedPunishmentsController: ExpandedPunishmentsViewController?
     internal var expandedPunishmentsVCHeightConstraint: NSLayoutConstraint?
 
@@ -250,6 +254,38 @@ extension DrivingViewController
         else if self.state == .expanded
         {
             self.okaySince = TimeInterval.now
+        }
+    }
+}
+
+// MARK: - Segue & Transitioning
+extension DrivingViewController: UIViewControllerTransitioningDelegate
+{
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning?
+    {
+        self.transition.transitionMode = .present
+        self.transition.startingPoint = self.toggleMenuButton.center
+        self.transition.circleColor = self.toggleMenuButton.backgroundColor ?? Constants.Color.green
+
+        return self.transition
+    }
+
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning?
+    {
+        self.transition.transitionMode = .dismiss
+        self.transition.startingPoint = self.toggleMenuButton.center
+        self.transition.circleColor = self.toggleMenuButton.backgroundColor ?? Constants.Color.green
+
+        return self.transition
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == menuSegueIdentifier
+        {
+            guard let menuVC = segue.destination as? MenuViewController else { return }
+            menuVC.transitioningDelegate = self
+            menuVC.modalPresentationStyle = .custom
         }
     }
 }
