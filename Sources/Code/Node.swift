@@ -74,10 +74,20 @@ extension Node
     {
         return (coordinate - self.coordinate).length
     }
-    
+
+    @discardableResult
     func visit() -> Node
     {
         self.visitedAt = Date()
         return self
+    }
+
+    func shouldBeDeleted() -> Bool
+    {
+        // checks if node has expired and should be deleted
+        guard let createdAt = self.createdAt else { return false }
+
+        let difference = Date().timeIntervalSinceReferenceDate - createdAt.timeIntervalSinceReferenceDate
+        return difference >= Constants.Config.nodeExpirationInterval
     }
 }

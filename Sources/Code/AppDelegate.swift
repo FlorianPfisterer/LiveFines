@@ -16,6 +16,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
+        self.cleanupNodes()
         return true
+    }
+}
+
+extension AppDelegate
+{
+    fileprivate func cleanupNodes()
+    {
+        // query for nodes that should be deleted and delete them
+        switch Database.realm()
+        {
+        case .success(let realm):
+            realm.objects(Node.self).filter  { $0.shouldBeDeleted() }.each { realm.delete($0) }
+
+        default: return
+        }
     }
 }

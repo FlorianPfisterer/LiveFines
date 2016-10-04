@@ -24,9 +24,11 @@ struct Constants
     
     struct Config
     {
-        static let coordinateSpan: Double = 0.003
-        static let courseSpan: Double = 15
-        static let speedSpan: Int = 12
+        static let nodeExpirationInterval: TimeInterval = 60*60*24*7    // 1 week
+
+        static let coordinateSpan: Double = 0.002
+        static let courseSpan: Double = 20
+        static let speedSpan: Int = 15
         static let speedLimitMax: Double = 60  // m/s
 
         static var speedLimitMaxKmh: Int {
