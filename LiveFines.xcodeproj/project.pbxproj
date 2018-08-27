@@ -60,6 +60,7 @@
 		5CFC59A61D93B309006A57B0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFC59A51D93B309006A57B0 /* MenuViewController.swift */; };
 		5CFC59A81D93B970006A57B0 /* CircularTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFC59A71D93B970006A57B0 /* CircularTransition.swift */; };
 		5CFE62961D7F164200A704C8 /* DrivingViewController Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE62951D7F164200A704C8 /* DrivingViewController Animations.swift */; };
+		E46CF7D62134318900F11BEA /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46CF7D52134318900F11BEA /* Secrets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +142,7 @@
 		5CFC59A51D93B309006A57B0 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		5CFC59A71D93B970006A57B0 /* CircularTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularTransition.swift; sourceTree = "<group>"; };
 		5CFE62951D7F164200A704C8 /* DrivingViewController Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DrivingViewController Animations.swift"; sourceTree = "<group>"; };
+		E46CF7D52134318900F11BEA /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +234,7 @@
 			children = (
 				5C5BD5CA1D7B1CD3007AED58 /* Constants.swift */,
 				5C5BD5CB1D7B1CD3007AED58 /* Localization.swift */,
+				E46CF7D52134318900F11BEA /* Secrets.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				5C90F6381D7B027B00AF733E /* Database.swift in Sources */,
 				5C5BD5BC1D7B0655007AED58 /* SpeedometerView.swift in Sources */,
 				5C90F64E1D7B027B00AF733E /* Realm.swift in Sources */,
+				E46CF7D62134318900F11BEA /* Secrets.swift in Sources */,
 				5C90F6351D7B027B00AF733E /* AppDelegate.swift in Sources */,
 				5C90F63F1D7B027B00AF733E /* HereJSONDataProvider.swift in Sources */,
 				5C90F6421D7B027B00AF733E /* LFError.swift in Sources */,
